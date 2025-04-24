@@ -1,20 +1,11 @@
-"""
-Solitaire clone.
-"""
-
-import arcade
-
-from src.GameWindow import GameWindow
+from engine.engine import GameEngine
+from game.views.menu_view import MenuView
 
 
 def main():
-    """Main function"""
-    window = GameWindow()
-    window.setup()
-    arcade.run()
+    engine = GameEngine()
+    engine.run(MenuView())
 
-    # engine = GameEngine()
-    # engine.run(MenuView())
 
 if __name__ == "__main__":
     main()
