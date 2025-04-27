@@ -10,9 +10,11 @@ class GameEngine:
         return cls._instance
     
     def _init_engine(self):
-        self.scene_manager = SceneManager()
-        self.resource_manager = ResourceManager()
-        self.audio_manager = AudioManager()
+        print('_init_engine')
+        # self.scene_manager = SceneManager()
+        # self.resource_manager = ResourceManager()
+        # self.audio_manager = AudioManager()
         
     def run(self, start_scene):
-        self.scene_manager.switch_to(start_scene)
+        print('run')
+        # self.scene_manager.switch_to(start_scene)

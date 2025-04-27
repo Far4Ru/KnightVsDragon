@@ -6,6 +6,5 @@ def main():
     engine = GameEngine()
     engine.run(MenuView())
 
-
 if __name__ == "__main__":
     main()

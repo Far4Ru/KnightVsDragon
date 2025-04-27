@@ -1,13 +1,28 @@
-from engine.core.scene import Scene
+import arcade
 
-class GameView(Scene):
-    def __init__(self, level_id):
-        self.level_id = level_id
-        
-    def setup(self):
-        engine = GameEngine()
-        level_data = engine.resource_manager.load_level(self.level_id)
-        self.level_model = LevelModel(level_data)
-        
+SCREEN_WIDTH = 1280
+SCREEN_HEIGHT = 720
+SCREEN_TITLE = "Богатырь против Змея Горыныча"
+
+class SceneManager(arcade.Window):
+    def __init__(self):
+        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+        self.current_scene = None
+    
+    def change_scene(self, new_scene):
+        if self.current_scene:
+            pass
+        self.current_scene = new_scene
+        new_scene.setup()
+    
     def on_draw(self):
-        self.level_model.draw()
+        if self.current_scene:
+            self.current_scene.on_draw()
+    
+    def on_update(self, delta_time):
+        if self.current_scene:
+            self.current_scene.on_update(delta_time)
+    
+    def on_key_press(self, key, modifiers):
+        if self.current_scene:
+            self.current_scene.on_key_press(key, modifiers)
