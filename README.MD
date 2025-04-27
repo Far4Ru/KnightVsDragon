@@ -13,3 +13,15 @@
 ## Технологии  
 - **Python 3**
 - **Python Arcade** для графики и управления.
+
+## Разработка
+<details>
+<summary>Создание и активация виртуального окружения</summary>
+> python3 -m venv venv  
+> source venv/bin/activate
+</details>
+
+<details>
+<summary>Установка зависимостей</summary>
+> pip install -r requirements.txt
+</details>
