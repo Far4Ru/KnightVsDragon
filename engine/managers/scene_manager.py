@@ -4,7 +4,14 @@ SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 SCREEN_TITLE = "Богатырь против Змея Горыныча"
 
+
 class SceneManager(arcade.Window):
+    def get_clipboard_text(self) -> str:
+        pass
+
+    def set_clipboard_text(self, text: str) -> None:
+        pass
+
     def __init__(self):
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
         self.current_scene = None

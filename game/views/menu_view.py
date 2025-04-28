@@ -1,4 +1,5 @@
-from engine.managers.scene_manager import Scene
+from engine.core.scene import Scene
+from engine.engine import GameEngine
 
 
 class MenuView(Scene):

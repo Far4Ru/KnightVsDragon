@@ -1,5 +1,8 @@
 import arcade
 
+from engine.managers.scene_manager import SceneManager
+
+
 class GameEngine:
     _instance = None
     
@@ -11,10 +14,10 @@ class GameEngine:
     
     def _init_engine(self):
         print('_init_engine')
-        # self.scene_manager = SceneManager()
+        self.scene_manager = SceneManager()
         # self.resource_manager = ResourceManager()
         # self.audio_manager = AudioManager()
         
     def run(self, start_scene):
         print('run')
-        # self.scene_manager.switch_to(start_scene)
+        self.scene_manager.switch_to(start_scene)
