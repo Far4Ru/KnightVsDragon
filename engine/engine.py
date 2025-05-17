@@ -20,4 +20,5 @@ class GameEngine:
         
     def run(self, start_scene):
         print('run')
-        self.scene_manager.switch_to(start_scene)
+        self.scene_manager.change_scene(start_scene)
+        arcade.run()

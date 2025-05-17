@@ -4,8 +4,7 @@ from engine.engine import GameEngine
 
 class MenuView(Scene):
     def setup(self):
-        print('setup')
-        # engine = GameEngine()
+        engine = GameEngine()
 
         # # Загрузка через ResourceManager
         # bg_texture = engine.resource_manager.get_texture("menu_bg")
@@ -20,6 +19,12 @@ class MenuView(Scene):
         # )
 
     def _on_start(self):
-        print('on_start')
+        pass
         # engine = GameEngine()
         # engine.scene_manager.switch_to(CharacterSelectView())
+
+    def on_update(self, delta_time):
+        pass
+
+    def on_draw(self):
+        pass

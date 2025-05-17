@@ -2,5 +2,5 @@ class Scene:
     def setup(self):
         pass
 
-    def _on_start(self):
+    def _on_start(self, delta_time):
         pass
