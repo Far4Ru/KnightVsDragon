@@ -8,8 +8,7 @@ class MenuView(Scene):
 
     def __init__(self):
         super().__init__()
-
-        self.background_color = arcade.color.AMAZON
+        arcade.set_background_color(arcade.color.AMAZON)
 
     def setup(self):
         engine = GameEngine()
@@ -25,8 +24,6 @@ class MenuView(Scene):
         #     callback=self._on_start
         # )
 
-        self.background_color = arcade.color.AMAZON
-
     def _on_start(self):
         pass
         # engine = GameEngine()
@@ -37,3 +34,7 @@ class MenuView(Scene):
 
     def on_draw(self):
         pass
+
+    def on_key_press(self, key, modifiers):
+        if key == arcade.key.SPACE:
+            arcade.set_background_color(arcade.color.RED)

@@ -23,13 +23,17 @@ class SceneManager(arcade.Window):
         self.show_view(self.current_scene)
     
     def on_draw(self):
+        self.clear()
+        pass
         if self.current_scene:
             self.current_scene.on_draw()
     
     def on_update(self, delta_time):
+        pass
         if self.current_scene:
             self.current_scene.on_update(delta_time)
     
     def on_key_press(self, key, modifiers):
+        pass
         if self.current_scene:
             self.current_scene.on_key_press(key, modifiers)
