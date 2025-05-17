@@ -13,12 +13,10 @@ class GameEngine:
         return cls._instance
     
     def _init_engine(self):
-        print('_init_engine')
         self.scene_manager = SceneManager()
         # self.resource_manager = ResourceManager()
         # self.audio_manager = AudioManager()
         
     def run(self, start_scene):
-        print('run')
         self.scene_manager.change_scene(start_scene)
         arcade.run()

@@ -1,12 +1,19 @@
+import arcade
+
 from engine.core.scene import Scene
 from engine.engine import GameEngine
 
 
 class MenuView(Scene):
+
+    def __init__(self):
+        super().__init__()
+
+        self.background_color = arcade.color.AMAZON
+
     def setup(self):
         engine = GameEngine()
 
-        # # Загрузка через ResourceManager
         # bg_texture = engine.resource_manager.get_texture("menu_bg")
         # self.bg_sprite = arcade.Sprite(texture=bg_texture)
 
@@ -17,6 +24,8 @@ class MenuView(Scene):
         #     texture="btn_start",
         #     callback=self._on_start
         # )
+
+        self.background_color = arcade.color.AMAZON
 
     def _on_start(self):
         pass

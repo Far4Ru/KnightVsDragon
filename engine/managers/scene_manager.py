@@ -20,7 +20,7 @@ class SceneManager(arcade.Window):
         if self.current_scene:
             pass
         self.current_scene = new_scene
-        new_scene.setup()
+        self.show_view(self.current_scene)
     
     def on_draw(self):
         if self.current_scene:

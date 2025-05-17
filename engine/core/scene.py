@@ -1,4 +1,10 @@
-class Scene:
+import arcade
+
+
+class Scene(arcade.View):
+    def __init__(self):
+        super().__init__()
+
     def setup(self):
         pass
 
