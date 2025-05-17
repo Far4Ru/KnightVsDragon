@@ -1,7 +1,10 @@
 import json
 import os
 
-class ResourceManager:
+import arcade
+
+
+class AssetManager:
     def __init__(self):
         self._pool = {}
         
