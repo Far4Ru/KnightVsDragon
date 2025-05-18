@@ -3,8 +3,6 @@ from array import array
 from arcade.gl import BufferDescription
 
 from engine.core.scene import Scene
-from engine.engine import GameEngine
-from pyglet.graphics import Batch
 
 
 class GameView(Scene):
@@ -50,14 +48,14 @@ class GameView(Scene):
 
         # Configure and create the perspective projector
         self.perspective_data = arcade.camera.PerspectiveProjectionData(
-            self.window.aspect_ratio, # The ratio between window width and height
-            75, # The angle  between things at the top of the screen, and the bottom
-            0.1, # Anything within 0.1 units of the camera won't be visible
-            100.0 # Anything past 100.0 units of the camera won't be visible
+            self.window.aspect_ratio,  # The ratio between window width and height
+            75,  # The angle  between things at the top of the screen, and the bottom
+            0.1,  # Anything within 0.1 units of the camera won't be visible
+            100.0  # Anything past 100.0 units of the camera won't be visible
         )
         self.projector = arcade.camera.PerspectiveProjector()
 
-        # Framebuffer / virtual screen to render the contents into
+        # Frame buffer / virtual screen to render the contents into
         self.fbo = self.window.ctx.framebuffer(
             color_attachments=self.window.ctx.texture(size=(1024, 1024))
         )
@@ -70,10 +68,10 @@ class GameView(Scene):
                 'f',
                 [
                     # x  y   z  u  v
-                    -1,  1, 0, 0, 1,  # Top Left
+                    -1, 1, 0, 0, 1,  # Top Left
                     -1, -1, 0, 0, 0,  # Bottom Left
-                     1,  1, 0, 1, 1,  # Top Right
-                     1, -1, 0, 1, 0,  # Bottom right
+                    1, 1, 0, 1, 1,  # Top Right
+                    1, -1, 0, 1, 0,  # Bottom right
                 ]
             )
         )
@@ -85,10 +83,11 @@ class GameView(Scene):
         )
 
         # Create some sprites
-        self.spritelist = arcade.SpriteList()
+        self.sprite_list = arcade.SpriteList()
+        self.player_list = arcade.SpriteList()
         for y in range(8):
             for x in range(8):
-                self.spritelist.append(
+                self.sprite_list.append(
                     arcade.Sprite(
                         ":resources:images/tiles/boxCrate_double.png",
                         center_x=64 + x * 128,
@@ -96,6 +95,13 @@ class GameView(Scene):
                     )
                 )
 
+        self.player_list.append(
+            arcade.Sprite(
+                ":resources:images/animated_characters/female_person/femalePerson_idle.png",
+                center_x=500,
+                center_y=150,
+            )
+        )
         # Create a 2D camera for rendering to the fbo
         # by setting the camera's render target it will automatically
         # size and position itself correctly
@@ -139,10 +145,11 @@ class GameView(Scene):
             self.fbo.color_attachments[0].use(unit=0)
 
             # Scroll the texture coordinates
-            self.program["scroll"] = 0, 0 # -self.window.time / 5
+            self.program["scroll"] = 0, 0  # -self.window.time / 5
 
             # Draw the plane
             self.geometry.render(self.program)
+        self.player_list.draw()
 
     def draw_offscreen(self):
         """Render into the texture mapped """
@@ -150,7 +157,7 @@ class GameView(Scene):
         with self.offscreen_cam.activate():
             self.fbo.clear()
             self.offscreen_cam.use()
-            self.spritelist.draw()
+            self.sprite_list.draw()
 
     def on_resize(self, width: int, height: int):
         super().on_resize(width, height)

@@ -15,8 +15,8 @@ class MenuView(Scene):
         self.player_list = None
         self.player_sprite = None
         self.batch = Batch()
-        self.font_default = arcade.Text(
-            "Default Font (Arial)",
+        self.play_text = arcade.Text(
+            "Играть",
             500,
             500,
             arcade.color.BLACK,
