@@ -16,8 +16,8 @@ class GameView(Scene):
         self.sprites = arcade.SpriteList()
         self.player = arcade.Sprite(
             ":resources:images/animated_characters/female_person/femalePerson_idle.png",
-            center_x=500,
-            center_y=150,
+            center_x=1280 * 0.5,
+            center_y=100,
         )
         self.sprites.append(self.player)
 
