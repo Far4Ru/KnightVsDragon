@@ -1,5 +1,6 @@
 import arcade
 
+
 class DragManager:
     def __init__(self, grid):
         self.grid = grid

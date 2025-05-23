@@ -20,6 +20,13 @@ class GameView(Scene):
             center_y=100,
         )
         self.sprites.append(self.player)
+        self.enemy = arcade.Sprite(
+            ":resources:images/animated_characters/male_person/malePerson_idle.png",
+            center_x=1280 * 0.5,
+            center_y=700,
+            scale=0.5,
+        )
+        self.sprites.append(self.enemy)
 
     def on_draw(self):
         self.clear()

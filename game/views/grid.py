@@ -1,10 +1,11 @@
 import arcade
 import math
 
+
 class Grid:
     def __init__(self, rows, cols):
-        self.x = 120
-        self.y = 150
+        self.x = 125
+        self.y = 180
         self.rows = rows
         self.cols = cols
         self.sprite_list = arcade.SpriteList()
@@ -12,8 +13,8 @@ class Grid:
         self.gap_x = 0
         self.gap_y = 0
         self.base_scale = 0.8
-        self.scale_reduction = 0.3
-        self.perspective_factor = 0.8
+        self.scale_reduction = 0.2
+        self.perspective_factor = 0.7
         self.setup_grid()
     
     def calculate_perspective_scale(self, y, rows):
