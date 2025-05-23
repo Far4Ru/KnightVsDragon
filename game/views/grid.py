@@ -14,7 +14,8 @@ class Grid:
                 sprite = arcade.Sprite(
                     ":resources:images/tiles/boxCrate_double.png",
                     center_x=64 + x * self.cell_size,
-                    center_y=64 + y * self.cell_size,
+                    center_y=64 + y * self.cell_size * (1/(y/9+1)),
+                    scale=1/(y/3+1) ,
                 )
                 sprite.original_texture = sprite.texture
                 self.sprite_list.append(sprite)
