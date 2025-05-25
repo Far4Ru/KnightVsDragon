@@ -1,5 +1,6 @@
 import arcade
 
+from engine.managers.asset_manager import AssetManager
 from engine.managers.scene_manager import SceneManager
 
 
@@ -14,7 +15,7 @@ class GameEngine:
     
     def _init_engine(self):
         self.scene_manager = SceneManager()
-        # self.resource_manager = ResourceManager()
+        self.asset_manager = AssetManager()
         # self.audio_manager = AudioManager()
         
     def run(self, start_scene):
