@@ -31,3 +31,8 @@ class GameView(Scene):
 
     def on_mouse_drag(self, x, y, dx, dy, buttons, modifiers):
         self.drag_manager.on_mouse_drag(x, y, dx, dy, buttons, modifiers)
+
+    def on_key_press(self, key, modifiers):
+        if key == arcade.key.ESCAPE:
+            # GameEngine().scene_manager.change_scene(MenuView())
+            pass

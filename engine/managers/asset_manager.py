@@ -22,6 +22,9 @@ class AssetManager:
 
                 self.textures[texture_name] = arcade.load_texture(texture_path)
 
+    def get_texture(self, name):
+        return self.textures[name]
+
     def load_level(self, level_id):
         path = f"assets/levels/level_{level_id}.json"
         with open(path) as f:
