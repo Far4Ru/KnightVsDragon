@@ -1,9 +1,9 @@
 import arcade
-from array import array
-from arcade.gl import BufferDescription
 from engine.core.scene import Scene
-from .grid import Grid
-from .drag_manager import DragManager
+from engine.managers.drag_manager import DragManager
+from game.components.enemy import Enemy
+from game.components.grid import Grid
+from game.components.player import Player
 
 
 class GameView(Scene):
@@ -14,26 +14,14 @@ class GameView(Scene):
         self.drag_manager = DragManager(self.grid)
         
         self.sprites = arcade.SpriteList()
-        self.player = arcade.Sprite(
-            ":resources:images/animated_characters/female_person/femalePerson_idle.png",
-            center_x=1280 * 0.5,
-            center_y=100,
-        )
-        self.sprites.append(self.player)
-        self.enemy = arcade.Sprite(
-            ":resources:images/animated_characters/male_person/malePerson_idle.png",
-            center_x=1280 * 0.5,
-            center_y=700,
-            scale=0.5,
-        )
-        self.sprites.append(self.enemy)
+        self.player = Player(self.sprites)
+        self.enemy = Enemy(self.sprites)
 
     def on_draw(self):
         self.clear()
         self.grid.draw()
         self.drag_manager.draw()
         self.sprites.draw()
-        
 
     def on_mouse_press(self, x, y, button, modifiers):
         self.drag_manager.on_mouse_press(x, y, button, modifiers)
