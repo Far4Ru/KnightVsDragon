@@ -5,7 +5,7 @@ from config import FONT_DEFAULT
 
 
 class MenuButton:
-    def __init__(self, batch, text, x, y, width, height, angle=0):
+    def __init__(self, batch, text="", x=0, y=0, width=0, height=0, angle=0):
         self.x = x
         self.y = y
         self.width = width

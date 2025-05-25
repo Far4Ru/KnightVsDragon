@@ -8,8 +8,10 @@ class AssetManager:
     def __init__(self):
         self.textures = {}
         self.font_names = []
+        self.sound_names = {}
         self.load_fonts()
         self.load_textures()
+        self.load_sounds()
         
     def load_textures(self):
         folder_path = "assets/images"
@@ -24,6 +26,20 @@ class AssetManager:
 
     def get_texture(self, name):
         return self.textures[name]
+
+    def load_sounds(self):
+        folder_path = "assets/sounds"
+        if not os.path.exists(folder_path):
+            print(f"Папка {folder_path} не найдена!")
+        for filename in os.listdir(folder_path):
+            if filename.endswith(".mp3"):
+                sound_name = filename[:-4]
+                sound_path = os.path.join(folder_path, filename)
+                arcade.load_sound(sound_path)
+                self.sound_names[sound_name] = sound_path
+
+    def get_sound(self, name):
+        return self.sound_names[name]
 
     def load_level(self, level_id):
         path = f"assets/levels/level_{level_id}.json"
