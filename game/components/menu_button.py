@@ -4,7 +4,7 @@ import math
 from config import FONT_DEFAULT
 
 
-class PlayButton:
+class MenuButton:
     def __init__(self, batch, text, x, y, width, height, angle=0):
         self.x = x
         self.y = y
@@ -23,11 +23,9 @@ class PlayButton:
             batch=batch,
         )
 
-    def collides_with_point(self, point):
-        point_x = point[0]
-        point_y = point[1]
-        local_x = point_x - self.x
-        local_y = point_y - self.y
+    def collides_with_point(self, x, y):
+        local_x = x - self.x
+        local_y = y - self.y
 
         angle_rad = math.radians(self.angle)
         rotated_x = local_x * math.cos(angle_rad) - local_y * math.sin(angle_rad)
@@ -37,6 +35,12 @@ class PlayButton:
             -self.width / 2 <= rotated_x <= self.width / 2 and
             -self.height / 2 <= rotated_y <= self.height / 2
         )
+
+    def on_mouse_motion(self, x, y):
+        if self.collides_with_point(x, y):
+            self.enter()
+        else:
+            self.leave()
 
     def enter(self):
         self.text.color = arcade.color.GREEN
