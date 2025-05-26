@@ -33,15 +33,6 @@ class HealthBar:
             self.background_color
         )
 
-        outline_rect = arcade.Rect(self.x - self.width * 0.5, self.x + self.width * 0.5,
-                                   self.y - self.height * 0.5, self.y + self.height * 0.5,
-                                   self.width, self.height,
-                                   self.x - self.width * 0.5, self.y - self.height)
-        arcade.draw_rect_outline(
-            outline_rect,
-            self.border_color, 2
-        )
-
         health_width = max(0, (self.current_hp / self.max_hp) * self.width)
 
         filled_rect = arcade.Rect(self.x - (self.width - health_width) / 2, self.x + health_width,
@@ -52,9 +43,18 @@ class HealthBar:
                 filled_rect,
                 self.fill_color
             )
-
-        self.text.text = f"{self.current_hp}/{self.max_hp}"
+        self.text.text = f"{self.current_hp}/{self.max_hp} ХП"
+        self.text.x = self.x + self.width * 0.5 - self.text.content_width * 0.5 - 5
         self.batch.draw()
+
+        outline_rect = arcade.Rect(self.x - self.width * 0.5, self.x + self.width * 0.5,
+                                   self.y - self.height * 0.5, self.y + self.height * 0.5,
+                                   self.width, self.height,
+                                   self.x - self.width * 0.5, self.y - self.height)
+        arcade.draw_rect_outline(
+            outline_rect,
+            self.border_color, 1
+        )
 
     def update_hp(self, current_hp):
         self.current_hp = current_hp
