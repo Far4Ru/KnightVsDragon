@@ -1,3 +1,6 @@
+from engine.engine import GameEngine
+
+
 class Component:
     def update(self, dt):
         pass

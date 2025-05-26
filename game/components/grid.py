@@ -1,5 +1,7 @@
 import arcade
 
+from engine.engine import GameEngine
+
 
 class Grid:
     def __init__(self, rows, cols):
@@ -39,7 +41,7 @@ class Grid:
                 pos_y = accumulated_y + scaled_height / 2
                 
                 sprite = arcade.Sprite(
-                    ":resources:images/tiles/boxCrate_double.png",
+                    GameEngine().asset_manager.get_texture("cell"),
                     center_x=self.x + pos_x,
                     center_y=self.y + pos_y,
                     scale=current_scale,
