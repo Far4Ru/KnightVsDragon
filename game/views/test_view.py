@@ -14,11 +14,14 @@ class TestView(Scene):
             # MovementSystem(),
             RenderingSystem(self),
         ]
-        self.setup()
+        self.load()
+        self.update()
 
-    def setup(self):
-        self.entities.append(Entity().load("player"))
-        self.entities.append(Entity().load("enemy"))
+    def load(self):
+        self.entities.append(Entity("player"))
+        self.entities.append(Entity("enemy"))
+
+    def update(self):
         for system in self.systems:
             if hasattr(system, "update"):
                 system.update(self.entities)

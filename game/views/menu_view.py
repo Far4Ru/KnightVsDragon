@@ -53,7 +53,7 @@ class MenuView(Scene):
         if self.play_button.collides_with_point(x, y):
             GameEngine().scene_manager.change_scene(GameView())
 
-    def setup(self):
+    def update(self):
         pass
 
     def on_mouse_motion(self, x: int, y: int, dx: int, dy: int):
