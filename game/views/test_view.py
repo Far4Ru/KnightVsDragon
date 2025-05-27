@@ -14,12 +14,16 @@ class TestView(Scene):
             # MovementSystem(),
             RenderingSystem(self),
         ]
+    
+    def setup(self):
         self.load()
         self.update()
 
     def load(self):
         self.entities.append(Entity("player"))
         self.entities.append(Entity("enemy"))
+        self.entities.append(Entity("logo"))
+        self.entities.append(Entity("background"))
 
     def update(self):
         for system in self.systems:

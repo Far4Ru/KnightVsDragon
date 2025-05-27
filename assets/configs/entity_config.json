@@ -3,13 +3,27 @@
         "components": {
             "Position": {"x": 100, "y": 200},
             "Sprite": {"texture": "knight"},
-            "Layer": {"level": 0}
+            "Layer": {"level": 1}
         }
     },
     "enemy": {
         "components": {
             "Position": {"x": 400, "y": 200},
             "Sprite": {"texture": "dragon"},
+            "Layer": {"level": 1}
+        }
+    },
+    "logo": {
+        "components": {
+            "Position": {"x": 640, "y": 850},
+            "Sprite": {"texture": "logo"},
+            "Layer": {"level": 1}
+        }
+    },
+    "background": {
+        "components": {
+            "Position": {"x": 640, "y": 512},
+            "Sprite": {"texture": "background_menu"},
             "Layer": {"level": 0}
         }
     }
