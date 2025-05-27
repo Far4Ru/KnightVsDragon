@@ -41,7 +41,7 @@ class Grid:
                 pos_y = accumulated_y + scaled_height / 2
                 
                 sprite = arcade.Sprite(
-                    GameEngine().asset_manager.get_texture("cell"),
+                    GameEngine().texture_manager.get("cell"),
                     center_x=self.x + pos_x,
                     center_y=self.y + pos_y,
                     scale=current_scale,

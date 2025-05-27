@@ -17,12 +17,12 @@ class GameView(Scene):
         self.layers = Layers()
         self.layers.add_layer("background")
         self.layers.add_layer("sword")
-        self.sound = arcade.Sound(GameEngine().asset_manager.get_sound("music_level1"), streaming=True)
+        self.sound = arcade.Sound(GameEngine().sound_manager.get("music_level1"), streaming=True)
         self.sound.play(loop=True)
         self.grid = Grid(8, 8)
 
         sprites_data = [
-            GameEngine().asset_manager.get_texture("sword"),
+            GameEngine().texture_manager.get("sword"),
             ":resources:images/tiles/grassMid.png",
         ]
 
