@@ -7,6 +7,8 @@ from engine.managers.scene_manager import SceneManager
 from engine.managers.sound_manager import SoundManager
 from engine.managers.texture_manager import TextureManager
 
+from config import SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE
+
 
 class GameEngine:
     _instance = None
@@ -18,7 +20,7 @@ class GameEngine:
         return cls._instance
     
     def _init_engine(self):
-        self.scene_manager = SceneManager()
+        self.scene_manager = SceneManager(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
         self.config_manager = ConfigManager()
         self.font_manager = FontManager()
         self.texture_manager = TextureManager()
