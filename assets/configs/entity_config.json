@@ -1,0 +1,16 @@
+{
+    "player": {
+        "components": {
+            "Position": {"x": 100, "y": 200},
+            "Sprite": {"texture": "knight"},
+            "Layer": {"level": 0}
+        }
+    },
+    "enemy": {
+        "components": {
+            "Position": {"x": 400, "y": 200},
+            "Sprite": {"texture": "dragon"},
+            "Layer": {"level": 0}
+        }
+    }
+}

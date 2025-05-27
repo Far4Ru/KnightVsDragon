@@ -1,12 +1,10 @@
 from dataclasses import dataclass
 
+from engine.core.component import register_component
 @dataclass
 class Position:
     x: float
     y: float
-class CollisionEvent(Event):
-    entity_a: Entity
-    entity_b: Entity
 
 @dataclass
 class CharacterConfig:
@@ -33,3 +31,17 @@ class Player:  # Маркерный компонент (без данных, н�
 class Enemy:
     enemy_type: str = "melee"  # "range", "boss"
     attack_cooldown: float = 2.0
+@register_component
+@dataclass
+class Position:
+    x: float
+    y: float
+@register_component
+@dataclass
+class Sprite:
+    texture: str
+    scale: float = 1.0
+@register_component
+@dataclass
+class Layer:
+    level: int
