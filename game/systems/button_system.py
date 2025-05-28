@@ -19,8 +19,6 @@ class ButtonSystem:
                 if (position.x - btn.width / 2 <= x <= position.x + btn.width / 2 and
                         position.y - btn.height / 2 <= y <= position.y + btn.height / 2):
                     entity.components[Clickable].on_click()
-                    if Action in entity.components:
-                        self.switch_view(entity.components[Action].target_view)
 
     def on_mouse_motion(self, entities, x, y):
         for entity in entities:
@@ -32,10 +30,3 @@ class ButtonSystem:
                     btn.color = arcade.color.BLUE
                 else:
                     btn.color = arcade.color.BLACK
-
-
-    def switch_view(self, view_name: str):
-        if view_name == "game":
-            self.window.show_view(self.window.game_view)
-        elif view_name == "menu":
-            self.window.show_view(self.window.menu_view)
