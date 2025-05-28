@@ -1,3 +1,4 @@
+from functools import wraps
 import json
 import os
 
@@ -5,6 +6,7 @@ import arcade
 
 def load_asset_folder(name, ext):
     def decorator(func):
+        @wraps(func)
         def wrapper(*args, **kwargs):
             folder_path = f"assets/{name}"
             extension = f".{ext}"
