@@ -1,4 +1,7 @@
 from dataclasses import dataclass
+from typing import Callable, Optional
+
+import arcade
 
 from engine.core.component import register_component
 
@@ -49,3 +52,38 @@ class Sprite:
 @dataclass
 class Layer:
     level: int
+
+
+
+@register_component
+@dataclass
+class TextButton:
+    text: str
+    x: float
+    y: float
+    width: float = 200
+    height: float = 50
+    color: arcade.color = arcade.color.BLACK
+    font_size: int = 20
+
+@register_component
+@dataclass
+class Clickable:
+    on_click: Callable[[], None]
+
+@register_component
+@dataclass
+class ButtonState:
+    is_hovered: bool = False
+    normal_color: arcade.color = arcade.color.GRAY
+    hover_color: arcade.color = arcade.color.BLUE
+
+@register_component
+@dataclass
+class ButtonSound:
+    click_sound: arcade.Sound
+
+@register_component
+@dataclass
+class Action:
+    execute: Callable[[], None]
