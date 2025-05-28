@@ -6,13 +6,16 @@ from game.entities.entity import Entity
 from game.systems.button_system import ButtonSystem
 from game.systems.rendering_system import RenderingSystem
 
-def apply_entity(method):
+def apply_entity(method, before=None, after=None):
     def decorator(func):
         def wrapper(self, *args, **kwargs):
+            if (before and hasattr(self, before)):
+                getattr(self, before)()
             for system in self.systems:
                 if hasattr(system, method):
-                    print(*args, **kwargs)
                     func(self, system, *args, **kwargs)
+            if (after and hasattr(self, after)):
+                getattr(self, after)()
         return wrapper
     return decorator
 
@@ -46,18 +49,14 @@ class TestView(Scene):
     def on_mouse_press(self, system, x, y, button, modifiers):
         system.on_mouse_press(self.entities, x, y, button)
 
-    def on_mouse_motion(self, x: int, y: int, dx: int, dy: int):
-        for system in self.systems:
-            if hasattr(system, "on_mouse_motion"):
-                system.on_mouse_motion(self.entities, x, y)
-        self.update()
+    @apply_entity("on_mouse_motion", after="update")
+    def on_mouse_motion(self, system, x: int, y: int, dx: int, dy: int):
+        system.on_mouse_motion(self.entities, x, y)
 
     @apply_entity("update")
     def update(self, system):
         system.update(self.entities)
 
-    def on_draw(self):
-        self.clear()
-        for system in self.systems:
-            if hasattr(system, "draw"):
-                system.draw()
+    @apply_entity("on_mouse_motion", before="clear")
+    def on_draw(self, system):
+        system.draw()
