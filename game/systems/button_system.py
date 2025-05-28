@@ -1,6 +1,7 @@
 import arcade
 
-from game.components.component import Action, Clickable, TextButton
+from game.components.sprite import Position
+from game.components.text_button import Action, TextButton, Clickable
 
 
 class ButtonSystem:
@@ -14,8 +15,9 @@ class ButtonSystem:
         for entity in entities:
             if TextButton in entity.components and Clickable in entity.components:
                 btn = entity.components[TextButton]
-                if (btn.x - btn.width/2 <= x <= btn.x + btn.width/2 and
-                    btn.y - btn.height/2 <= y <= btn.y + btn.height/2):
+                position = entity.components[Position]
+                if (position.x - btn.width / 2 <= x <= position.x + btn.width / 2 and
+                        position.y - btn.height / 2 <= y <= position.y + btn.height / 2):
                     entity.components[Clickable].on_click()
                     if Action in entity.components:
                         self.switch_view(entity.components[Action].target_view)
@@ -24,9 +26,13 @@ class ButtonSystem:
         for entity in entities:
             if TextButton in entity.components and Clickable in entity.components:
                 btn = entity.components[TextButton]
-                if (btn.x - btn.width/2 <= x <= btn.x + btn.width/2 and
-                    btn.y - btn.height/2 <= y <= btn.y + btn.height/2):
+                position = entity.components[Position]
+                if (position.x - btn.width / 2 <= x <= position.x + btn.width / 2 and
+                        position.y - btn.height / 2 <= y <= position.y + btn.height / 2):
                     btn.color = arcade.color.BLUE
+                else:
+                    btn.color = arcade.color.BLACK
+
 
     def switch_view(self, view_name: str):
         if view_name == "game":

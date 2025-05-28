@@ -26,5 +26,21 @@
             "Sprite": {"texture": "background_menu"},
             "Layer": {"level": 0}
         }
+    },
+    "exit_button": {
+        "components": {
+            "Position": {"x": 600, "y": 150},
+            "TextButton": {"text": "Выход"},
+            "Layer": {"level": 2},
+            "Clickable": {"action": {"name": "exit", "args": []}}
+        }
+    },
+    "play_button": {
+        "components": {
+            "Position": {"x": 600, "y": 150},
+            "TextButton": {"text": "Выход"},
+            "Layer": {"level": 2},
+            "Clickable": {"action": {"name": "exit", "args": []}}
+        }
     }
 }

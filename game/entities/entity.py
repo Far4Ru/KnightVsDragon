@@ -1,11 +1,12 @@
 from engine.core.component import COMPONENT_CLASSES
 from engine.engine import GameEngine
 
+
 class Entity:
-    def __init__(self, type = None):
+    def __init__(self, entity_type=None):
         self.components = {}
-        self.type = type
-        if (type):
+        self.type = entity_type
+        if entity_type:
             self.load()
 
     def add_component(self, component):

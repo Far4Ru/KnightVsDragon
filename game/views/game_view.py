@@ -3,7 +3,6 @@ import arcade
 from engine.core.layers import Layers, LayerType
 from engine.core.scene import Scene
 from engine.engine import GameEngine
-from engine.managers.drag_manager import DragManager
 from game.components.enemy import Enemy
 from game.components.game_background import GameBackground
 from game.components.grid import Grid

@@ -1,29 +1,32 @@
-from dataclasses import dataclass
 from functools import wraps
 import arcade
 
 from engine.utils.event_bus import EventBus
 
+
 def systems_call(method, before=None, after=None):
     def decorator(func):
         @wraps(func)
         def wrapper(self, *args, **kwargs):
-            if (before and hasattr(self, before)):
+            if before and hasattr(self, before):
                 getattr(self, before)()
             for system in self.systems:
                 if hasattr(system, method):
                     func(self, system, *args, **kwargs)
-            if (after and hasattr(self, after)):
+            if after and hasattr(self, after):
                 getattr(self, after)()
+
         return wrapper
+
     return decorator
+
 
 class Scene(arcade.View):
     event_bus = EventBus()
     systems = []
     entities = []
 
-    def setup(self, systems):
+    def setup(self, systems=None):
         for system in systems:
             self.systems.append(system(self.event_bus))
         self.load()

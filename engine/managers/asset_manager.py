@@ -4,16 +4,18 @@ import os
 
 import arcade
 
+
 def load_asset_folder(name, ext):
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
+            result = None
             folder_path = f"assets/{name}"
             extension = f".{ext}"
             if not os.path.exists(folder_path):
                 print(f"Папка {folder_path} не найдена!")
             for filename in os.listdir(folder_path):
-                if (filename.endswith(extension)):
+                if filename.endswith(extension):
                     short_filename = filename[:-len(extension)]
                     file_path = os.path.join(folder_path, filename)
                     result = func(*args, short_filename, file_path)
@@ -48,5 +50,5 @@ class AssetManager:
 
     @load_asset_folder(name="configs", ext="json")
     def load_configs(self, filename, file_path):
-        with open(file_path) as file:
+        with open(file_path, "r", encoding="utf-8") as file:
             self.config_manager.add(filename, json.load(file))
