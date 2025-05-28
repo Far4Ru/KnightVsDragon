@@ -20,7 +20,6 @@ class Scene(arcade.View):
     event_bus = EventBus()
     systems = []
     entities = []
-    window = None
 
     def setup(self, systems):
         for system in systems:

@@ -9,17 +9,20 @@ from engine.managers.texture_manager import TextureManager
 
 from config import SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE
 
+def singleton(cls):
+    if not hasattr(cls, '_instance'):
+        cls._instance = None
+    def __new__(self):
+        if self._instance is None:
+            self._instance = super(self.__class__, self).__new__(self)
+            self._instance._init()
+        return self._instance
+    cls.__new__ = __new__
+    return cls
 
+@singleton
 class GameEngine:
-    _instance = None
-    
-    def __new__(cls):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-            cls._instance._init_engine()
-        return cls._instance
-    
-    def _init_engine(self):
+    def _init(self):
         self.scene_manager = SceneManager(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
         self.config_manager = ConfigManager()
         self.font_manager = FontManager()
