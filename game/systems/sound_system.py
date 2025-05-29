@@ -1,9 +1,11 @@
 import arcade
 
+from engine.core.system import system
 from engine.engine import GameEngine
 from game.components.sound import Sound
 
 
+@system
 class SoundSystem:
     def __init__(self, context):
         self.context = context

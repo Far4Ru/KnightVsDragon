@@ -30,9 +30,7 @@
     "exit_button": {
         "components": {
             "Position": {"x": 600, "y": 150},
-            "Text": {"text": "Выход", "font_size": 18,
-                "color": "#000000"
-            },
+            "Text": {"text": "Выход", "font_size": 18},
             "Size": {"width": 100, "height": 20},
             "Angle": {"degree": 90},
             "Layer": {"level": 2},
@@ -42,9 +40,7 @@
     "play_button": {
         "components": {
             "Position": {"x": 450, "y": 540},
-            "Text": {"text": "Играть", "font_size": 18,
-                "color": "#000000"
-            },
+            "Text": {"text": "Играть", "font_size": 18},
             "Angle": {"degree": 20},
             "Size": {"width": 100, "height": 20},
             "Layer": {"level": 2},
@@ -56,9 +52,7 @@
             "Position": {"x": 800, "y": 600},
             "Angle": {"degree": -30},
             "Size": {"width": 100, "height": 20},
-            "Text": {"text": "Продолжить", "font_size": 18,
-                "color": "#000000"
-            },
+            "Text": {"text": "Продолжить", "font_size": 18},
             "Layer": {"level": 2},
             "OnClick": {"action": {"name": "exit", "args": []}}
         }

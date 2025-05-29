@@ -2,6 +2,7 @@ import arcade
 from pyglet.graphics import Batch
 
 from config import FONT_DEFAULT
+from engine.core.system import system
 from engine.engine import GameEngine
 from game.components.layer import Layer
 from game.components.position import Position
@@ -9,6 +10,7 @@ from game.components.sprite import Sprite
 from game.components.text import Text
 
 
+@system
 class RenderingSystem:
     def __init__(self, context):
         self.context = context

@@ -1,10 +1,12 @@
 import arcade
 
+from engine.core.system import system
 from game.components.position import Position
 from game.components.text import Text
 from game.components.on_click import OnClick
 
 
+@system
 class ButtonSystem:
     def __init__(self, context):
         self.context = context
