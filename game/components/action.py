@@ -5,7 +5,6 @@ import arcade
 
 from engine.core.component import component
 from engine.engine import GameEngine
-from game.views.game_view import GameView
 
 
 def action_exit():
@@ -13,7 +12,8 @@ def action_exit():
 
 
 def action_change_to_game_view():
-    GameEngine().scene_manager.change_scene(GameView())
+    # GameEngine().scene_manager.change_scene(GameView())
+    pass
 
 
 ACTIONS = {

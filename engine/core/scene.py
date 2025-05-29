@@ -28,16 +28,21 @@ class Scene(arcade.View):
     systems = []
     entities = []
 
-    def setup(self, systems=None):
-        print(SYSTEM_CLASSES)
-        for system in systems:
+    def __init__(self, config):
+        super(Scene, self).__init__()
+        self.config = config
+
+    def setup(self):
+        print(self.systems)
+        for system in self.config["systems"]:
+            print(system)
             self.systems.append(SYSTEM_CLASSES[system](self.event_bus))
         self.load()
         self.update()
 
-    def load(self, entities=None):
-        for entity in entities:
-            self.entities.append(Entity(entity))
+    def load(self):
+        for entity in self.config["entities"]:
+            self.entities.append(Entity(self.config["entity_config"], entity))
 
     @systems_call("on_mouse_press")
     def on_mouse_press(self, system, x, y, button, modifiers):

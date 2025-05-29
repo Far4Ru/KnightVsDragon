@@ -1,5 +1,6 @@
 import arcade
 
+from engine.core.scene import Scene
 from engine.managers import AssetManager, ConfigManager, FontManager, SceneManager, SoundManager, TextureManager
 
 from config import SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE
@@ -17,6 +18,6 @@ class GameEngine:
         self.asset_manager = AssetManager(self.texture_manager, self.config_manager, self.sound_manager,
                                           self.font_manager)
 
-    def run(self, start_scene):
-        self.scene_manager.change_scene(start_scene)
+    def run(self, scene_name):
+        self.scene_manager.change_scene(Scene(self.config_manager.get("scenes")[scene_name]))
         arcade.run()

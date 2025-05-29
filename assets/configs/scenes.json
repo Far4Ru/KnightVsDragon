@@ -1,0 +1,22 @@
+{
+    "menu": {
+        "systems": [
+            "SoundSystem",
+            "ButtonSystem",
+            "RenderingSystem"
+        ],
+        "entities": [
+            "knight",
+            "dragon",
+            "logo",
+            "background",
+            "exit_button"
+        ],
+        "entity_config": "menu_entity_config"
+    },
+    "game": {
+        "systems": [],
+        "entities": [],
+        "entity_config": "game_entity_config"
+    }
+}

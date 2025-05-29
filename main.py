@@ -1,12 +1,10 @@
 from engine.engine import GameEngine
-from game.views.menu_view import MenuView
-from game.views.test_view import TestView
+from game.systems import *
 
 
 def main():
     engine = GameEngine()
-    # engine.run(MenuView())
-    engine.run(TestView())
+    engine.run("menu")
 
 
 if __name__ == "__main__":

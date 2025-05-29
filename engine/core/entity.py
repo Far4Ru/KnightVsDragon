@@ -2,7 +2,8 @@ from engine.core.component import COMPONENT_CLASSES
 
 
 class Entity:
-    def __init__(self, entity_type=None):
+    def __init__(self, config_name, entity_type=None):
+        self.config_name = config_name
         self.components = {}
         self.type = entity_type
         if entity_type:
@@ -13,7 +14,7 @@ class Entity:
 
     def load(self):
         from engine.engine import GameEngine
-        templates = GameEngine().config_manager.get("menu_entity_config")
+        templates = GameEngine().config_manager.get(self.config_name)
         for comp_name, comp_data in templates[self.type]["components"].items():
             print(COMPONENT_CLASSES)
             print(comp_name)
