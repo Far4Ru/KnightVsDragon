@@ -4,8 +4,9 @@ from pyglet.graphics import Batch
 from config import FONT_DEFAULT
 from engine.engine import GameEngine
 from game.components.layer import Layer
-from game.components.sprite import Sprite, Position
-from game.components.text_button import Text
+from game.components.position import Position
+from game.components.sprite import Sprite
+from game.components.text import Text
 
 
 class RenderingSystem:

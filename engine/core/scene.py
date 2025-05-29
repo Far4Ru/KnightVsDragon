@@ -1,6 +1,7 @@
 from functools import wraps
 import arcade
 
+from engine.core.entity import Entity
 from engine.utils.event_bus import EventBus
 
 
@@ -32,7 +33,9 @@ class Scene(arcade.View):
         self.load()
         self.update()
 
-    def load(self):
+    def load(self, entites=None):
+        for entity in entites:
+            self.entities.append(Entity(entity))
         pass
 
     @systems_call("on_mouse_press")

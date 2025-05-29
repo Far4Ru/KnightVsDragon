@@ -1,5 +1,4 @@
 from engine.core.component import COMPONENT_CLASSES
-from engine.engine import GameEngine
 
 
 class Entity:
@@ -13,8 +12,11 @@ class Entity:
         self.components[type(component)] = component
 
     def load(self):
-        templates = GameEngine().config_manager.get("entity_config")
+        from engine.engine import GameEngine
+        templates = GameEngine().config_manager.get("menu_entity_config")
         for comp_name, comp_data in templates[self.type]["components"].items():
+            print(COMPONENT_CLASSES)
+            print(comp_name)
             component_class = COMPONENT_CLASSES[comp_name]
             self.add_component(component_class(**comp_data))
         return self

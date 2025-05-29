@@ -4,6 +4,7 @@ from engine.engine import GameEngine
 
 class DialogView(Scene):
     def show_dialog(self, dialog_id):
+        super().__init__()
         # engine = GameEngine()
         # dialog_data = engine.resource_manager.get_dialog(dialog_id)
         
@@ -25,4 +26,3 @@ class DialogView(Scene):
         # TODO: Add dialog sequence by data
 
         # TODO: Add skip and exit buttons. Exit save state
-        pass

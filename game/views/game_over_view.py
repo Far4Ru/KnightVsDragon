@@ -4,6 +4,7 @@ from engine.core.scene import Scene
 
 class GameOverView(Scene):
     def __init__(self):
+        super().__init__()
         # TODO: Add background lose music
         # TODO: Add intro lose sound
 
@@ -12,4 +13,3 @@ class GameOverView(Scene):
 
         # TODO: Add restart text button
         # TODO: Add menu text button
-        pass

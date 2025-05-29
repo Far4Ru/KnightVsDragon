@@ -30,25 +30,25 @@
     "exit_button": {
         "components": {
             "Position": {"x": 600, "y": 150},
-            "TextButton": {"text": "Выход", "font_size": 18,
+            "Text": {"text": "Выход", "font_size": 18,
                 "color": "#000000"
             },
             "Size": {"width": 100, "height": 20},
             "Angle": {"degree": 90},
             "Layer": {"level": 2},
-            "Clickable": {"action": {"name": "exit", "args": []}}
+            "OnClick": {"action": {"name": "exit", "args": []}}
         }
     },
     "play_button": {
         "components": {
             "Position": {"x": 450, "y": 540},
-            "TextButton": {"text": "Играть", "font_size": 18,
+            "Text": {"text": "Играть", "font_size": 18,
                 "color": "#000000"
             },
             "Angle": {"degree": 20},
             "Size": {"width": 100, "height": 20},
             "Layer": {"level": 2},
-            "Clickable": {"action": {"name": "exit", "args": []}}
+            "OnClick": {"action": {"name": "exit", "args": []}}
         }
     },
     "continue_button": {
@@ -56,11 +56,11 @@
             "Position": {"x": 800, "y": 600},
             "Angle": {"degree": -30},
             "Size": {"width": 100, "height": 20},
-            "TextButton": {"text": "Продолжить", "font_size": 18,
+            "Text": {"text": "Продолжить", "font_size": 18,
                 "color": "#000000"
             },
             "Layer": {"level": 2},
-            "Clickable": {"action": {"name": "exit", "args": []}}
+            "OnClick": {"action": {"name": "exit", "args": []}}
         }
     }
 }
