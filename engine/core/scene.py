@@ -29,6 +29,7 @@ class Scene(arcade.View):
     entities = []
 
     def setup(self, systems=None):
+        print(SYSTEM_CLASSES)
         for system in systems:
             self.systems.append(SYSTEM_CLASSES[system](self.event_bus))
         self.load()

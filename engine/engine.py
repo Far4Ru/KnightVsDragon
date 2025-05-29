@@ -1,27 +1,9 @@
 import arcade
 
-from engine.managers.asset_manager import AssetManager
-from engine.managers.config_manager import ConfigManager
-from engine.managers.font_manager import FontManager
-from engine.managers.scene_manager import SceneManager
-from engine.managers.sound_manager import SoundManager
-from engine.managers.texture_manager import TextureManager
+from engine.managers import AssetManager, ConfigManager, FontManager, SceneManager, SoundManager, TextureManager
 
 from config import SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE
-
-
-def singleton(cls):
-    if not hasattr(cls, '_instance'):
-        cls._instance = None
-
-    def __new__(self):
-        if self._instance is None:
-            self._instance = super(self.__class__, self).__new__(self)
-            self._instance._init()
-        return self._instance
-
-    cls.__new__ = __new__
-    return cls
+from engine.utils.singleton import singleton
 
 
 @singleton

@@ -1,3 +1,8 @@
+
+from engine.core.manager import manager
+
+
+@manager
 class SoundManager:
     def __init__(self):
         self.sounds = {}

@@ -1,9 +1,5 @@
 from engine.core.scene import Scene
-from game.components.size import Size
-from game.components.angle import Angle
-from game.systems.button_system import ButtonSystem
-from game.systems.rendering_system import RenderingSystem
-from game.systems.sound_system import SoundSystem
+from game.systems import *
 
 
 class TestView(Scene):

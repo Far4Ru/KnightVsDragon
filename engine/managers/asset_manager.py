@@ -4,7 +4,10 @@ import os
 
 import arcade
 
+from engine.core.manager import manager
 
+
+@manager
 def load_asset_folder(name, ext):
     def decorator(func):
         @wraps(func)
