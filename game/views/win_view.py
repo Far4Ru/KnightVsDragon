@@ -1,9 +1,9 @@
-
 from engine.core.scene import Scene
 
 
 class WinView(Scene):
     def __init__(self):
+        super().__init__()
         # TODO: Add background win music
         # TODO: Add intro win sound
 
@@ -12,4 +12,3 @@ class WinView(Scene):
         
         # TODO: add restart text button
         # TODO: add menu text button
-        pass

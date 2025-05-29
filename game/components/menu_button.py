@@ -47,4 +47,3 @@ class MenuButton:
 
     def leave(self):
         self.text.color = arcade.color.BLACK
-

@@ -1,7 +1,7 @@
 import arcade
 
 from game.components.sprite import Position
-from game.components.text_button import Action, TextButton, Clickable
+from game.components.text_button import Action, Text, Clickable
 
 
 class ButtonSystem:
@@ -13,8 +13,8 @@ class ButtonSystem:
             return
 
         for entity in entities:
-            if TextButton in entity.components and Clickable in entity.components:
-                btn = entity.components[TextButton]
+            if Text in entity.components and Clickable in entity.components:
+                btn = entity.components[Text]
                 position = entity.components[Position]
                 if (position.x - btn.width / 2 <= x <= position.x + btn.width / 2 and
                         position.y - btn.height / 2 <= y <= position.y + btn.height / 2):
@@ -22,8 +22,8 @@ class ButtonSystem:
 
     def on_mouse_motion(self, entities, x, y):
         for entity in entities:
-            if TextButton in entity.components and Clickable in entity.components:
-                btn = entity.components[TextButton]
+            if Text in entity.components and Clickable in entity.components:
+                btn = entity.components[Text]
                 position = entity.components[Position]
                 if (position.x - btn.width / 2 <= x <= position.x + btn.width / 2 and
                         position.y - btn.height / 2 <= y <= position.y + btn.height / 2):

@@ -8,7 +8,6 @@ from game.systems.rendering_system import RenderingSystem
 
 class TestView(Scene):
     def setup(self, systems=None):
-        self.background_color = arcade.color.WHITE
         super().setup([ButtonSystem, RenderingSystem])
 
     def load(self):

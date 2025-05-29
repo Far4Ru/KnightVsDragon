@@ -1,11 +1,10 @@
 from dataclasses import dataclass
 
 from engine.core.component import component
+from game.components.action import Action
 
 
 @component
 @dataclass
-class Sprite:
-    texture: str
-    scale: float = 1.0
-
+class OnClick:
+    action: Action = None

@@ -5,7 +5,6 @@ from engine.core.component import component
 
 @component
 @dataclass
-class Sprite:
-    texture: str
-    scale: float = 1.0
-
+class Position:
+    x: float = 0.0
+    y: float = 0.0

@@ -1,0 +1,24 @@
+{
+    "knight": {
+        "components": {
+            "Position": {"x": 640, "y": 100},
+            "Sprite": {"texture": "knight"},
+            "Layer": {"level": 1}
+        }
+    },
+    "dragon": {
+        "components": {
+            "Position": {"x": 640, "y": 700},
+            "Sprite": {"texture": "dragon"},
+            "Scale": {"scale": 0.5},
+            "Layer": {"level": 1}
+        }
+    },
+    "background": {
+        "components": {
+            "Position": {"x": 640, "y": 512},
+            "Sprite": {"texture": "background_level_1"},
+            "Layer": {"level": 0}
+        }
+    }
+}

@@ -2,6 +2,7 @@ import arcade
 from typing import Dict, List, Callable, Any, Set
 from collections import defaultdict
 
+
 class EventBus:
     def __init__(self):
         self._subscribers: Dict[str, Dict[object, List[Callable[[Any], None]]]] = defaultdict(lambda: defaultdict(list))
