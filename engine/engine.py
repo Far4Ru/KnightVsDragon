@@ -1,10 +1,10 @@
 import arcade
 
+from engine.core.object_factory import ObjectFactory
 from engine.core.scene import Scene
 from engine.managers import AssetManager, ConfigManager, FontManager, SceneManager, SoundManager, TextureManager
 
 from config import SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE
-from engine.object_factory import ObjectFactory
 from engine.utils.singleton import singleton
 
 

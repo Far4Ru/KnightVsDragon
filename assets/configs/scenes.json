@@ -18,7 +18,8 @@
     },
     "game": {
         "systems": [
-            "RenderingSystem"
+            "RenderingSystem",
+            "DragSystem"
         ],
         "entities": [
             "knight",

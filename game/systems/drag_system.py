@@ -1,14 +1,15 @@
 import arcade
 
+from engine.core.system import system
 
-class DragManager:
-    def __init__(self, grid, sprites):
-        self.grid = grid
+
+@system
+class DragSystem:
+    def __init__(self, context):
+        self.context = context
         self.dragged_sprite = None
         self.drag_offset_x = 0
         self.drag_offset_y = 0
-        
-        self.sprites = sprites
 
     def on_mouse_press(self, x, y, button, modifiers):
         hit_sprites = arcade.get_sprites_at_point((x, y), self.sprites)
@@ -23,8 +24,7 @@ class DragManager:
             self.drag_offset_x = x - sprite.center_x
             self.drag_offset_y = y - sprite.center_y
             return
-        
-        # On grid removing
+
         grid_sprite = self.grid.get_sprite_at_position(x, y)
         if grid_sprite and button == arcade.MOUSE_BUTTON_RIGHT:
             grid_sprite.texture = grid_sprite.original_texture
