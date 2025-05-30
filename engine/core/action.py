@@ -12,12 +12,13 @@ def action_exit():
 
 
 def action_change_to_game_view():
-    # GameEngine().scene_manager.change_scene(GameView())
+    GameEngine().change_scene("game")
     pass
 
 
 ACTIONS = {
-    "exit": action_exit
+    "exit": action_exit,
+    "level1": action_change_to_game_view,
 }
 
 

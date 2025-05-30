@@ -16,3 +16,4 @@ class SceneManager(arcade.Window):
         self.current_scene = new_scene
         self.current_scene.setup()
         self.show_view(self.current_scene)
+

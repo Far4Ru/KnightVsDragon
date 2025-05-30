@@ -3,6 +3,7 @@ import arcade
 
 from engine.core.entity import Entity
 from engine.core.system import SYSTEM_CLASSES
+from engine.core.component import COMPONENT_CLASSES
 from engine.utils.event_bus import EventBus
 
 
@@ -33,12 +34,14 @@ class Scene(arcade.View):
         self.config = config
 
     def setup(self):
+        self.systems = []
         for system in self.config["systems"]:
             self.systems.append(SYSTEM_CLASSES[system](self.event_bus))
         self.load()
         self.update()
 
     def load(self):
+        self.entities = []
         for entity in self.config["entities"]:
             self.entities.append(Entity(self.config["entity_config"], entity))
 

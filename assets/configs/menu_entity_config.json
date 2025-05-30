@@ -44,7 +44,7 @@
             "Angle": {"degree": 20},
             "Size": {"width": 100, "height": 20},
             "Layer": {"level": 2},
-            "OnClick": {"action": {"name": "exit", "args": []}}
+            "OnClick": {"action": {"name": "level1", "args": []}}
         }
     },
     "continue_button": {

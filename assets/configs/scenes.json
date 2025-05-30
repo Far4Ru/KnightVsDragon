@@ -10,13 +10,20 @@
             "dragon",
             "logo",
             "background",
-            "exit_button"
+            "exit_button",
+            "play_button",
+            "continue_button"
         ],
         "entity_config": "menu_entity_config"
     },
     "game": {
-        "systems": [],
-        "entities": [],
+        "systems": [
+            "RenderingSystem"
+        ],
+        "entities": [
+            "knight",
+            "dragon"
+        ],
         "entity_config": "game_entity_config"
     }
 }
