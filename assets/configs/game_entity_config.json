@@ -30,10 +30,10 @@
     },
     "grid": {
         "components": {
-            "Position": {"x": 740, "y": 512},
+            "Position": {"x": 125, "y": 180},
             "Sprite": {"texture": "cell"},
             "Layer": {"level": 1},
-            "Grid": {"rows": 8, "cols": 8}
+            "Grid": {"rows": 8, "cols": 8, "cell_size": 128}
         }
     }
 }
