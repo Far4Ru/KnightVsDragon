@@ -1,10 +1,11 @@
 from dataclasses import dataclass
 
 from engine.core.component import component
-from game.components.action import Action
+from engine.core.action import action
 
 
+@action
 @component
 @dataclass
 class OnClick:
-    action: Action = None
+    pass

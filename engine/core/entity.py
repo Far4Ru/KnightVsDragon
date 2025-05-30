@@ -16,8 +16,6 @@ class Entity:
         from engine.engine import GameEngine
         templates = GameEngine().config_manager.get(self.config_name)
         for comp_name, comp_data in templates[self.type]["components"].items():
-            print(COMPONENT_CLASSES)
-            print(comp_name)
             component_class = COMPONENT_CLASSES[comp_name]
             self.add_component(component_class(**comp_data))
         return self

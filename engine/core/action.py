@@ -21,13 +21,16 @@ ACTIONS = {
 }
 
 
-@component
-@dataclass
-class Action:
+def action(cls):
+    if not hasattr(cls, 'action'):
+        cls.action = None
+
     def __init__(self, action=None):
         func_name = action["name"]
         args = action.get("args", [])
 
         if func_name in ACTIONS:
             self.action = lambda: ACTIONS[func_name](*args)
-    execute: Callable[[], None]
+
+    cls.__init__ = __init__
+    return cls

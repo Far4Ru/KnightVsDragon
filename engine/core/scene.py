@@ -33,9 +33,7 @@ class Scene(arcade.View):
         self.config = config
 
     def setup(self):
-        print(self.systems)
         for system in self.config["systems"]:
-            print(system)
             self.systems.append(SYSTEM_CLASSES[system](self.event_bus))
         self.load()
         self.update()
