@@ -1,9 +1,11 @@
 import arcade
 from pyglet.graphics import Batch
+from pyglet.math import Vec2
 
 from config import FONT_DEFAULT
 from engine.core.system import system
 from engine.engine import GameEngine
+from game.components import Scale, Angle
 from game.components.layer import Layer
 from game.components.position import Position
 from game.components.sprite import Sprite
@@ -22,30 +24,46 @@ class RenderingSystem:
         self.layers.clear()
         self.elements.clear()
         for entity in entities:
-            if Sprite in entity.components and Layer in entity.components:
-                layer = entity.components[Layer].level
-                if layer not in self.layers:
-                    self.layers[layer] = arcade.SpriteList()
+            layer_level = 0
+            if Layer in entity.components:
+                layer_level = entity.components[Layer].level
+            scale = 1
+            if Scale in entity.components:
+                scale = entity.components[Scale].scale
+
+            position = Vec2(0, 0)
+            if Position in entity.components:
+                position = entity.components[Position]
+
+            angle = 0
+            if Angle in entity.components:
+                angle = entity.components[Angle].degree
+
+            if Sprite in entity.components:
+                if layer_level not in self.layers:
+                    self.layers[layer_level] = arcade.SpriteList()
+                spriteLayer = self.layers[layer_level]
+                if not isinstance(spriteLayer, arcade.SpriteList):
+                    print(f"Ошибка использования слоя для спрайта {entity.components[Sprite]}: "
+                          f"{layer_level}")
+                    continue
 
                 sprite = arcade.Sprite(
                     GameEngine().texture_manager.get(entity.components[Sprite].texture),
-                    center_x=entity.components[Position].x,
-                    center_y=entity.components[Position].y,
-                    scale=1,
+                    center_x=position.x,
+                    center_y=position.y,
+                    scale=scale,
                 )
-                self.layers[layer].append(sprite)
+                spriteLayer.append(sprite)
             if Text in entity.components:
-                layer = entity.components[Layer].level
-                if layer not in self.layers:
-                    self.layers[layer] = Batch()
-                batchLayer = self.layers[layer]
+                if layer_level not in self.layers:
+                    self.layers[layer_level] = Batch()
+                batchLayer = self.layers[layer_level]
                 if not isinstance(batchLayer, Batch):
                     print(f"Ошибка использования слоя для текста {entity.components[Text]}: "
-                          f"{layer}")
+                          f"{layer_level}")
                     continue
                 text_button_config = entity.components[Text]
-                position = entity.components[Position]
-                angle = 0
                 text = arcade.Text(
                     text_button_config.text,
                     position.x, position.y,

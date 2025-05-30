@@ -1,9 +1,18 @@
 import arcade
+from dataclasses import dataclass
 
+from engine.core.component import component
 from engine.engine import GameEngine
 
 
+@component
+@dataclass
 class Grid:
+    cols: int
+    rows: int
+
+
+class GridOld:
     def __init__(self, rows, cols):
         self.x = 125
         self.y = 180

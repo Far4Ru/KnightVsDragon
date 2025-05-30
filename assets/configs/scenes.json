@@ -22,7 +22,10 @@
         ],
         "entities": [
             "knight",
-            "dragon"
+            "background",
+            "dragon",
+            "sword",
+            "grid"
         ],
         "entity_config": "game_entity_config"
     }

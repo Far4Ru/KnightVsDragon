@@ -20,5 +20,20 @@
             "Sprite": {"texture": "background_level_1"},
             "Layer": {"level": 0}
         }
+    },
+    "sword": {
+        "components": {
+            "Position": {"x": 740, "y": 100},
+            "Sprite": {"texture": "sword"},
+            "Layer": {"level": 1}
+        }
+    },
+    "grid": {
+        "components": {
+            "Position": {"x": 740, "y": 512},
+            "Sprite": {"texture": "cell"},
+            "Layer": {"level": 1},
+            "Grid": {"rows": 8, "cols": 8}
+        }
     }
 }
