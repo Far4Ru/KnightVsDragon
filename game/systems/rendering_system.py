@@ -3,7 +3,7 @@ from pyglet.graphics import Batch
 from pyglet.math import Vec2
 
 from config import FONT_DEFAULT
-from engine.core.system import system
+from engine.core.system import system, get_entity_value
 from engine.engine import GameEngine
 from game.components import Scale, Angle
 from game.components.layer import Layer
@@ -24,20 +24,10 @@ class RenderingSystem:
         self.layers.clear()
         self.elements.clear()
         for entity in entities:
-            layer_level = 0
-            if Layer in entity.components:
-                layer_level = entity.components[Layer].level
-            scale = 1
-            if Scale in entity.components:
-                scale = entity.components[Scale].scale
-
-            position = Vec2(0, 0)
-            if Position in entity.components:
-                position = entity.components[Position]
-
-            angle = 0
-            if Angle in entity.components:
-                angle = entity.components[Angle].degree
+            layer_level = get_entity_value(entity, Layer).level
+            scale = get_entity_value(entity, Scale).scale
+            position = get_entity_value(entity, Position)
+            angle = get_entity_value(entity, Angle).degree
 
             if Sprite in entity.components:
                 if layer_level not in self.layers:
