@@ -17,6 +17,11 @@ def collides_with_point(rect: arcade.XYWH,
     rotated_y = local_x * math.sin(angle_rad) + local_y * math.cos(angle_rad)
 
     return (
-        -rect.width / 2 <= rotated_x <= rect.width / 2 and
-        -rect.height / 2 <= rotated_y <= rect.height / 2
+            -rect.width / 2 <= rotated_x <= rect.width / 2 and
+            -rect.height / 2 <= rotated_y <= rect.height / 2
     )
+
+
+def calculate_perspective_scale(y, rows, base_scale=0.8, scale_reduction=0.2, perspective_factor=0.7):
+    normalized_y = y / (rows - 1) if rows > 1 else 0
+    return base_scale - (base_scale - scale_reduction) * (normalized_y ** perspective_factor)

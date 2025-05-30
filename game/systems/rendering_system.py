@@ -1,24 +1,16 @@
 import arcade
 from pyglet.graphics import Batch
-from pyglet.math import Vec2
 
 from config import FONT_DEFAULT
 from engine.core.system import system, get_entity_value
 from engine.engine import GameEngine
+from engine.utils.math import calculate_perspective_scale
 from game.components import Scale, Angle, Grid
 from game.components.layer import Layer
 from game.components.position import Position
 from game.components.sprite import Sprite
 from game.components.text import Text
 
-
-def calculate_perspective_scale(y, rows):
-    base_scale = 0.8
-    scale_reduction = 0.2
-    perspective_factor = 0.7
-    normalized_y = y / (rows - 1) if rows > 1 else 0
-    scale = base_scale - (base_scale - scale_reduction) * (normalized_y ** perspective_factor)
-    return scale
 
 @system
 class RenderingSystem:
@@ -93,15 +85,10 @@ class RenderingSystem:
                           f"{layer_level}")
                     continue
                 text_button_config = entity.components[Text]
-                text = arcade.Text(
-                    text_button_config.text,
-                    position.x, position.y,
+                text = GameEngine().add.text(
+                    text_button_config.text, position,
                     text_button_config.color, text_button_config.font_size,
-                    anchor_x="center",
-                    anchor_y="center",
-                    rotation=angle,
-                    font_name=FONT_DEFAULT,
-                    batch=batchLayer,
+                    angle, FONT_DEFAULT, batchLayer
                 )
                 self.elements.append(text)
                 continue
