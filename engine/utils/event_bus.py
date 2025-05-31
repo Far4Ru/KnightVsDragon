@@ -27,7 +27,6 @@ class EventBus:
     def process(self):
         current_events = self._event_queue.copy()
         self._event_queue.clear()
-        
         for event_type, event_data in current_events:
             if event_type in self._processing_events:
                 continue
@@ -36,9 +35,12 @@ class EventBus:
             for subscriber, callbacks in subscribers.items():
                 for callback in callbacks:
                     try:
-                        callback(event_data)
+                        if event_data:
+                            callback(event_data)
+                        else:
+                            callback()
                     except Exception as e:
-                        arcade.log(f"Ошибка обработка события {event_type}: {e}")
+                        print(f"Ошибка обработка события {event_type}: {e}")
             self._processing_events.remove(event_type)
 
     def clear(self):

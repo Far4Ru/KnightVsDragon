@@ -95,6 +95,9 @@ class RenderingSystem:
                     text_button_config.color, text_button_config.font_size,
                     angle, FONT_DEFAULT, batchLayer
                 )
+                def print_text():
+                    print("pressed")
+                self.context.subscribe("on_mouse_click", text, print_text)
                 self.elements.append(text)
                 continue
         self.need_to_update = False

@@ -23,6 +23,7 @@ class ButtonSystem:
                 size = entity.components[Size]
                 if collides_with_point(arcade.XYWH(position.x, position.y, size.width, size.height), (x, y)):
                     entity.components[OnClick].action()
+                    self.context.emit("on_mouse_click")
 
     def on_mouse_motion(self, entities, x, y):
         for entity in entities:
