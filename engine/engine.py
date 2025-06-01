@@ -18,7 +18,7 @@ class GameEngine:
         self.sound_manager = SoundManager()
         self.asset_manager = AssetManager(self.texture_manager, self.config_manager, self.sound_manager,
                                           self.font_manager)
-        self.add = ObjectFactory()
+        self.add = ObjectFactory(self.texture_manager)
 
     def change_scene(self, scene_name):
         self.scene_manager.change_scene(Scene(self.config_manager.get("scenes")[scene_name]))

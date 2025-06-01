@@ -2,6 +2,9 @@ import arcade
 
 
 class ObjectFactory:
+    def __init__(self, texture_manager):
+        self.texture_manager = texture_manager
+
     @staticmethod
     def text(text, position, color, font_size, angle, font, batch_layer):
         return arcade.Text(
@@ -14,3 +17,14 @@ class ObjectFactory:
             font_name=font,
             batch=batch_layer,
         )
+
+    def sprite(self, texture, position, scale, layer):
+        sprite = arcade.Sprite(
+            self.texture_manager.get(texture),
+            center_x=position.x,
+            center_y=position.y,
+            scale=scale,
+        )
+        layer.append(sprite)
+        return sprite
+

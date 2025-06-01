@@ -34,13 +34,13 @@ class EventBus:
             subscribers = self._subscribers.get(event_type, {})
             for subscriber, callbacks in subscribers.items():
                 for callback in callbacks:
-                    try:
-                        if event_data:
-                            callback(event_data)
-                        else:
-                            callback()
-                    except Exception as e:
-                        print(f"Ошибка обработка события {event_type}: {e}")
+                    # try:
+                    if event_data:
+                        callback(event_data)
+                    else:
+                        callback()
+                    # except Exception as e:
+                    #     print(f"Ошибка обработка события {event_type}: {e}")
             self._processing_events.remove(event_type)
 
     def clear(self):

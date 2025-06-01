@@ -4,9 +4,8 @@ from pyglet.graphics import Batch
 from config import FONT_DEFAULT
 from engine.core.system import system, System
 from engine.engine import GameEngine
-from engine.utils.math import calculate_perspective_scale
-from game.components import Scale, Angle, Grid
-from game.components.droppable import Droppable
+from game.components import Scale, Angle
+from game.components.health import Health
 from game.components.layer import Layer
 from game.components.position import Position
 from game.components.sprite import Sprite
@@ -35,32 +34,32 @@ class RenderingSystem(System):
             layer_level = entity.get_component(Layer).level
             scale = entity.get_component(Scale).scale
             position = entity.get_component(Position)
-
+            if entity.has_component(Health):
+                #     self.batch = Batch()
+                #     self.width = width
+                #     self.height = height
+                #     self.background_color = arcade.color.BLACK
+                #     self.border_color = arcade.color.WHITE
+                #     self.fill_color = arcade.color.GREEN
+                #     self.text = arcade.Text(
+                #         "",
+                #         self.x, self.y,
+                #         arcade.color.WHITE, 12,
+                #         anchor_x="center", anchor_y="center",
+                #         batch=self.batch,
+                #     )
+                #     self.update_hp(current_hp)
+                continue
             if Sprite in entity.components:
-                if layer_level not in self.layers:
-                    self.layers[layer_level] = arcade.SpriteList()
-                spriteLayer = self.layers[layer_level]
-                if not isinstance(spriteLayer, arcade.SpriteList):
-                    print(f"Ошибка использования слоя для спрайта {entity.components[Sprite]}: "
-                          f"{layer_level}")
+                spriteLayer = self.get_layer(layer_level)
+                if spriteLayer is None:
                     continue
-
-                sprite = arcade.Sprite(
-                    GameEngine().texture_manager.get(entity.components[Sprite].texture),
-                    center_x=position.x,
-                    center_y=position.y,
-                    scale=scale,
-                )
-                spriteLayer.append(sprite)
+                GameEngine().add.sprite(entity.components[Sprite].texture, position, scale, spriteLayer)
                 continue
             if Text in entity.components:
                 angle = entity.get_component(Angle).degree
-                if layer_level not in self.layers:
-                    self.layers[layer_level] = Batch()
-                batchLayer = self.layers[layer_level]
-                if not isinstance(batchLayer, Batch):
-                    print(f"Ошибка использования слоя для текста {entity.components[Text]}: "
-                          f"{layer_level}")
+                batchLayer = self.get_layer(layer_level, Batch)
+                if batchLayer is None:
                     continue
                 text_button_config = entity.components[Text]
                 text = GameEngine().add.text(
@@ -71,6 +70,16 @@ class RenderingSystem(System):
                 self.elements.append(text)
                 continue
         self.need_to_update = False
+
+    def get_layer(self, layer_level, layer_type=arcade.SpriteList):
+        if layer_level not in self.layers:
+            self.layers[layer_level] = layer_type()
+        layer = self.layers[layer_level]
+        if not isinstance(layer, layer_type):
+            print(f"Ошибка использования слоя {layer_type}: "
+                  f"{layer_level}")
+            return None
+        return layer
 
     def draw(self):
         if self.need_to_update:

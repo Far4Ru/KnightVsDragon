@@ -28,4 +28,6 @@ def calculate_perspective_scale(y, rows, base_scale=0.8, scale_reduction=0.2, pe
 
 
 def hex_to_rgb(hex_str):
+    if hex_str is None:
+        return None
     return tuple(int(hex_str[i:i + 2], 16) for i in (1, 3, 5))
