@@ -11,8 +11,6 @@ from game.components.tile import Tile
 
 @system
 class GridSystem(System):
-    isInited = False
-
     def start(self, entities):
         for entity in entities:
             if entity.has_component(Grid):
