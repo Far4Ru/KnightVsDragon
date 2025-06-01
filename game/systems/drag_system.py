@@ -4,12 +4,11 @@ from pyglet.math import Vec2
 from engine.core.system import system, System
 from engine.engine import GameEngine
 from engine.utils.math import collides_with_point
-from game.components import Size, Grid
+from game.components import Size
 from game.components.draggable import Draggable
 from game.components.droppable import Droppable
 from game.components.position import Position
 from game.components.sprite import Sprite
-from game.components.tile import Tile
 
 
 @system

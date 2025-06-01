@@ -1,14 +1,10 @@
-import arcade
-from pyglet.math import Vec2
-
 from engine.core.entity import Entity
 from engine.core.system import system, System
-from engine.utils.math import collides_with_point, calculate_perspective_scale
-from game.components import Size, Angle, Grid, Scale
+from engine.utils.math import calculate_perspective_scale
+from game.components import Size, Grid, Scale
 from game.components.droppable import Droppable
 from game.components.layer import Layer
 from game.components.position import Position
-from game.components.on_click import OnClick
 from game.components.sprite import Sprite
 from game.components.tile import Tile
 

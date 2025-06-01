@@ -1,6 +1,5 @@
 import arcade
 from arcade import shape_list
-from arcade.types import Color
 from pyglet.graphics import Batch
 
 from config import FONT_DEFAULT

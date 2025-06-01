@@ -1,8 +1,6 @@
-import arcade
 from dataclasses import dataclass
 
 from engine.core.component import component
-from engine.engine import GameEngine
 
 
 @component

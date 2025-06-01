@@ -12,7 +12,7 @@
             "Layer": {"level": 2},
             "Size": {"width": 200, "height":  20},
             "Health": {"max_hp": 100, "current_hp": 100, "background": "#000000", "fill": "#FF0000", "border": "#FFFFFF"},
-            "Text": {"text":"0/100","font_size": 12, "color": "#FFFFFF"}
+            "Text": {"text":"100/100","font_size": 12, "color": "#FFFFFF"}
         }
     },
     "dragon": {
