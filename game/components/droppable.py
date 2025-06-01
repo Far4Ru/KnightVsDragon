@@ -6,4 +6,4 @@ from engine.core.component import component
 @component
 @dataclass
 class Droppable:
-    zones = []
+    droppable = True

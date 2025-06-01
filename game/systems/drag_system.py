@@ -15,6 +15,7 @@ from game.components.sprite import Sprite
 class DragSystem(System):
     isInited = False
     dragged_sprite = None
+    dragged_sprite_name = None
     drag_offset_x = 0
     drag_offset_y = 0
 
@@ -33,6 +34,7 @@ class DragSystem(System):
                                     arcade.XYWH(position.x, position.y, 200, 200),
                                     (event.x, event.y)
                             ):
+                                context.dragged_sprite_name = sprite.texture
                                 context.dragged_sprite = arcade.Sprite(
                                     GameEngine().texture_manager.get(sprite.texture),
                                     center_x=event.x,
@@ -48,21 +50,29 @@ class DragSystem(System):
                     on_click_callback = make_on_click(self, entity)
                     self.event_bus.subscribe("on_mouse_click", entity, on_click_callback)
                 if Droppable in entity.components:
-                    def make_on_hover(context, e):
-                        def on_hover(event):
-                            # position = e.components[Position]
-                            # size = e.components[Size]
-                            # if Grid in entity.components:
-                            #     target_sprite = self.grid.get_sprite_at_position(x, y)
-                            # if target_sprite:
-                            #     target_sprite.texture = arcade.load_texture(self.dragged_sprite.texture.file_path)
+                    def make_drop(context, e):
+                        def drop(event):
+                            if Droppable in e.components:
+                                droppable = e.get_component(Droppable)
+                                if not droppable.droppable:
+                                    context.dragged_sprite = None
+                                    context.dragged_sprite_name = None
+                                    return
+                                sprite = e.get_component(Sprite)
+                                position = e.components[Position]
+                                size = e.components[Size]
+                                if collides_with_point(
+                                        arcade.XYWH(position.x, position.y, size.width, size.height),
+                                        (event.x, event.y)
+                                ):
+                                    sprite.texture = context.dragged_sprite_name
+                                    context.dragged_sprite = None
+                                    context.dragged_sprite_name = None
 
-                            context.dragged_sprite = None
+                        return drop
 
-                        return on_hover
-
-                    on_hover_callback = make_on_hover(self, entity)
-                    self.event_bus.subscribe("on_mouse_drop", entity, on_hover_callback)
+                    drop_callback = make_drop(self, entity)
+                    self.event_bus.subscribe("on_mouse_drop", entity, drop_callback)
 
     def on_mouse_press(self, entities, x, y, button):
         if button != arcade.MOUSE_BUTTON_LEFT:

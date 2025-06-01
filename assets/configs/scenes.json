@@ -18,6 +18,7 @@
     },
     "game": {
         "systems": [
+            "GridSystem",
             "RenderingSystem",
             "DragSystem"
         ],
