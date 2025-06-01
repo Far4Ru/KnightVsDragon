@@ -46,4 +46,4 @@ class EventBus:
     def clear(self):
         self._subscribers.clear()
         self._event_queue.clear()
-        self._processing_events.clear()
+        # self._processing_events.clear()

@@ -6,6 +6,7 @@ from engine.core.system import system, get_entity_value, System
 from engine.engine import GameEngine
 from engine.utils.math import calculate_perspective_scale
 from game.components import Scale, Angle, Grid
+from game.components.droppable import Droppable
 from game.components.layer import Layer
 from game.components.position import Position
 from game.components.sprite import Sprite
@@ -39,6 +40,7 @@ class RenderingSystem(System):
                 spriteLayer = self.layers[layer_level]
                 grid = entity.components[Grid]
                 accumulated_y = 0
+
                 for y in range(grid.rows):
                     current_scale = calculate_perspective_scale(y, grid.rows)
                     scaled_height = grid.cell_size * current_scale

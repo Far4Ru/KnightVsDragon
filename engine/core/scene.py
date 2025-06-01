@@ -34,6 +34,7 @@ class Scene(arcade.View):
         self.config = config
 
     def setup(self):
+        self.event_bus.clear()
         self.systems = []
         for system in self.config["systems"]:
             self.systems.append(SYSTEM_CLASSES[system](self.event_bus))
@@ -55,11 +56,11 @@ class Scene(arcade.View):
 
     @systems_call("on_mouse_drag", after="update")
     def on_mouse_drag(self, system, x, y, dx, dy, buttons, modifiers):
-        system.on_mouse_drag(x, y, dx, dy, buttons, modifiers)
+        system.on_mouse_drag(self.entities, x, y, dx, dy, buttons, modifiers)
 
     @systems_call("on_mouse_release", after="update")
     def on_mouse_release(self, system, x, y, button, modifiers):
-        system.on_mouse_release(x, y, button, modifiers)
+        system.on_mouse_release(self.entities, x, y, button, modifiers)
 
     @systems_call("update", before="update_events")
     def update(self, system):
