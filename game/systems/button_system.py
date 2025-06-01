@@ -1,7 +1,7 @@
 import arcade
 from pyglet.math import Vec2
 
-from engine.core.system import system, get_entity_value, System
+from engine.core.system import system, System
 from engine.utils.math import collides_with_point
 from game.components import Size, Angle
 from game.components.on_hover import OnHover
@@ -23,7 +23,7 @@ class ButtonSystem(System):
                 if OnClick in entity.components:
                     def make_on_click(e):
                         def on_click(event):
-                            angle = get_entity_value(e, Angle).degree
+                            angle = entity.get_component(Angle).degree
                             position = e.components[Position]
                             size = e.components[Size]
                             if collides_with_point(
@@ -42,7 +42,7 @@ class ButtonSystem(System):
 
                     def make_on_hover(e):
                         def on_hover(event):
-                            angle = get_entity_value(e, Angle).degree
+                            angle = entity.get_component(Angle).degree
                             position = e.components[Position]
                             size = e.components[Size]
                             if collides_with_point(

@@ -2,7 +2,7 @@ import arcade
 from pyglet.graphics import Batch
 
 from config import FONT_DEFAULT
-from engine.core.system import system, get_entity_value, System
+from engine.core.system import system, System
 from engine.engine import GameEngine
 from engine.utils.math import calculate_perspective_scale
 from game.components import Scale, Angle, Grid
@@ -29,12 +29,12 @@ class RenderingSystem(System):
         self.layers.clear()
         self.elements.clear()
         for entity in self.entities_to_update:
-            layer_level = get_entity_value(entity, Layer).level
-            scale = get_entity_value(entity, Scale).scale
-            position = get_entity_value(entity, Position)
-            angle = get_entity_value(entity, Angle).degree
+            layer_level = entity.get_component(Layer).level
+            scale = entity.get_component(Scale).scale
+            position = entity.get_component(Position)
+            angle = entity.get_component(Angle).degree
 
-            if Grid in entity.components:
+            if entity.has_component(Grid):
                 if layer_level not in self.layers:
                     self.layers[layer_level] = arcade.SpriteList()
                 spriteLayer = self.layers[layer_level]

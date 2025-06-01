@@ -1,4 +1,6 @@
-from engine.core.component import COMPONENT_CLASSES
+from typing import Type, Optional
+
+from engine.core.component import COMPONENT_CLASSES, Component
 
 
 class Entity:
@@ -11,6 +13,14 @@ class Entity:
 
     def add_component(self, component):
         self.components[type(component)] = component
+
+    def get_component(self, component_type: Type[Component]) -> Optional[Component]:
+        if self.has_component(component_type):
+            return self.components.get(component_type)
+        return component_type()
+
+    def has_component(self, component_type: Type[Component]) -> bool:
+        return component_type in self.components
 
     def load(self):
         from engine.engine import GameEngine
