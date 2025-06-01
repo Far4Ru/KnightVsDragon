@@ -2,7 +2,7 @@ import arcade
 from pyglet.graphics import Batch
 
 from config import FONT_DEFAULT
-from engine.core.system import system, get_entity_value
+from engine.core.system import system, get_entity_value, System
 from engine.engine import GameEngine
 from engine.utils.math import calculate_perspective_scale
 from game.components import Scale, Angle, Grid
@@ -13,14 +13,12 @@ from game.components.text import Text
 
 
 @system
-class RenderingSystem:
-    def __init__(self, context):
-        self.context = context
-        self.layers = {}
-        self.batch = Batch()
-        self.elements = []
-        self.need_to_update = False
-        self.entities_to_update = []
+class RenderingSystem(System):
+    layers = {}
+    batch = Batch()
+    elements = []
+    need_to_update = False
+    entities_to_update = []
 
     def update(self, entities):
         self.need_to_update = True
@@ -95,9 +93,6 @@ class RenderingSystem:
                     text_button_config.color, text_button_config.font_size,
                     angle, FONT_DEFAULT, batchLayer
                 )
-                def print_text():
-                    print("pressed")
-                self.context.subscribe("on_mouse_click", text, print_text)
                 self.elements.append(text)
                 continue
         self.need_to_update = False

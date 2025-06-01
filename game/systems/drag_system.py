@@ -1,15 +1,13 @@
 import arcade
 
-from engine.core.system import system
+from engine.core.system import system, System
 
 
 @system
-class DragSystem:
-    def __init__(self, context):
-        self.context = context
-        self.dragged_sprite = None
-        self.drag_offset_x = 0
-        self.drag_offset_y = 0
+class DragSystem(System):
+    dragged_sprite = None
+    drag_offset_x = 0
+    drag_offset_y = 0
 
     def on_mouse_press(self, x, y, button, modifiers):
         hit_sprites = arcade.get_sprites_at_point((x, y), self.sprites)
