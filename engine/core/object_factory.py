@@ -18,6 +18,12 @@ class ObjectFactory:
             batch=batch_layer,
         )
 
+    # def rectangle(self):
+    #         texture = arcade.rect("rect", (width, height), color)
+    #         sprite = arcade.Sprite()
+    #         sprite.texture = texture
+    #         return sprite
+
     def sprite(self, texture, position, scale, layer):
         sprite = arcade.Sprite(
             self.texture_manager.get(texture),

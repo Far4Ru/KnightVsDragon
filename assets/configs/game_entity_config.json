@@ -8,7 +8,7 @@
     },
     "knight_health": {
         "components": {
-            "Position": {"x": 640, "y": 100},
+            "Position": {"x": 640, "y": 180},
             "Layer": {"level": 2},
             "Size": {"width": 200, "height":  20},
             "Health": {"max_hp": 100, "current_hp": 100, "background": "#000000", "fill": "#FF0000", "border": "#FFFFFF"},
@@ -21,6 +21,15 @@
             "Sprite": {"texture": "dragon"},
             "Scale": {"scale": 0.5},
             "Layer": {"level": 1}
+        }
+    },
+    "dragon_health": {
+        "components": {
+            "Position": {"x": 640, "y": 750},
+            "Layer": {"level": 2},
+            "Size": {"width": 200, "height":  20},
+            "Health": {"max_hp": 100, "current_hp": 100, "background": "#000000", "fill": "#FF0000", "border": "#FFFFFF"},
+            "Text": {"text":"0/100","font_size": 12, "color": "#FFFFFF"}
         }
     },
     "game_music": {
