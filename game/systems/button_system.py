@@ -12,12 +12,8 @@ from game.components.on_click import OnClick
 
 @system
 class ButtonSystem(System):
-    isInited = False
 
-    def update(self, entities):
-        if self.isInited:
-            return
-        self.isInited = True
+    def start(self, entities):
         for entity in entities:
             if Text in entity.components:
                 if OnClick in entity.components:

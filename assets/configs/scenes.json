@@ -12,13 +12,15 @@
             "background",
             "exit_button",
             "play_button",
-            "continue_button"
+            "continue_button",
+            "menu_music"
         ],
         "entity_config": "menu_entity_config"
     },
     "game": {
         "systems": [
             "GridSystem",
+            "SoundSystem",
             "RenderingSystem",
             "DragSystem"
         ],
@@ -27,6 +29,7 @@
             "background",
             "dragon",
             "sword",
+            "game_music",
             "grid"
         ],
         "entity_config": "game_entity_config"

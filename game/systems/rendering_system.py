@@ -21,6 +21,9 @@ class RenderingSystem(System):
     need_to_update = False
     entities_to_update = []
 
+    def start(self, entities):
+        self.update(entities)
+
     def update(self, entities):
         self.need_to_update = True
         self.entities_to_update = entities

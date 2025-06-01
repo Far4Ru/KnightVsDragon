@@ -39,12 +39,16 @@ class Scene(arcade.View):
         for system in self.config["systems"]:
             self.systems.append(SYSTEM_CLASSES[system](self.event_bus))
         self.load()
-        self.update()
+        self.start()
 
     def load(self):
         self.entities = []
         for entity in self.config["entities"]:
             self.entities.append(Entity(self.config["entity_config"], entity))
+
+    @systems_call("start")
+    def start(self, system):
+        system.start(self.entities)
 
     @systems_call("on_mouse_press")
     def on_mouse_press(self, system, x, y, button, modifiers):

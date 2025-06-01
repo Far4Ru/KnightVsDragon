@@ -10,16 +10,14 @@ from game.components.layer import Layer
 from game.components.position import Position
 from game.components.on_click import OnClick
 from game.components.sprite import Sprite
+from game.components.tile import Tile
 
 
 @system
 class GridSystem(System):
     isInited = False
 
-    def update(self, entities):
-        if self.isInited:
-            return
-        self.isInited = True
+    def start(self, entities):
         for entity in entities:
             if entity.has_component(Grid):
                 grid = entity.get_component(Grid)
@@ -38,6 +36,7 @@ class GridSystem(System):
                         pos_x = start_x + x * scaled_width + scaled_width / 2
                         pos_y = accumulated_y + scaled_height / 2
                         tile_entity = Entity("none")
+                        tile_entity.add_component(Tile(x, y))
                         tile_entity.add_component(Sprite(texture=grid.texture))
                         tile_entity.add_component(Position(x=position.x + pos_x, y=position.y + pos_y))
                         tile_entity.add_component(Scale(scale=current_scale))

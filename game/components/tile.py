@@ -5,5 +5,6 @@ from engine.core.component import component
 
 @component
 @dataclass
-class Layer:
-    level: int = 0
+class Tile:
+    x: int = 0
+    y: int = 0

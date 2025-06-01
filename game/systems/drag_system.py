@@ -9,20 +9,17 @@ from game.components.draggable import Draggable
 from game.components.droppable import Droppable
 from game.components.position import Position
 from game.components.sprite import Sprite
+from game.components.tile import Tile
 
 
 @system
 class DragSystem(System):
-    isInited = False
     dragged_sprite = None
     dragged_sprite_name = None
     drag_offset_x = 0
     drag_offset_y = 0
 
-    def update(self, entities):
-        if self.isInited:
-            return
-        self.isInited = True
+    def start(self, entities):
         for entity in entities:
             if Sprite in entity.components:
                 if Draggable in entity.components:

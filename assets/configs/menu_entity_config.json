@@ -57,5 +57,10 @@
             "Layer": {"level": 2},
             "OnClick": {"action": {"name": "exit", "args": []}}
         }
+    },
+    "menu_music": {
+        "components": {
+            "Sound": {"name": "music_menu", "loop": true}
+        }
     }
 }
