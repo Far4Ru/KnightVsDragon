@@ -8,11 +8,11 @@ from engine.engine import GameEngine
 from engine.utils.math import hex_to_rgb
 
 
-def action_exit():
+def action_exit(self):
     arcade.exit()
 
 
-def action_change_to_game_view():
+def action_change_to_game_view(self):
     GameEngine().change_scene("game")
 
 
