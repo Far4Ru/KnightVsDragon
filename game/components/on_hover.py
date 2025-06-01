@@ -8,4 +8,5 @@ from engine.core.action import action
 @component
 @dataclass
 class OnHover:
+    target = None
     is_hovered: bool = False
