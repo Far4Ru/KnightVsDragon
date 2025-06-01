@@ -35,38 +35,7 @@ class RenderingSystem(System):
             layer_level = entity.get_component(Layer).level
             scale = entity.get_component(Scale).scale
             position = entity.get_component(Position)
-            angle = entity.get_component(Angle).degree
 
-            # if entity.has_component(Grid):
-            #     if layer_level not in self.layers:
-            #         self.layers[layer_level] = arcade.SpriteList()
-            #     spriteLayer = self.layers[layer_level]
-            #     grid = entity.components[Grid]
-            #     accumulated_y = 0
-            #
-            #     for y in range(grid.rows):
-            #         current_scale = calculate_perspective_scale(y, grid.rows)
-            #         scaled_height = grid.cell_size * current_scale
-            #         scaled_width = grid.cell_size * current_scale
-            #
-            #         total_row_width = grid.cols * scaled_width
-            #         start_x = (grid.cell_size * grid.cols - total_row_width) / 2
-            #
-            #         for x in range(grid.cols):
-            #             pos_x = start_x + x * scaled_width + scaled_width / 2
-            #             pos_y = accumulated_y + scaled_height / 2
-            #
-            #             sprite = arcade.Sprite(
-            #                 GameEngine().texture_manager.get(entity.components[Sprite].texture),
-            #                 center_x=position.x + pos_x,
-            #                 center_y=position.y + pos_y,
-            #                 scale=current_scale,
-            #             )
-            #             sprite.original_texture = sprite.texture
-            #             spriteLayer.append(sprite)
-            #
-            #         accumulated_y += scaled_height
-            #     continue
             if Sprite in entity.components:
                 if layer_level not in self.layers:
                     self.layers[layer_level] = arcade.SpriteList()
@@ -85,6 +54,7 @@ class RenderingSystem(System):
                 spriteLayer.append(sprite)
                 continue
             if Text in entity.components:
+                angle = entity.get_component(Angle).degree
                 if layer_level not in self.layers:
                     self.layers[layer_level] = Batch()
                 batchLayer = self.layers[layer_level]
