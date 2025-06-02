@@ -3,7 +3,8 @@
         "components": {
             "Position": {"x": 640, "y": 100},
             "Sprite": {"texture": "knight"},
-            "Layer": {"level": 1}
+            "Layer": {"level": 1},
+            "Angle": {"degree": 0}
         }
     },
     "knight_health": {
@@ -50,6 +51,15 @@
             "Sprite": {"texture": "sword"},
             "Layer": {"level": 1},
             "Draggable": {}
+        }
+    },
+    "test_sword": {
+        "components": {
+            "Position": {"x": 0, "y": 0},
+            "Sprite": {"texture": "sword"},
+            "Layer": {"level": 1},
+            "Angle": {"degree": 0},
+            "Scale": {"scale": 1}
         }
     },
     "grid": {

@@ -24,12 +24,13 @@ class ObjectFactory:
     #         sprite.texture = texture
     #         return sprite
 
-    def sprite(self, texture, position, scale, layer):
+    def sprite(self, texture, position, scale, layer, angle=0):
         sprite = arcade.Sprite(
             self.texture_manager.get(texture),
             center_x=position.x,
             center_y=position.y,
             scale=scale,
+            angle=angle
         )
         layer.append(sprite)
         return sprite

@@ -66,6 +66,10 @@ class Scene(arcade.View):
     def on_mouse_release(self, system, x, y, button, modifiers):
         system.on_mouse_release(self.entities, x, y, button, modifiers)
 
+    @systems_call("on_update", after="update")
+    def on_update(self, system, delta_time):
+        system.on_update(self.entities, delta_time)
+
     @systems_call("update", before="update_events")
     def update(self, system):
         system.update(self.entities)
