@@ -61,6 +61,7 @@ class DragSystem(System):
                                         arcade.XYWH(position.x, position.y, size.width, size.height),
                                         (event.x, event.y)
                                 ):
+                                    self.event_bus.emit("animation_add", {"start":[position.x, position.y],"end": [640, 700], "middle":[150,50]})
                                     sprite.texture = context.dragged_sprite_name
                                     context.dragged_sprite = None
                                     context.dragged_sprite_name = None

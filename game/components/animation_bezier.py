@@ -10,6 +10,7 @@ from pyglet.math import Vec2
 @dataclass
 class AnimationBezier:
     elapsed = 0
+    target = None
     def __init__(self, start: List[int], end: List[int], middle: List[int], percent: float = 0.5, duration: float = 1):
         self.start_position = Vec2(start[0], start[1])
         self.end_position = Vec2(end[0], end[1])
