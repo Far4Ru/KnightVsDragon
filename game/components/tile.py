@@ -8,3 +8,5 @@ from engine.core.component import component
 class Tile:
     x: int = 0
     y: int = 0
+    # original_texture: Optional[str] = None
+    # current_texture: Optional[str] = None
