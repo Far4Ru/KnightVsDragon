@@ -28,7 +28,7 @@
 </details>
 
 <details>
-<symmary>Финальная сборка</summary>
+<summary>Финальная сборка</summary>
 
 > pyinstaller --onefile --windowed --icon=assets/icons/icon.png --add-data="assets/*:assets" main.py
 </details>

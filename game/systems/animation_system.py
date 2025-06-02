@@ -10,6 +10,7 @@ from game.components.position import Position
 from game.components.scale import Scale
 from game.components.sprite import Sprite
 
+
 class ScaleCurves:
     @staticmethod
     def pulse(t):
@@ -17,22 +18,25 @@ class ScaleCurves:
         if t < 0.5:
             return 1 + t
         return 1.5 - (t - 0.5)
-    
+
     @staticmethod
     def grow(t):
         """0.5 → 1.5"""
         return 0.5 + t
-    
+
     @staticmethod
     def shrink(t):
         """1.5 → 0.5"""
         return 1.5 - t
 
+
 animation_layer_level = 5
+
 
 @system
 class AnimationSystem(System):
     animations = []
+
     def start(self, entities):
         def wrapper(context):
             def animation_add(event):
@@ -43,11 +47,12 @@ class AnimationSystem(System):
                 animation_sprite.add_component(Angle(degree=0))
                 animation_sprite.add_component(Layer(level=animation_layer_level))
                 entities.append(animation_sprite)
-                animation = AnimationBezier(event["start"],event["end"], event["middle"], 0.3, 3)
+                animation = AnimationBezier(event["start"], event["end"], event["middle"], 0.3, 3)
                 animation.target = animation_sprite
                 context.animations.append(animation)
+
             return animation_add
-        
+
         animation_callback = wrapper(self)
 
         self.event_bus.subscribe("animation_add", self, animation_callback)
@@ -66,9 +71,9 @@ class AnimationSystem(System):
 
                 new_pos = calculate_bezier(animation.control_points, t)
                 position.x, position.y = new_pos
-                
+
                 scale.scale = ScaleCurves.pulse(t)
-                
+
                 dx = new_pos[0] - prev_pos[0]
                 dy = new_pos[1] - prev_pos[1]
                 if dx != 0 or dy != 0:

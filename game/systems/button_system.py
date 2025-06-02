@@ -12,7 +12,6 @@ from game.components.on_click import OnClick
 
 @system
 class ButtonSystem(System):
-
     def start(self, entities):
         for entity in entities:
             if Text in entity.components:
