@@ -101,34 +101,3 @@ class RenderingSystem(System):
             self._update()
         for layer in sorted(self.layers.keys()):
             self.layers[layer].draw()
-    #     rect = arcade.Rect(self.x, self.x + self.width,
-    #                        self.y, self.y + self.height,
-    #                        self.width, self.height,
-    #                        self.x, self.y)
-    #     arcade.draw_rect_filled(
-    #         rect,
-    #         self.background_color
-    #     )
-    #
-    #     health_width = max(0, (self.current_hp / self.max_hp) * self.width)
-    #
-    #     filled_rect = arcade.Rect(self.x - (self.width - health_width) / 2, self.x + health_width,
-    #                               self.y, self.y + self.height, health_width, self.height,
-    #                               self.x - (self.width - health_width) / 2, self.y)
-    #     if health_width > 0:
-    #         arcade.draw_rect_filled(
-    #             filled_rect,
-    #             self.fill_color
-    #         )
-    #     self.text.text = f"{self.current_hp}/{self.max_hp} ХП"
-    #     self.text.x = self.x + self.width * 0.5 - self.text.content_width * 0.5 - 5
-    #     self.batch.draw()
-    #
-    #     outline_rect = arcade.Rect(self.x - self.width * 0.5, self.x + self.width * 0.5,
-    #                                self.y - self.height * 0.5, self.y + self.height * 0.5,
-    #                                self.width, self.height,
-    #                                self.x - self.width * 0.5, self.y - self.height)
-    #     arcade.draw_rect_outline(
-    #         outline_rect,
-    #         self.border_color, 1
-    #     )
