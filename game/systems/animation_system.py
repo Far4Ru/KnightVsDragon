@@ -25,19 +25,21 @@ class ScaleCurves:
 
 start_pos = (125, 180)
 end_pos = (640, 700)
+middle_pos = (150, 50)
+middle_percent = 0.3
+duration = 3
 cp1 = (
-    start_pos[0] + (end_pos[0] - start_pos[0]) * 0.3,
-    start_pos[1] + random.uniform(50, 150)
+    start_pos[0] + (end_pos[0] - start_pos[0]) * middle_percent,
+    start_pos[1] + middle_pos[0]
 )
 cp2 = (
-    start_pos[0] + (end_pos[0] - start_pos[0]) * 0.7,
-    start_pos[1] + random.uniform(-50, 50)
+    start_pos[0] + (end_pos[0] - start_pos[0]) * (1 - middle_percent),
+    start_pos[1] + middle_pos[1]
 )
 
 @system
 class AnimationSystem(System):
     elapsed = 0
-    duration = 3
     control_points = [start_pos, cp1, cp2, end_pos]
     def on_update(self, entities, dt):
         self.elapsed += dt
@@ -47,16 +49,18 @@ class AnimationSystem(System):
                 position = entity.get_component(Position)
                 angle = entity.get_component(Angle)
                 scale = entity.get_component(Scale)
+
                 prev_pos = (position.x, position.y)
+
                 new_pos = self._calculate_bezier(self.control_points, t)
                 position.x, position.y = new_pos
+                
                 scale.scale = ScaleCurves.pulse(t)
                 
                 dx = new_pos[0] - prev_pos[0]
                 dy = new_pos[1] - prev_pos[1]
                 if dx != 0 or dy != 0:
-                    degree = math.degrees(math.atan2(dx, dy))
-                    angle.degree = degree
+                    angle.degree = math.degrees(math.atan2(dx, dy))
         if t >= 1.0:
             self.elapsed = 0
     
