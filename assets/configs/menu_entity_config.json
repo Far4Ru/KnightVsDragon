@@ -2,7 +2,7 @@
     "knight": {
         "components": {
             "Position": {"x": 100, "y": 200},
-            "Sprite": {"texture": "knight"},
+            "Sprite": {"texture": "knight_big"},
             "Layer": {"level": 1}
         }
     },
