@@ -33,8 +33,7 @@
             "game_music",
             "grid",
             "knight_health",
-            "dragon_health",
-            "test_sword"
+            "dragon_health"
         ],
         "entity_config": "game_entity_config"
     }

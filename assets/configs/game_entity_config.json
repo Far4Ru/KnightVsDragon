@@ -53,15 +53,6 @@
             "Draggable": {}
         }
     },
-    "test_sword": {
-        "components": {
-            "Position": {"x": 0, "y": 0},
-            "Sprite": {"texture": "sword"},
-            "Layer": {"level": 1},
-            "Angle": {"degree": 0},
-            "Scale": {"scale": 1}
-        }
-    },
     "grid": {
         "components": {
             "Position": {"x": 125, "y": 180},
