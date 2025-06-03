@@ -67,6 +67,44 @@
             "OnClick": {"action": {"name": "exit", "args": []}}
         }
     },
+    "slot_sound_minus": {
+        "components": {
+            "Position": {"x": 810, "y": 380},
+            "Size": {"width": 100, "height": 100},
+            "Sprite": {"texture": "empty_slot"},
+            "Layer": {"level": 1},
+            "Angle": {"degree": -30},
+            "OnClick": {"action": {"name": "exit", "args": []}}
+        }
+    },
+    "slot_sound_plus": {
+        "components": {
+            "Position": {"x": 870, "y": 360},
+            "Size": {"width": 100, "height": 100},
+            "Sprite": {"texture": "empty_slot"},
+            "Layer": {"level": 1},
+            "Angle": {"degree": 0},
+            "OnClick": {"action": {"name": "exit", "args": []}}
+        }
+    },
+    "sound_minus": {
+        "components": {
+            "Position": {"x": 810, "y": 393},
+            "Size": {"width": 100, "height": 100},
+            "Sprite": {"texture": "sound_minus"},
+            "Layer": {"level": 1},
+            "OnClick": {"action": {"name": "exit", "args": []}}
+        }
+    },
+    "sound_plus": {
+        "components": {
+            "Position": {"x": 877, "y": 373},
+            "Size": {"width": 100, "height": 100},
+            "Sprite": {"texture": "sound_plus"},
+            "Layer": {"level": 1},
+            "OnClick": {"action": {"name": "exit", "args": []}}
+        }
+    },
     "menu_music": {
         "components": {
             "Sound": {"name": "music_menu", "loop": true}

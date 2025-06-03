@@ -14,7 +14,11 @@
             "play_button",
             "continue_button",
             "menu_music",
-            "settings"
+            "settings",
+            "slot_sound_minus",
+            "slot_sound_plus",
+            "sound_minus",
+            "sound_plus"
         ],
         "entity_config": "menu_entity_config"
     },
