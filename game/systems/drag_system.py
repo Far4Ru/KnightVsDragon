@@ -44,7 +44,7 @@ class DragSystem(System):
                         return on_click
 
                     on_click_callback = make_on_click(self, entity)
-                    self.event_bus.subscribe("on_mouse_click", entity, on_click_callback)
+                    self.event_bus.subscribe("on_drag_start", entity, on_click_callback)
                 if Droppable in entity.components:
                     def make_drop(context, e):
                         def drop(event):
@@ -75,7 +75,7 @@ class DragSystem(System):
         if button != arcade.MOUSE_BUTTON_LEFT:
             return
 
-        self.event_bus.emit("on_mouse_click", Vec2(x, y))
+        self.event_bus.emit("on_drag_start", Vec2(x, y))
 
     def on_mouse_release(self, entities, x, y, button, modifiers):
         if self.dragged_sprite and button == arcade.MOUSE_BUTTON_LEFT:
