@@ -34,7 +34,13 @@
             "game_music",
             "grid",
             "knight_health",
-            "dragon_health"
+            "dragon_health",
+            "leshy",
+            "mermaid",
+            "babayaga",
+            "citizens",
+            "devil",
+            "settings"
         ],
         "entity_config": "level1_entity_config"
     },

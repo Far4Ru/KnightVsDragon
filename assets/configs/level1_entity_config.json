@@ -40,6 +40,54 @@
             "Sound": {"name": "music_level1", "loop": true}
         }
     },
+    "leshy": {
+        "components": {
+            "Position": {"x": 50, "y": 400},
+            "Sprite": {"texture": "knight"},
+            "Layer": {"level": 1},
+            "Angle": {"degree": 0}
+        }
+    },
+    "mermaid": {
+        "components": {
+            "Position": {"x": 50, "y": 200},
+            "Sprite": {"texture": "knight"},
+            "Layer": {"level": 1},
+            "Angle": {"degree": 0}
+        }
+    },
+    "babayaga": {
+        "components": {
+            "Position": {"x": 1230, "y": 400},
+            "Sprite": {"texture": "knight"},
+            "Layer": {"level": 1},
+            "Angle": {"degree": 0}
+        }
+    },
+    "citizens": {
+        "components": {
+            "Position": {"x": 1230, "y": 200},
+            "Sprite": {"texture": "knight"},
+            "Layer": {"level": 1},
+            "Angle": {"degree": 0}
+        }
+    },
+    "devil": {
+        "components": {
+            "Position": {"x": 1030, "y": 80},
+            "Sprite": {"texture": "knight"},
+            "Layer": {"level": 1},
+            "Angle": {"degree": 0}
+        }
+    },
+    "settings": {
+        "components": {
+            "Position": {"x": 250, "y": 80},
+            "Sprite": {"texture": "settings"},
+            "Layer": {"level": 1},
+            "Angle": {"degree": 0}
+        }
+    },
     "background": {
         "components": {
             "Position": {"x": 640, "y": 512},
@@ -66,7 +114,7 @@
     },
     "grid": {
         "components": {
-            "Position": {"x": 125, "y": 180},
+            "Position": {"x": 125, "y": 200},
             "Layer": {"level": 1},
             "Grid": {"rows": 8, "cols": 8, "cell_size": 128, "texture": "cell"},
             "Droppable": {}
