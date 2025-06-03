@@ -57,7 +57,7 @@
     },
     "game_music": {
         "components": {
-            "Sound": {"name": "music_level1", "loop": true}
+            "Sound": {"name": "music_level4", "loop": true}
         }
     },
     "background": {
