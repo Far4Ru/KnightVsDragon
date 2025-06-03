@@ -15,7 +15,7 @@ class AnimationManager:
             self.animations[animation_name] = {}
         self.animations[animation_name][frame] = texture
 
-    def get(self, texture_name: str, animation_name: str, frame: int, looped = True):
+    def get(self, texture_name: str, animation_name: str, frame: int, looped=True):
         animation = self.animations[texture_name][animation_name]
         if looped:
             return animation[frame % len(animation)]

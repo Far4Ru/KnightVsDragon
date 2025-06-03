@@ -16,10 +16,10 @@ def load_asset_folder(name, ext):
                 print(f"Папка {folder_path} не найдена!")
             for filename in os.listdir(folder_path):
                 if os.path.isdir(f"{folder_path}/{filename}"):
-                    for subfilename in os.listdir(f"{folder_path}/{filename}"):
-                        if subfilename.endswith(extension):
-                            short_filename = subfilename[:-len(extension)]
-                            file_path = os.path.join(f"{folder_path}/{filename}", subfilename)
+                    for sub_filename in os.listdir(f"{folder_path}/{filename}"):
+                        if sub_filename.endswith(extension):
+                            short_filename = sub_filename[:-len(extension)]
+                            file_path = os.path.join(f"{folder_path}/{filename}", sub_filename)
                             result = func(*args, short_filename, file_path)
                 elif filename.endswith(extension):
                     short_filename = filename[:-len(extension)]
