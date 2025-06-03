@@ -1,8 +1,3 @@
-
-from engine.core.manager import manager
-
-
-@manager
 class TextureManager:
     def __init__(self):
         self.textures = {}

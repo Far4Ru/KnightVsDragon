@@ -1,8 +1,3 @@
-
-from engine.core.manager import manager
-
-
-@manager
 class ConfigManager:
     def __init__(self):
         self.configs = {}

@@ -1,10 +1,8 @@
 import arcade
 
 from engine.core.scene import Scene
-from engine.core.manager import manager
 
 
-@manager
 class SceneManager(arcade.Window):
     def __init__(self, width, height, title):
         super().__init__(width, height, title)
