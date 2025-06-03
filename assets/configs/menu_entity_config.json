@@ -44,7 +44,7 @@
             "Angle": {"degree": 20},
             "Size": {"width": 100, "height": 20},
             "Layer": {"level": 2},
-            "OnClick": {"action": {"name": "change_scene", "args": ["level1"]}},
+            "OnClick": {"action": {"name": "change_scene", "args": ["dialog1"]}},
             "OnHover": {"action": {"name": "change_color", "args": ["#0000FF", "#000000"]}}
         }
     },

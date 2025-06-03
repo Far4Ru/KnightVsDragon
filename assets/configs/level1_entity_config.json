@@ -79,7 +79,7 @@
             "Layer": {"level": 1},
             "Angle": {"degree": 0},
             "Size": {"width": 100, "height": 100},
-            "OnClick": {"action": {"name": "change_scene", "args": ["level2"]}}
+            "OnClick": {"action": {"name": "change_scene", "args": ["dialog2"]}}
         }
     },
     "settings": {

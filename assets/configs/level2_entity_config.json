@@ -24,7 +24,7 @@
             "Layer": {"level": 1},
             "Angle": {"degree": 0},
             "Size": {"width": 100, "height": 100},
-            "OnClick": {"action": {"name": "change_scene", "args": ["level3"]}}
+            "OnClick": {"action": {"name": "change_scene", "args": ["dialog3"]}}
         }
     },
     "settings": {

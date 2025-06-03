@@ -22,6 +22,19 @@
         ],
         "entity_config": "menu_entity_config"
     },
+    "dialog1": {
+        "systems": [
+            "SoundSystem",
+            "ButtonSystem",
+            "RenderingSystem"
+        ],
+        "entities": [
+            "background",
+            "exit_button",
+            "continue_button"
+        ],
+        "entity_config": "level1_dialog_entity_config"
+    },
     "level1": {
         "systems": [
             "GridSystem",
@@ -49,6 +62,19 @@
         ],
         "entity_config": "level1_entity_config"
     },
+    "dialog2": {
+        "systems": [
+            "SoundSystem",
+            "ButtonSystem",
+            "RenderingSystem"
+        ],
+        "entities": [
+            "background",
+            "exit_button",
+            "continue_button"
+        ],
+        "entity_config": "level2_dialog_entity_config"
+    },
     "level2": {
         "systems": [
             "GridSystem",
@@ -71,6 +97,19 @@
             "settings"
         ],
         "entity_config": "level2_entity_config"
+    },
+    "dialog3": {
+        "systems": [
+            "SoundSystem",
+            "ButtonSystem",
+            "RenderingSystem"
+        ],
+        "entities": [
+            "background",
+            "exit_button",
+            "continue_button"
+        ],
+        "entity_config": "level3_dialog_entity_config"
     },
     "level3": {
         "systems": [
@@ -95,6 +134,19 @@
         ],
         "entity_config": "level3_entity_config"
     },
+    "dialog4": {
+        "systems": [
+            "SoundSystem",
+            "ButtonSystem",
+            "RenderingSystem"
+        ],
+        "entities": [
+            "background",
+            "exit_button",
+            "continue_button"
+        ],
+        "entity_config": "level4_dialog_entity_config"
+    },
     "level4": {
         "systems": [
             "GridSystem",
@@ -117,6 +169,19 @@
             "settings"
         ],
         "entity_config": "level4_entity_config"
+    },
+    "dialog5": {
+        "systems": [
+            "SoundSystem",
+            "ButtonSystem",
+            "RenderingSystem"
+        ],
+        "entities": [
+            "background",
+            "exit_button",
+            "continue_button"
+        ],
+        "entity_config": "level5_dialog_entity_config"
     },
     "level5": {
         "systems": [
