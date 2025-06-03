@@ -1,33 +1,34 @@
+from functools import wraps
 from typing import Dict, List
 from engine.core.system import system
 from engine.core.system import System
-
+from game.components.turn import Turn
 
 @system
 class TurnSystem(System):
-    action_queue: List[Dict] = []
-    waiting_for_animation = False
+    current_turn: int = 0
+    last_turn: int = 0
 
     def start(self, entities):
-        def tile_select_wrapper(context):
-            def tile_select(event):
-                context.action_queue.append({
-                    'type': 'tile_select',
-                    'entity': event.entity,
-                    'tile': event.tile,
-                })
-                pass
-            return tile_select
+        self.current_turn = 0
         
-        tile_select_callback = tile_select_wrapper(self)
+        for entity in entities:
+            if entity.has_component(Turn):
+                turn = entity.get_component(Turn)
+                if turn.order > self.last_turn:
+                    self.last_turn = turn.order
+                def turn_wrapper(context):
+                    def turn_function(event):
+                        if context.current_turn == event.turn.order:
+                            context.current_turn = event.turn.order + 1
+                            if context.current_turn > context.last_turn:
+                                context.current_turn = 0
+                            event.turn.current = False
+                    return turn_function
 
-        self.event_bus.subscribe("tile_select", self, tile_select_callback)
+                turn_callback = turn_wrapper(self)
+
+                self.event_bus.subscribe("next_turn", entity, turn_callback)
 
     def update(self, entities):
-        if self.waiting_for_animation or not self.action_queue:
-            return
-        
-        next_action = self.action_queue[0]
-        if next_action['type'] == 'tile_select':
-            entity = next_action['entity']
-            self.action_queue.pop(0)
+        pass
