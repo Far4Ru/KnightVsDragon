@@ -4,3 +4,4 @@ from .sound_system import SoundSystem
 from .drag_system import DragSystem
 from .grid_system import GridSystem
 from .animation_system import AnimationSystem
+from .turn_indicator_system import TurnIndicatorSystem

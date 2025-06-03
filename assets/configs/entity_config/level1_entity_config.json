@@ -92,6 +92,24 @@
             "OnClick": {"action": {"name": "change_scene", "args": ["menu"]}}
         }
     },
+    "sun": {
+        "components": {
+            "Position": {"x": 640, "y": 512},
+            "Sprite": {"texture": "sun"},
+            "Layer": {"level": -1},
+            "Angle": {"degree": 0},
+            "TurnIndicator": {"duration": 1},
+            "Turn": {"order": 0}
+        }
+    },
+    "moon": {
+        "components": {
+            "Position": {"x": 640, "y": 512},
+            "Sprite": {"texture": "moon"},
+            "Layer": {"level": 0},
+            "Turn": {"order": 1}
+        }
+    },
     "background": {
         "components": {
             "Position": {"x": 640, "y": 512},

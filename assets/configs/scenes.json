@@ -42,7 +42,8 @@
             "ButtonSystem",
             "RenderingSystem",
             "DragSystem",
-            "AnimationSystem"
+            "AnimationSystem",
+            "TurnIndicatorSystem"
         ],
         "entities": [
             "knight",
@@ -58,7 +59,8 @@
             "babayaga",
             "citizens",
             "devil",
-            "settings"
+            "settings",
+            "sun"
         ],
         "entity_config": "level1_entity_config"
     },

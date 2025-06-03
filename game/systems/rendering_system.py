@@ -68,9 +68,12 @@ class RenderingSystem(System):
             if Sprite in entity.components:
                 spriteLayer = self.get_layer(layer_level)
                 angle = entity.get_component(Angle).degree
+                sprite = entity.get_component(Sprite)
                 if spriteLayer is None:
                     continue
-                GameEngine().add.sprite(entity.components[Sprite].texture, position, scale, spriteLayer, angle=angle)
+                if not sprite.visible:
+                    continue
+                GameEngine().add.sprite(sprite.texture, position, scale, spriteLayer, angle=angle)
                 continue
             if Text in entity.components:
                 angle = entity.get_component(Angle).degree
