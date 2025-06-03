@@ -26,6 +26,7 @@
         "systems": [
             "GridSystem",
             "SoundSystem",
+            "ButtonSystem",
             "RenderingSystem",
             "DragSystem",
             "AnimationSystem"
@@ -52,6 +53,7 @@
         "systems": [
             "GridSystem",
             "SoundSystem",
+            "ButtonSystem",
             "RenderingSystem",
             "DragSystem",
             "AnimationSystem"
@@ -64,7 +66,9 @@
             "game_music",
             "grid",
             "knight_health",
-            "dragon_health"
+            "dragon_health",
+            "devil",
+            "settings"
         ],
         "entity_config": "level2_entity_config"
     },
@@ -72,6 +76,7 @@
         "systems": [
             "GridSystem",
             "SoundSystem",
+            "ButtonSystem",
             "RenderingSystem",
             "DragSystem",
             "AnimationSystem"
@@ -84,7 +89,9 @@
             "game_music",
             "grid",
             "knight_health",
-            "dragon_health"
+            "dragon_health",
+            "devil",
+            "settings"
         ],
         "entity_config": "level3_entity_config"
     },
@@ -92,6 +99,7 @@
         "systems": [
             "GridSystem",
             "SoundSystem",
+            "ButtonSystem",
             "RenderingSystem",
             "DragSystem",
             "AnimationSystem"
@@ -104,7 +112,9 @@
             "game_music",
             "grid",
             "knight_health",
-            "dragon_health"
+            "dragon_health",
+            "devil",
+            "settings"
         ],
         "entity_config": "level4_entity_config"
     },
@@ -112,6 +122,7 @@
         "systems": [
             "GridSystem",
             "SoundSystem",
+            "ButtonSystem",
             "RenderingSystem",
             "DragSystem",
             "AnimationSystem"
@@ -124,8 +135,39 @@
             "game_music",
             "grid",
             "knight_health",
-            "dragon_health"
+            "dragon_health",
+            "devil",
+            "settings"
         ],
         "entity_config": "level5_entity_config"
+    },
+    "win": {
+        "systems": [
+            "SoundSystem",
+            "ButtonSystem",
+            "RenderingSystem",
+            "AnimationSystem"
+        ],
+        "entities": [
+            "logo",
+            "background",
+            "exit_button"
+        ],
+        "entity_config": "win_entity_config"
+    },
+    "lose": {
+        "systems": [
+            "SoundSystem",
+            "ButtonSystem",
+            "RenderingSystem",
+            "AnimationSystem"
+        ],
+        "entities": [
+            "logo",
+            "background",
+            "exit_button",
+            "play_button"
+        ],
+        "entity_config": "lose_entity_config"
     }
 }

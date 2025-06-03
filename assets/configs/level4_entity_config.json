@@ -17,6 +17,26 @@
             "Target": {"entity": "knight"}
         }
     },
+    "devil": {
+        "components": {
+            "Position": {"x": 1030, "y": 80},
+            "Sprite": {"texture": "knight"},
+            "Layer": {"level": 1},
+            "Angle": {"degree": 0},
+            "Size": {"width": 100, "height": 100},
+            "OnClick": {"action": {"name": "change_scene", "args": ["level5"]}}
+        }
+    },
+    "settings": {
+        "components": {
+            "Position": {"x": 250, "y": 80},
+            "Sprite": {"texture": "settings"},
+            "Layer": {"level": 1},
+            "Angle": {"degree": 0},
+            "Size": {"width": 100, "height": 100},
+            "OnClick": {"action": {"name": "change_scene", "args": ["menu"]}}
+        }
+    },
     "dragon": {
         "components": {
             "Position": {"x": 640, "y": 700},

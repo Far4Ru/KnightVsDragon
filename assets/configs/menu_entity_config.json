@@ -55,7 +55,7 @@
             "Size": {"width": 100, "height": 20},
             "Text": {"text": "Продолжить", "font_size": 18},
             "Layer": {"level": 2},
-            "OnClick": {"action": {"name": "exit", "args": []}}
+            "OnClick": {"action": {"name": "change_scene", "args": ["lose"]}}
         }
     },
     "settings": {
