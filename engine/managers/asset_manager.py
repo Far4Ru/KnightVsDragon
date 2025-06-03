@@ -25,19 +25,25 @@ def load_asset_folder(name, ext):
 
 
 class AssetManager:
-    def __init__(self, texture_manager, config_manager, sound_manager, font_manager):
+    def __init__(self, texture_manager, config_manager, sound_manager, font_manager, animation_manager):
         self.texture_manager = texture_manager
         self.config_manager = config_manager
         self.sound_manager = sound_manager
         self.font_manager = font_manager
+        self.animation_manager = animation_manager
         self.load_fonts()
         self.load_textures()
+        self.load_animations()
         self.load_sounds()
         self.load_configs()
         
     @load_asset_folder(name="images", ext="png")
     def load_textures(self, filename, file_path):
         self.texture_manager.add(filename, arcade.load_texture(file_path))
+        
+    @load_asset_folder(name="animations", ext="png")
+    def load_animations(self, filename, file_path):
+        self.animation_manager.add(filename, arcade.load_texture(file_path))
 
     @load_asset_folder(name="fonts", ext="ttf")
     def load_fonts(self, filename, file_path):
