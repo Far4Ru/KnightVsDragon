@@ -86,7 +86,7 @@
     },
     "grid": {
         "components": {
-            "Position": {"x": 125, "y": 180},
+            "Position": {"x": 125, "y": 200},
             "Layer": {"level": 1},
             "Grid": {"rows": 5, "cols": 8, "cell_size": 128, "texture": "cell"},
             "Droppable": {}
