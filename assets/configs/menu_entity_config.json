@@ -44,7 +44,7 @@
             "Angle": {"degree": 20},
             "Size": {"width": 100, "height": 20},
             "Layer": {"level": 2},
-            "OnClick": {"action": {"name": "level1", "args": []}},
+            "OnClick": {"action": {"name": "change_scene", "args": ["level1"]}},
             "OnHover": {"action": {"name": "change_color", "args": ["#0000FF", "#000000"]}}
         }
     },
@@ -55,6 +55,15 @@
             "Size": {"width": 100, "height": 20},
             "Text": {"text": "Продолжить", "font_size": 18},
             "Layer": {"level": 2},
+            "OnClick": {"action": {"name": "exit", "args": []}}
+        }
+    },
+    "settings": {
+        "components": {
+            "Position": {"x": 800, "y": 300},
+            "Size": {"width": 100, "height": 100},
+            "Sprite": {"texture": "settings"},
+            "Layer": {"level": 1},
             "OnClick": {"action": {"name": "exit", "args": []}}
         }
     },

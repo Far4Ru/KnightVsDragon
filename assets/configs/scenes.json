@@ -13,11 +13,12 @@
             "exit_button",
             "play_button",
             "continue_button",
-            "menu_music"
+            "menu_music",
+            "settings"
         ],
         "entity_config": "menu_entity_config"
     },
-    "game": {
+    "level1": {
         "systems": [
             "GridSystem",
             "SoundSystem",
@@ -35,6 +36,86 @@
             "knight_health",
             "dragon_health"
         ],
-        "entity_config": "game_entity_config"
+        "entity_config": "level1_entity_config"
+    },
+    "level2": {
+        "systems": [
+            "GridSystem",
+            "SoundSystem",
+            "RenderingSystem",
+            "DragSystem",
+            "AnimationSystem"
+        ],
+        "entities": [
+            "knight",
+            "background",
+            "dragon",
+            "sword",
+            "game_music",
+            "grid",
+            "knight_health",
+            "dragon_health"
+        ],
+        "entity_config": "level2_entity_config"
+    },
+    "level3": {
+        "systems": [
+            "GridSystem",
+            "SoundSystem",
+            "RenderingSystem",
+            "DragSystem",
+            "AnimationSystem"
+        ],
+        "entities": [
+            "knight",
+            "background",
+            "dragon",
+            "sword",
+            "game_music",
+            "grid",
+            "knight_health",
+            "dragon_health"
+        ],
+        "entity_config": "level3_entity_config"
+    },
+    "level4": {
+        "systems": [
+            "GridSystem",
+            "SoundSystem",
+            "RenderingSystem",
+            "DragSystem",
+            "AnimationSystem"
+        ],
+        "entities": [
+            "knight",
+            "background",
+            "dragon",
+            "sword",
+            "game_music",
+            "grid",
+            "knight_health",
+            "dragon_health"
+        ],
+        "entity_config": "level4_entity_config"
+    },
+    "level5": {
+        "systems": [
+            "GridSystem",
+            "SoundSystem",
+            "RenderingSystem",
+            "DragSystem",
+            "AnimationSystem"
+        ],
+        "entities": [
+            "knight",
+            "background",
+            "dragon",
+            "sword",
+            "game_music",
+            "grid",
+            "knight_health",
+            "dragon_health"
+        ],
+        "entity_config": "level5_entity_config"
     }
 }

@@ -12,8 +12,8 @@ def action_exit(self):
     arcade.exit()
 
 
-def action_change_to_game_view(self):
-    GameEngine().change_scene("game")
+def action_change_scene(self, name="menu"):
+    GameEngine().change_scene(name)
 
 
 def action_change_color(self, hover_color, base_color):
@@ -26,7 +26,7 @@ def action_change_color(self, hover_color, base_color):
 
 ACTIONS = {
     "exit": action_exit,
-    "level1": action_change_to_game_view,
+    "change_scene": action_change_scene,
     "change_color": action_change_color,
 }
 

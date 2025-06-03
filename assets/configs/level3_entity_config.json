@@ -1,0 +1,75 @@
+{
+    "knight": {
+        "components": {
+            "Position": {"x": 640, "y": 100},
+            "Sprite": {"texture": "knight"},
+            "Layer": {"level": 1},
+            "Angle": {"degree": 0}
+        }
+    },
+    "knight_health": {
+        "components": {
+            "Position": {"x": 640, "y": 180},
+            "Layer": {"level": 2},
+            "Size": {"width": 200, "height":  20},
+            "Health": {"max_hp": 100, "current_hp": 100, "background": "#000000", "fill": "#FF0000", "border": "#FFFFFF"},
+            "Text": {"text":"100/100","font_size": 12, "color": "#FFFFFF"},
+            "Target": {"entity": "knight"}
+        }
+    },
+    "dragon": {
+        "components": {
+            "Position": {"x": 640, "y": 700},
+            "Sprite": {"texture": "dragon"},
+            "Scale": {"scale": 0.5},
+            "Layer": {"level": 1}
+        }
+    },
+    "dragon_health": {
+        "components": {
+            "Position": {"x": 640, "y": 750},
+            "Layer": {"level": 2},
+            "Size": {"width": 200, "height":  20},
+            "Health": {"max_hp": 100, "current_hp": 100, "background": "#000000", "fill": "#FF0000", "border": "#FFFFFF"},
+            "Text": {"text":"0/100","font_size": 12, "color": "#FFFFFF"},
+            "Target": {"entity": "dragon"}
+        }
+    },
+    "game_music": {
+        "components": {
+            "Sound": {"name": "music_level1", "loop": true}
+        }
+    },
+    "background": {
+        "components": {
+            "Position": {"x": 640, "y": 512},
+            "Sprite": {"texture": "background_level_1"},
+            "Layer": {"level": 0}
+        }
+    },
+    "sword": {
+        "components": {
+            "Position": {"x": 740, "y": 100},
+            "Sprite": {"texture": "sword"},
+            "Layer": {"level": 1},
+            "Draggable": {},
+            "Target": {"entity": "dragon"}
+        }
+    },
+    "fire": {
+        "components": {
+            "Position": {"x": 800, "y": 700},
+            "Sprite": {"texture": "fire"},
+            "Layer": {"level": 1},
+            "Target": {"entity": "knight"}
+        }
+    },
+    "grid": {
+        "components": {
+            "Position": {"x": 125, "y": 180},
+            "Layer": {"level": 1},
+            "Grid": {"rows": 6, "cols": 8, "cell_size": 128, "texture": "cell"},
+            "Droppable": {}
+        }
+    }
+}
