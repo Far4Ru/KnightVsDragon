@@ -30,6 +30,7 @@
         ],
         "entities": [
             "background",
+            "skip_button",
             "exit_button",
             "continue_button"
         ],

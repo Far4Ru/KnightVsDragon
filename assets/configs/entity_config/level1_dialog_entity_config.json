@@ -8,20 +8,27 @@
     },
     "exit_button": {
         "components": {
-            "Position": {"x": 600, "y": 150},
-            "Text": {"text": "Выход", "font_size": 18},
+            "Position": {"x": 800, "y": 30},
+            "Text": {"text": "Меню", "font_size": 18},
             "Size": {"width": 100, "height": 20},
-            "Angle": {"degree": 90},
             "Layer": {"level": 2},
             "OnClick": {"action": {"name": "change_scene", "args": ["menu"]}}
         }
     },
+    "skip_button": {
+        "components": {
+            "Position": {"x": 950, "y": 30},
+            "Size": {"width": 100, "height": 20},
+            "Text": {"text": "Пропустить", "font_size": 18},
+            "Layer": {"level": 2},
+            "OnClick": {"action": {"name": "change_scene", "args": ["level1"]}}
+        }
+    },
     "continue_button": {
         "components": {
-            "Position": {"x": 800, "y": 600},
-            "Angle": {"degree": -30},
+            "Position": {"x": 1100, "y": 30},
             "Size": {"width": 100, "height": 20},
-            "Text": {"text": "Продолжить", "font_size": 18},
+            "Text": {"text": "Далее", "font_size": 18},
             "Layer": {"level": 2},
             "OnClick": {"action": {"name": "change_scene", "args": ["level1"]}}
         }

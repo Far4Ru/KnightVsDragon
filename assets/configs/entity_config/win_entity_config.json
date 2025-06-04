@@ -15,10 +15,9 @@
     },
     "exit_button": {
         "components": {
-            "Position": {"x": 800, "y": 600},
-            "Angle": {"degree": -30},
+            "Position": {"x": 640, "y": 100},
             "Size": {"width": 100, "height": 20},
-            "Text": {"text": "Меню", "font_size": 18},
+            "Text": {"text": "В меню", "font_size": 18},
             "Layer": {"level": 2},
             "OnClick": {"action": {"name": "change_scene", "args": ["menu"]}}
         }

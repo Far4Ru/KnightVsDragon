@@ -15,9 +15,8 @@
     },
     "play_button": {
         "components": {
-            "Position": {"x": 450, "y": 540},
-            "Text": {"text": "Играть", "font_size": 18},
-            "Angle": {"degree": 20},
+            "Position": {"x": 640, "y": 370},
+            "Text": {"text": "Начать заново", "font_size": 18},
             "Size": {"width": 100, "height": 20},
             "Layer": {"level": 2},
             "OnClick": {"action": {"name": "change_scene", "args": ["level1"]}},
@@ -26,10 +25,9 @@
     },
     "exit_button": {
         "components": {
-            "Position": {"x": 800, "y": 600},
-            "Angle": {"degree": -30},
+            "Position": {"x": 640, "y": 320},
             "Size": {"width": 100, "height": 20},
-            "Text": {"text": "Меню", "font_size": 18},
+            "Text": {"text": "В меню", "font_size": 18},
             "Layer": {"level": 2},
             "OnClick": {"action": {"name": "change_scene", "args": ["menu"]}}
         }
