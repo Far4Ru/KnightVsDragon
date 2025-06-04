@@ -1,4 +1,3 @@
-import arcade
 from typing import Dict, List, Callable, Any, Set
 from collections import defaultdict
 

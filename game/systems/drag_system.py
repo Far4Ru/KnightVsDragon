@@ -20,27 +20,24 @@ class DragSystem(System):
 
     def start(self, entities):
         for entity in entities:
-            if Sprite in entity.components:
+            if sprite := entity.get_component(Sprite):
                 if Draggable in entity.components:
                     def make_on_click(context, e):
                         def on_click(event):
-                            position = e.components[Position]
-                            sprite = e.components[Sprite]
-                            if collides_with_point(
-                                    arcade.XYWH(position.x, position.y, 200, 200),
-                                    (event.x, event.y)
-                            ):
-                                context.dragged_sprite_name = sprite.texture
-                                context.dragged_sprite = arcade.Sprite(
-                                    GameEngine().texture_manager.get(sprite.texture),
-                                    center_x=event.x,
-                                    center_y=event.y,
-                                    scale=1
-                                )
-                                context.drag_offset_x = event.x - position.x
-                                context.drag_offset_y = event.y - position.y
-                                return
-
+                            if position := e.get_component(Position):
+                                if collides_with_point(
+                                        arcade.XYWH(position.x, position.y, 200, 200),
+                                        (event.x, event.y)
+                                ):
+                                    context.dragged_sprite_name = sprite.texture
+                                    context.dragged_sprite = arcade.Sprite(
+                                        GameEngine().texture_manager.get(sprite.texture),
+                                        center_x=event.x,
+                                        center_y=event.y,
+                                        scale=1
+                                    )
+                                    context.drag_offset_x = event.x - position.x
+                                    context.drag_offset_y = event.y - position.y
                         return on_click
 
                     on_click_callback = make_on_click(self, entity)
@@ -48,24 +45,23 @@ class DragSystem(System):
                 if Droppable in entity.components:
                     def make_drop(context, e):
                         def drop(event):
-                            if Droppable in e.components:
-                                droppable = e.get_component(Droppable)
+                            if droppable := e.get_component(Droppable):
                                 if not droppable.droppable:
                                     context.dragged_sprite = None
                                     context.dragged_sprite_name = None
                                     return
-                                sprite = e.get_component(Sprite)
-                                position = e.components[Position]
-                                size = e.components[Size]
-                                if collides_with_point(
-                                        arcade.XYWH(position.x, position.y, size.width, size.height),
-                                        (event.x, event.y)
-                                ):
-                                    self.event_bus.emit("animation_add", {"start":[position.x, position.y],"end": [640, 700], "middle":[150,50]})
-                                    sprite.texture = context.dragged_sprite_name
-                                    context.dragged_sprite = None
-                                    context.dragged_sprite_name = None
-
+                                if (position := e.get_component(Position)) and (size := e.get_component(Size)):
+                                    if collides_with_point(
+                                            arcade.XYWH(position.x, position.y, size.width, size.height),
+                                            (event.x, event.y)
+                                    ):
+                                        # self.event_bus.emit("animation_add",
+                                        #                     {"start": [position.x, position.y], "end": [640, 700],
+                                        #                      "middle": [150, 50]})
+                                        # AnimationBezier(event["start"], event["end"], event["middle"], 0.3, 3)
+                                        sprite.texture = context.dragged_sprite_name
+                                        context.dragged_sprite = None
+                                        context.dragged_sprite_name = None
                         return drop
 
                     drop_callback = make_drop(self, entity)

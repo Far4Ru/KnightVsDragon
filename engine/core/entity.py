@@ -17,7 +17,7 @@ class Entity:
     def get_component(self, component_type: Type[Component]) -> Optional[Component]:
         if self.has_component(component_type):
             return self.components.get(component_type)
-        return component_type()
+        return None
 
     def has_component(self, component_type: Type[Component]) -> bool:
         return component_type in self.components

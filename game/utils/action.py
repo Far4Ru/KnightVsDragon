@@ -1,9 +1,5 @@
-from dataclasses import dataclass
-from typing import Callable
-
 import arcade
 
-from engine.core.component import component
 from engine.engine import GameEngine
 from engine.utils.math import hex_to_rgb
 
@@ -24,10 +20,20 @@ def action_change_color(self, hover_color, base_color):
             self.target.color = hex_to_rgb(base_color)
 
 
+def action_sound_volume_plus(self):
+    GameEngine().scene_manager.current_scene.event_bus.emit("sound_volume_plus", [])
+
+
+def action_sound_volume_minus(self):
+    GameEngine().scene_manager.current_scene.event_bus.emit("sound_volume_minus", [])
+
+
 ACTIONS = {
     "exit": action_exit,
     "change_scene": action_change_scene,
     "change_color": action_change_color,
+    "change_sound_volume_plus": action_sound_volume_plus,
+    "change_sound_volume_minus": action_sound_volume_minus,
 }
 
 

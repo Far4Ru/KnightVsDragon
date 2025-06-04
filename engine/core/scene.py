@@ -3,7 +3,6 @@ import arcade
 
 from engine.core.entity import Entity
 from engine.core.system import SYSTEM_CLASSES
-from engine.core.component import COMPONENT_CLASSES
 from engine.utils.event_bus import EventBus
 
 

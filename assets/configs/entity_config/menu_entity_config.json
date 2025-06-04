@@ -73,8 +73,7 @@
             "Size": {"width": 100, "height": 100},
             "Sprite": {"texture": "empty_slot"},
             "Layer": {"level": 1},
-            "Angle": {"degree": -30},
-            "OnClick": {"action": {"name": "exit", "args": []}}
+            "Angle": {"degree": -30}
         }
     },
     "slot_sound_plus": {
@@ -83,8 +82,7 @@
             "Size": {"width": 100, "height": 100},
             "Sprite": {"texture": "empty_slot"},
             "Layer": {"level": 1},
-            "Angle": {"degree": 0},
-            "OnClick": {"action": {"name": "exit", "args": []}}
+            "Angle": {"degree": 0}
         }
     },
     "sound_minus": {
@@ -92,8 +90,15 @@
             "Position": {"x": 810, "y": 393},
             "Size": {"width": 100, "height": 100},
             "Sprite": {"texture": "sound_minus"},
+            "Scale": {"scale": 1},
             "Layer": {"level": 1},
-            "OnClick": {"action": {"name": "exit", "args": []}}
+            "OnClick": {"action": {"name": "change_sound_volume_minus", "args": []}}
+        }
+    },
+    "sound_minus_animation": {
+        "components": {
+            "Animation": {"update": {"name":"button_push", "args": []},"event": "sound_volume_minus"},
+            "Target": {"entity": "sound_minus"}
         }
     },
     "sound_plus": {
@@ -101,8 +106,15 @@
             "Position": {"x": 877, "y": 373},
             "Size": {"width": 100, "height": 100},
             "Sprite": {"texture": "sound_plus"},
+            "Scale": {"scale": 1},
             "Layer": {"level": 1},
-            "OnClick": {"action": {"name": "exit", "args": []}}
+            "OnClick": {"action": {"name": "change_sound_volume_plus", "args": []}}
+        }
+    },
+    "sound_plus_animation": {
+        "components": {
+            "Animation": {"update": {"name":"button_push", "args": []},"event": "sound_volume_plus"},
+            "Target": {"entity": "sound_plus"}
         }
     },
     "menu_music": {

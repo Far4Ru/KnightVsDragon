@@ -97,9 +97,15 @@
             "Position": {"x": 640, "y": 512},
             "Sprite": {"texture": "sun"},
             "Layer": {"level": -1},
-            "Angle": {"degree": 0},
+            "Angle": {"degree": 0}
+        }
+    },
+    "sun_animation": {
+        "components": {
             "TurnIndicator": {"duration": 1},
-            "Turn": {"order": 0}
+            "Turn": {"order": 0},
+            "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 60]}},
+            "Target": {"entity": "sun"}
         }
     },
     "moon": {
@@ -108,6 +114,14 @@
             "Sprite": {"texture": "moon"},
             "Layer": {"level": 0},
             "Turn": {"order": 1}
+        }
+    },
+    "moon_animation": {
+        "components": {
+            "TurnIndicator": {"duration": 1},
+            "Turn": {"order": 1},
+            "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 60]}},
+            "Target": {"entity": "moon"}
         }
     },
     "background": {
