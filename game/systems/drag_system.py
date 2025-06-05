@@ -11,24 +11,25 @@ from game.components.position import Position
 from game.components.sprite import Sprite
 
 
-def make_on_drag(self, entity):
+def make_on_drag(self, draggable, entity):
     def on_drag(event):
-        if (position := entity.get_component(Position)) and\
-                (size := entity.get_component(Size)) and\
-                (sprite := entity.get_component(Sprite)):
-            if collides_with_point(
-                    arcade.XYWH(position.x, position.y, size.width, size.height),
-                    (event.x, event.y)
-            ):
-                self.dragged_sprite_name = sprite.texture
-                self.dragged_sprite = arcade.Sprite(
-                    GameEngine().texture_manager.get(sprite.texture),
-                    center_x=event.x,
-                    center_y=event.y,
-                    scale=1
-                )
-                self.drag_offset_x = event.x - position.x
-                self.drag_offset_y = event.y - position.y
+        if draggable.active:
+            if (position := entity.get_component(Position)) and\
+                    (size := entity.get_component(Size)) and\
+                    (sprite := entity.get_component(Sprite)):
+                if collides_with_point(
+                        arcade.XYWH(position.x, position.y, size.width, size.height),
+                        (event.x, event.y)
+                ):
+                    self.dragged_sprite_name = sprite.texture
+                    self.dragged_sprite = arcade.Sprite(
+                        GameEngine().texture_manager.get(sprite.texture),
+                        center_x=event.x,
+                        center_y=event.y,
+                        scale=1
+                    )
+                    self.drag_offset_x = event.x - position.x
+                    self.drag_offset_y = event.y - position.y
 
     return on_drag
 
@@ -67,7 +68,7 @@ class DragSystem(System):
     def start(self, entities):
         for entity in entities:
             if draggable := entity.get_component(Draggable):
-                self.event_bus.subscribe("on_drag_start", entity, make_on_drag(self, entity))
+                self.event_bus.subscribe("on_drag_start", entity, make_on_drag(self, draggable, entity))
             if droppable := entity.get_component(Droppable):
                 self.event_bus.subscribe("on_mouse_drop", entity, make_on_drop(self, droppable, entity))
 

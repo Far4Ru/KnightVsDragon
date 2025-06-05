@@ -7,3 +7,4 @@ from engine.core.component import component
 @dataclass
 class Draggable:
     draggable = True
+    active = False

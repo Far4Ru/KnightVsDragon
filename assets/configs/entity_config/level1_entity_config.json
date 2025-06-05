@@ -97,14 +97,13 @@
             "Position": {"x": 640, "y": 512},
             "Sprite": {"texture": "sun"},
             "Layer": {"level": -1},
-            "Angle": {"degree": 0},
-            "NextTurn": {"next": 4}
+            "Angle": {"degree": 0}
         }
     },
     "sun_animation": {
         "components": {
             "TurnIndicator": {"duration": 1},
-            "Turn": {"order": 0},
+            "Turn": {"order": 0, "next": 4},
             "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 6]}},
             "Target": {"entity": "sun"}
         }
@@ -114,14 +113,13 @@
             "Position": {"x": 640, "y": 512},
             "Sprite": {"texture": "moon"},
             "Layer": {"level": -1},
-            "Angle": {"degree": 0},
-            "NextTurn": {"next": 0}
+            "Angle": {"degree": 0}
         }
     },
     "moon_animation": {
         "components": {
             "TurnIndicator": {"duration": 1},
-            "Turn": {"order": 4},
+            "Turn": {"order": 4, "next": 0},
             "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 6]}},
             "Target": {"entity": "moon"}
         }
@@ -140,6 +138,7 @@
             "Layer": {"level": 1},
             "Size": {"width": 40, "height":  200},
             "Draggable": {},
+            "Turn": {"order": 0, "next": 4},
             "Target": {"entity": "dragon"}
         }
     },

@@ -9,3 +9,4 @@ from engine.core.component import component
 class Turn:
     order: int = 0
     current: bool = False
+    next: Optional[int] = None
