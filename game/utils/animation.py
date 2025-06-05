@@ -5,6 +5,7 @@ from pyglet.math import Vec2
 from engine.engine import GameEngine
 from engine.utils.math import calculate_bezier
 from game.components import Angle, Scale
+from game.components.health import Health
 from game.components.position import Position
 from game.components.sprite import Sprite
 from game.components.text import Text
@@ -178,6 +179,28 @@ def animation_change_state_update(self):
         self.active = False
 
 
+def animation_health_change_init(self):
+    self.elapsed = 0
+    self.active = True
+    self.duration = 0.1
+
+
+def animation_health_change_update(self):
+    self.elapsed += self.dt
+    t = min(self.elapsed / self.duration, 1.0)
+    entity = self.target
+    if entity is not None:
+        if (entity := self.target) is not None:
+            if health := entity.get_component(Health):
+                health.current_hp -= 1
+    if t >= 1.0:
+        self.elapsed = 0
+        self.active = False
+        GameEngine().scene_manager.current_scene.event_bus.emit(
+            self.emit,
+            {"animation": self}
+        )
+
 ANIMATIONS = {
     "bezier": {
         "init": animation_bezier_init,
@@ -199,6 +222,10 @@ ANIMATIONS = {
         "init": animation_change_state_init,
         "update": animation_change_state_update,
     },
+    "health_change": {
+        "init": animation_health_change_init,
+        "update": animation_health_change_update,
+    }
 }
 
 

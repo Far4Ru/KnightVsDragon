@@ -39,15 +39,6 @@ def make_on_drag(self, draggable, entity):
     return on_drag
 
 
-def wrapper_animation_finished(animation, entities):
-    def animation_finished(event):
-        if animation.target == event["animation"].target:
-            entities.remove(animation.target)
-            animation.target = None
-
-    return animation_finished
-
-
 def make_on_drop(self, droppable, entity, entities):
     def on_drop(event):
         if not droppable.droppable:
@@ -62,14 +53,6 @@ def make_on_drop(self, droppable, entity, entities):
                     (event.x, event.y)
             ):
                 self.event_bus.emit("next_turn", {"next": None})
-                new_animation = Animation(update={"name": "bezier", "args": [[position.x, position.y], [640, 700], [150,50], 0.3, 3]}, emit="animation_finished")
-                new_animation.target = copy.deepcopy(self.target)
-                entities.append(new_animation.target)
-                new_animation.init()
-                new_animation.active = True
-                self.event_bus.emit("add_animation", new_animation)
-
-                self.event_bus.subscribe("animation_finished", entity, wrapper_animation_finished(new_animation, entities))
                 sprite.texture = self.dragged_sprite_name
                 self.dragged_sprite = None
                 self.dragged_sprite_name = None

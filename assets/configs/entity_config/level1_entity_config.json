@@ -17,6 +17,13 @@
             "Target": {"entity": "knight"}
         }
     },
+    "knight_health_animation": {
+        "components": {
+            "Animation": {"update": {"name":"health_change", "args": []}},
+            "Target": {"entity": "knight_health"},
+            "Turn": {"order": 5}
+        }
+    },
     "dragon": {
         "components": {
             "Position": {"x": 640, "y": 700},
@@ -33,6 +40,13 @@
             "Health": {"max_hp": 100, "current_hp": 100, "background": "#000000", "fill": "#FF0000", "border": "#FFFFFF"},
             "Text": {"font_size": 12, "color": "#FFFFFF"},
             "Target": {"entity": "dragon"}
+        }
+    },
+    "dragon_health_animation": {
+        "components": {
+            "Animation": {"update": {"name":"health_change", "args": []}},
+            "Target": {"entity": "dragon_health"},
+            "Turn": {"order": 2}
         }
     },
     "game_music": {
@@ -104,7 +118,7 @@
         "components": {
             "TurnIndicator": {"duration": 1},
             "Turn": {"order": 0, "next": 4},
-            "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 6]}},
+            "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 60]}},
             "Target": {"entity": "sun"}
         }
     },
@@ -120,7 +134,7 @@
         "components": {
             "TurnIndicator": {"duration": 1},
             "Turn": {"order": 4, "next": 0},
-            "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 6]}},
+            "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 60]}},
             "Target": {"entity": "moon"}
         }
     },
@@ -156,7 +170,7 @@
             "Layer": {"level": 1},
             "Grid": {"rows": 8, "cols": 8, "cell_size": 128, "texture": "cell"},
             "Droppable": {},
-            "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 6]}}
+            "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 60]}}
         }
     },
     "grid_tile": {
@@ -169,8 +183,37 @@
             "Target": {"entity": "grid"},
             "Tile": {},
             "Condition": {"name": "any", "args": []},
-            "Droppable": {},
-            "Animation": {"update": {"name": "bezier_later", "args": []}}
+            "Droppable": {}
+        }
+    },
+    "flying_sword": {
+        "components": {
+            "Position": {"x": 740, "y": 100},
+            "Sprite": {"texture": "sword"},
+            "Layer": {"level": 1},
+            "Size": {"width": 40, "height":  200}
+        }
+    },
+    "flying_sword_animation": {
+        "components": {
+            "Animation": {"update": {"name": "bezier", "args": [[640, 100], [640, 700], [300, 0], 0.3, 3]}},
+            "Target": {"entity": "flying_sword"},
+            "Turn": {"order": 1}
+        }
+    },
+    "flying_fire": {
+        "components": {
+            "Position": {"x": 740, "y": 100},
+            "Sprite": {"texture": "fire"},
+            "Layer": {"level": 1},
+            "Size": {"width": 40, "height":  200}
+        }
+    },
+    "flying_fire_animation": {
+        "components": {
+            "Animation": {"update": {"name": "bezier", "args": [[640, 700], [640, 100], [300, 0], 0.3, 3]}},
+            "Target": {"entity": "flying_fire"},
+            "Turn": {"order": 4}
         }
     }
 }
