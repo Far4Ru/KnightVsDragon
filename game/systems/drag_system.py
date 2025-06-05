@@ -47,6 +47,7 @@ def make_on_drop(self, droppable, entity):
                     arcade.XYWH(position.x, position.y, size.width, size.height),
                     (event.x, event.y)
             ):
+                self.event_bus.emit("next_turn", {"next": None})
                 # self.event_bus.emit("animation_add",
                 #                     {"start": [position.x, position.y], "end": [640, 700],
                 #                      "middle": [150, 50]})
