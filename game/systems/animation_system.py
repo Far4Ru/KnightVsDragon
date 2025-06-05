@@ -18,7 +18,6 @@ class AnimationSystem(System):
                             animation.target = copy.deepcopy(target_entity)
                         else:
                             animation.target = target_entity
-
                 if animation.event is not None:
                     self.event_bus.subscribe(animation.event, entity, animation.init)
                 else:

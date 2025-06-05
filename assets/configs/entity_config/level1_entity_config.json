@@ -136,6 +136,7 @@
             "Position": {"x": 740, "y": 100},
             "Sprite": {"texture": "sword"},
             "Layer": {"level": 1},
+            "Size": {"width": 40, "height":  200},
             "Draggable": {},
             "Target": {"entity": "dragon"}
         }
