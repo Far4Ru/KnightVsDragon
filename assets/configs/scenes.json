@@ -17,11 +17,15 @@
             "menu_music",
             "settings",
             "slot_sound_minus",
+            "slot_sound_minus_state_animation",
             "slot_sound_plus",
+            "slot_sound_plus_state_animation",
             "sound_minus",
             "sound_minus_animation",
+            "sound_minus_state_animation",
             "sound_plus",
-            "sound_plus_animation"
+            "sound_plus_animation",
+            "sound_plus_state_animation"
         ],
         "entity_config": "menu_entity_config"
     },

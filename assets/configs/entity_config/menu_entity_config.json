@@ -64,7 +64,7 @@
             "Size": {"width": 100, "height": 100},
             "Sprite": {"texture": "settings"},
             "Layer": {"level": 1},
-            "OnClick": {"action": {"name": "exit", "args": []}}
+            "OnClick": {"action": {"name": "change_slot_state", "args": []}}
         }
     },
     "slot_sound_minus": {
@@ -76,6 +76,12 @@
             "Angle": {"degree": -30}
         }
     },
+    "slot_sound_minus_state_animation": {
+        "components": {
+            "Animation": {"update": {"name":"change_state", "args": []},"event": "change_slot_state"},
+            "Target": {"entity": "slot_sound_minus"}
+        }
+    },
     "slot_sound_plus": {
         "components": {
             "Position": {"x": 870, "y": 360},
@@ -83,6 +89,12 @@
             "Sprite": {"texture": "empty_slot"},
             "Layer": {"level": 1},
             "Angle": {"degree": 0}
+        }
+    },
+    "slot_sound_plus_state_animation": {
+        "components": {
+            "Animation": {"update": {"name":"change_state", "args": []},"event": "change_slot_state"},
+            "Target": {"entity": "slot_sound_plus"}
         }
     },
     "sound_minus": {
@@ -101,6 +113,12 @@
             "Target": {"entity": "sound_minus"}
         }
     },
+    "sound_minus_state_animation": {
+        "components": {
+            "Animation": {"update": {"name":"change_state", "args": []},"event": "change_slot_state"},
+            "Target": {"entity": "sound_minus"}
+        }
+    },
     "sound_plus": {
         "components": {
             "Position": {"x": 877, "y": 373},
@@ -114,6 +132,12 @@
     "sound_plus_animation": {
         "components": {
             "Animation": {"update": {"name":"button_push", "args": []},"event": "sound_volume_plus"},
+            "Target": {"entity": "sound_plus"}
+        }
+    },
+    "sound_plus_state_animation": {
+        "components": {
+            "Animation": {"update": {"name":"change_state", "args": []},"event": "change_slot_state"},
             "Target": {"entity": "sound_plus"}
         }
     },

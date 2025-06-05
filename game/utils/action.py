@@ -28,12 +28,17 @@ def action_sound_volume_minus(self):
     GameEngine().scene_manager.current_scene.event_bus.emit("sound_volume_minus", [])
 
 
+def action_change_slot_state(self):
+    GameEngine().scene_manager.current_scene.event_bus.emit("change_slot_state", [])
+
+
 ACTIONS = {
     "exit": action_exit,
     "change_scene": action_change_scene,
     "change_color": action_change_color,
     "change_sound_volume_plus": action_sound_volume_plus,
     "change_sound_volume_minus": action_sound_volume_minus,
+    "change_slot_state": action_change_slot_state,
 }
 
 

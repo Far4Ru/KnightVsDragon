@@ -6,6 +6,7 @@ from engine.engine import GameEngine
 from engine.utils.math import calculate_bezier
 from game.components import Angle, Scale
 from game.components.position import Position
+from game.components.sprite import Sprite
 from game.components.text import Text
 
 
@@ -138,6 +139,29 @@ def animation_text_update(self):
         self.elapsed = 0
 
 
+def animation_change_state_init(self):
+    self.elapsed = 0
+    self.active = True
+    self.duration = 0.1
+    if (entity := self.target) is not None:
+        if sprite := entity.get_component(Sprite):
+            sprite.visible = not sprite.visible
+
+
+def animation_change_state_update(self):
+    self.elapsed += self.dt
+    t = min(self.elapsed / self.duration, 1.0)
+    entity = self.target
+    if entity is not None:
+        # if text := entity.get_component(Text):
+        #     if len(text.text) < len(text.fulltext):
+        #         text.text = text.fulltext[:len(text.text) + 1]
+        pass
+    if t >= 1.0:
+        self.elapsed = 0
+        self.active = False
+
+
 ANIMATIONS = {
     "bezier": {
         "init": animation_bezier_init,
@@ -150,6 +174,10 @@ ANIMATIONS = {
     "text_animation":  {
         "init": animation_text_init,
         "update": animation_text_update,
+    },
+    "change_state":  {
+        "init": animation_change_state_init,
+        "update": animation_change_state_update,
     },
 }
 

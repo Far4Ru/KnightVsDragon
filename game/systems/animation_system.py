@@ -9,6 +9,7 @@ class AnimationSystem(System):
     animations = []
 
     def start(self, entities):
+        self.animations.clear()
         for entity in entities:
             if animation := entity.get_component(Animation):
                 if target := entity.get_component(Target):
@@ -29,3 +30,4 @@ class AnimationSystem(System):
             if animation.active:
                 animation.dt = dt
                 animation.update()
+

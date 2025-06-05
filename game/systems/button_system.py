@@ -53,8 +53,10 @@ class ButtonSystem(System):
 
                             return on_hover
 
-                        on_hover_callback = make_on_hover(angle_degree, position, size, on_click_component)
-                        self.event_bus.subscribe("on_mouse_hover", entity, on_hover_callback)
+                        self.event_bus.subscribe(
+                            "on_mouse_hover", entity,
+                            make_on_hover(angle_degree, position, size, on_click_component)
+                        )
 
     def on_mouse_press(self, entities, x, y, button):
         if button != arcade.MOUSE_BUTTON_LEFT:
