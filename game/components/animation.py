@@ -1,8 +1,10 @@
 from dataclasses import dataclass
 
 from engine.core.component import component
+from game.utils.animation import animation
 
 
+@animation
 @component
 @dataclass
 class Animation:

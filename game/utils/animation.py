@@ -129,6 +129,8 @@ def animation(cls):
         cls.update = None
 
     def __init__(self, update=None, event=None, emit=None):
+        self.event = event
+        self.emit = emit
         func_name = update["name"]
         args = update.get("args", [])
 
