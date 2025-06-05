@@ -9,6 +9,12 @@ def action_exit(self):
 
 
 def action_change_scene(self, name="menu"):
+    GameEngine().settings_manager.set("last_level", name)
+    GameEngine().change_scene(name)
+
+
+def action_continue(self):
+    name = GameEngine().settings_manager.get("last_level")
     GameEngine().change_scene(name)
 
 
@@ -35,6 +41,7 @@ def action_change_slot_state(self):
 ACTIONS = {
     "exit": action_exit,
     "change_scene": action_change_scene,
+    "continue": action_continue,
     "change_color": action_change_color,
     "change_sound_volume_plus": action_sound_volume_plus,
     "change_sound_volume_minus": action_sound_volume_minus,
