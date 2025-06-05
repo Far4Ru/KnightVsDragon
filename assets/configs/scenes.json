@@ -19,7 +19,9 @@
             "slot_sound_minus",
             "slot_sound_plus",
             "sound_minus",
-            "sound_plus"
+            "sound_minus_animation",
+            "sound_plus",
+            "sound_plus_animation"
         ],
         "entity_config": "menu_entity_config"
     },

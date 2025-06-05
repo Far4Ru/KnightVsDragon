@@ -9,4 +9,5 @@ from game.utils.animation import animation
 @dataclass
 class Animation:
     elapsed = 0
+    duration = 1
     active: bool = False

@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from pyglet.math import Vec2
 
@@ -95,7 +95,9 @@ def animation_bezier_update(self):
 
 
 def animation_button_push_init(self):
-    pass
+    self.elapsed = 0
+    self.active = True
+    self.duration = 0.3
 
 
 def animation_button_push_update(self):
@@ -107,7 +109,7 @@ def animation_button_push_update(self):
 
         scale.scale = ScaleCurves.push(t)
     if t >= 1.0:
-        pass
+        self.active = False
 
 
 ANIMATIONS = {
@@ -116,8 +118,8 @@ ANIMATIONS = {
         "update": animation_bezier_update,
     },
     "button_push": {
-        "init": animation_bezier_init,
-        "update": animation_bezier_update,
+        "init": animation_button_push_init,
+        "update": animation_button_push_update,
     },
 }
 
@@ -128,7 +130,7 @@ def animation(cls):
     if not hasattr(cls, 'update'):
         cls.update = None
 
-    def __init__(self, update=None, event=None, emit=None):
+    def __init__(self, update=None, event: Optional[str] = None, emit=None):
         self.event = event
         self.emit = emit
         func_name = update["name"]
