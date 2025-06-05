@@ -1,3 +1,5 @@
+import copy
+
 import arcade
 from pyglet.math import Vec2
 
@@ -5,10 +7,12 @@ from engine.core.system import system, System
 from engine.engine import GameEngine
 from engine.utils.math import collides_with_point
 from game.components import Size
+from game.components.animation import Animation
 from game.components.draggable import Draggable
 from game.components.droppable import Droppable
 from game.components.position import Position
 from game.components.sprite import Sprite
+from game.utils.animation import ANIMATIONS
 
 
 def make_on_drag(self, draggable, entity):
@@ -21,6 +25,7 @@ def make_on_drag(self, draggable, entity):
                         arcade.XYWH(position.x, position.y, size.width, size.height),
                         (event.x, event.y)
                 ):
+                    self.target = entity
                     self.dragged_sprite_name = sprite.texture
                     self.dragged_sprite = arcade.Sprite(
                         GameEngine().texture_manager.get(sprite.texture),
@@ -34,7 +39,16 @@ def make_on_drag(self, draggable, entity):
     return on_drag
 
 
-def make_on_drop(self, droppable, entity):
+def wrapper_animation_finished(animation, entities):
+    def animation_finished(event):
+        if animation.target == event["animation"].target:
+            entities.remove(animation.target)
+            animation.target = None
+
+    return animation_finished
+
+
+def make_on_drop(self, droppable, entity, entities):
     def on_drop(event):
         if not droppable.droppable:
             self.dragged_sprite = None
@@ -48,10 +62,14 @@ def make_on_drop(self, droppable, entity):
                     (event.x, event.y)
             ):
                 self.event_bus.emit("next_turn", {"next": None})
-                # self.event_bus.emit("animation_add",
-                #                     {"start": [position.x, position.y], "end": [640, 700],
-                #                      "middle": [150, 50]})
-                # AnimationBezier(event["start"], event["end"], event["middle"], 0.3, 3)
+                new_animation = Animation(update={"name": "bezier", "args": [[position.x, position.y], [640, 700], [150,50], 0.3, 3]}, emit="animation_finished")
+                new_animation.target = copy.deepcopy(self.target)
+                entities.append(new_animation.target)
+                new_animation.init()
+                new_animation.active = True
+                self.event_bus.emit("add_animation", new_animation)
+
+                self.event_bus.subscribe("animation_finished", entity, wrapper_animation_finished(new_animation, entities))
                 sprite.texture = self.dragged_sprite_name
                 self.dragged_sprite = None
                 self.dragged_sprite_name = None
@@ -71,7 +89,7 @@ class DragSystem(System):
             if draggable := entity.get_component(Draggable):
                 self.event_bus.subscribe("on_drag_start", entity, make_on_drag(self, draggable, entity))
             if droppable := entity.get_component(Droppable):
-                self.event_bus.subscribe("on_mouse_drop", entity, make_on_drop(self, droppable, entity))
+                self.event_bus.subscribe("on_mouse_drop", entity, make_on_drop(self, droppable, entity, entities))
 
     def on_mouse_press(self, entities, x, y, button):
         if button != arcade.MOUSE_BUTTON_LEFT:

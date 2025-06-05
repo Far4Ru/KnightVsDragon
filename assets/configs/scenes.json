@@ -64,6 +64,7 @@
             "sword",
             "game_music",
             "grid",
+            "grid_tile",
             "knight_health",
             "dragon_health",
             "leshy",

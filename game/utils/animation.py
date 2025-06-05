@@ -55,6 +55,19 @@ def animation_bezier_init(self, start: List[int], end: List[int], middle: List[i
     self.control_points = [self.start_position, control_point1, control_point2, self.end_position]
 
 
+def animation_bezier_later_init(self):
+    if self.start_position and self.end_position and self.middle_position and self.middle_percent:
+        control_point1 = (
+            self.start_position.x + (self.end_position.x - self.start_position.x) * self.middle_percent,
+            self.start_position.y + self.middle_position.x
+        )
+        control_point2 = (
+            self.start_position.x + (self.end_position.x - self.start_position.x) * (1 - self.middle_percent),
+            self.start_position.y + self.middle_position.y
+        )
+        self.control_points = [self.start_position, control_point1, control_point2, self.end_position]
+
+
 def animation_bezier_update(self):
     self.elapsed += self.dt
     t = min(self.elapsed / self.duration, 1.0)
@@ -70,7 +83,7 @@ def animation_bezier_update(self):
         self.elapsed = 0
         self.active = False
         GameEngine().scene_manager.current_scene.event_bus.emit(
-            "turn_animation_complete",
+            self.emit,
             {"animation": self}
         )
 
@@ -170,6 +183,10 @@ ANIMATIONS = {
         "init": animation_bezier_init,
         "update": animation_bezier_update,
     },
+    "bezier_later": {
+        "init": animation_bezier_later_init,
+        "update": animation_bezier_update,
+    },
     "button_push": {
         "init": animation_button_push_init,
         "update": animation_button_push_update,
@@ -190,8 +207,12 @@ def animation(cls):
         cls.init = None
     if not hasattr(cls, 'update'):
         cls.update = None
+    cls.start_position = None
+    cls.end_position = None
+    cls.middle_position = None
+    cls.middle_percent = None
 
-    def __init__(self, update=None, event: Optional[str] = None, emit=None):
+    def __init__(self, update=None, event: Optional[str] = None, emit="turn_animation_complete"):
         self.event = event
         self.emit = emit
         func_name = update["name"]
