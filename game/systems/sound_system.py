@@ -12,10 +12,12 @@ class SoundSystem(System):
 
     def start(self, entities):
         self.sounds = []
+        self.volume = GameEngine().settings_manager.get("music_volume")
         for entity in entities:
             if sound := entity.get_component(Sound):
                 playable_sound = arcade.Sound(GameEngine().sound_manager.get(sound.name), streaming=True)
                 player = playable_sound.play(loop=sound.loop)
+                player.volume = self.volume
                 self.sounds.append(player)
 
         def change_sound_volume_wrapper(context, dv):
@@ -28,6 +30,11 @@ class SoundSystem(System):
 
     def change_sound_volume(self, dv):
         self.volume += dv
+        if self.volume < 0:
+            self.volume = 0
+        if self.volume > 1.0:
+            self.volume = 1.0
+        GameEngine().settings_manager.set("music_volume", self.volume)
         for sound_player in self.sounds:
             sound_player.volume = self.volume
 

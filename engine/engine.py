@@ -6,6 +6,7 @@ from engine.managers import AssetManager, ConfigManager, FontManager, SceneManag
 
 from config import SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE
 from engine.managers.animation_manager import AnimationManager
+from engine.managers.settings_manager import SettingsManager
 from engine.utils.singleton import singleton
 
 
@@ -18,6 +19,7 @@ class GameEngine:
         self.texture_manager = TextureManager()
         self.sound_manager = SoundManager()
         self.animation_manager = AnimationManager()
+        self.settings_manager = SettingsManager()
         self.asset_manager = AssetManager(self.texture_manager, self.config_manager, self.sound_manager,
                                           self.font_manager, self.animation_manager)
         self.add = ObjectFactory(self.texture_manager)
