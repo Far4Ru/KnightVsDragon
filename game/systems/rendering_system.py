@@ -81,7 +81,8 @@ class RenderingSystem(System):
                         text = GameEngine().add.text(
                             text_config.text, position,
                             text_config.color, text_config.font_size,
-                            angle_degree, FONT_DEFAULT, batchLayer
+                            angle_degree, FONT_DEFAULT, batchLayer, text_config.width, text_config.multiline,
+                            text_config.anchor_x,  text_config.anchor_y
                         )
                         self.elements.append(text)
         self.need_to_update = False
