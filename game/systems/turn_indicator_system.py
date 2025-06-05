@@ -13,4 +13,7 @@ class TurnIndicatorSystem(System):
                 pass
 
     def update(self, entities):
-        pass
+        for entity in entities:
+            if turn_indicator := entity.get_component(TurnIndicator):
+                    pass
+

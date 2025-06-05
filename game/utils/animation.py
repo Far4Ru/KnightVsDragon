@@ -2,6 +2,7 @@ from typing import List, Optional
 
 from pyglet.math import Vec2
 
+from engine.engine import GameEngine
 from engine.utils.math import calculate_bezier
 from game.components import Angle, Scale
 from game.components.position import Position
@@ -55,17 +56,18 @@ def animation_bezier_init(self, start: List[int], end: List[int], middle: List[i
 def animation_bezier_update(self):
     self.elapsed += self.dt
     t = min(self.elapsed / self.duration, 1.0)
-    entity = self.target
-    if entity is not None:
-        position = entity.get_component(Position)
-        angle = entity.get_component(Angle)
-
-        new_pos = calculate_bezier(animation.control_points, t)
-        position.x, position.y = new_pos
-
-        angle.degree = animation.elapsed * 3
+    if self.active:
+        entity = self.target
+        if entity is not None:
+            if position := entity.get_component(Position):
+                new_pos = calculate_bezier(self.control_points, t)
+                position.x, position.y = new_pos
+            if angle := entity.get_component(Angle):
+                angle.degree = self.elapsed * 3
     if t >= 1.0:
-        animation.elapsed = 0
+        self.elapsed = 0
+        self.active = False
+        GameEngine().scene_manager.current_scene.event_bus.emit("next_turn", 1)
 
 
 # animation.elapsed += dt

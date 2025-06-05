@@ -12,8 +12,9 @@ class AnimationSystem(System):
         for entity in entities:
             if animation := entity.get_component(Animation):
                 if animation.event is not None:
-                    print(animation.event)
                     self.event_bus.subscribe(animation.event, entity, animation.init)
+                else:
+                    animation.init()
                 if target := entity.get_component(Target):
                     if target_entity := next((x for x in entities if x.type == target.entity), None):
                         if target.copy:

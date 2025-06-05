@@ -112,8 +112,8 @@
         "components": {
             "Position": {"x": 640, "y": 512},
             "Sprite": {"texture": "moon"},
-            "Layer": {"level": 0},
-            "Turn": {"order": 1}
+            "Layer": {"level": -1},
+            "Angle": {"degree": 0}
         }
     },
     "moon_animation": {
