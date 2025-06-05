@@ -6,13 +6,16 @@ class ObjectFactory:
         self.texture_manager = texture_manager
 
     @staticmethod
-    def text(text, position, color, font_size, angle, font, batch_layer):
+    def text(text, position, color, font_size, angle, font, batch_layer, width=None, multiline=False, anchor_x="center",
+             anchor_y="center"):
         return arcade.Text(
             text,
             position.x, position.y,
             color, font_size,
-            anchor_x="center",
-            anchor_y="center",
+            width=width,
+            multiline=multiline,
+            anchor_x=anchor_x,
+            anchor_y=anchor_y,
             rotation=angle,
             font_name=font,
             batch=batch_layer,
@@ -34,4 +37,3 @@ class ObjectFactory:
         )
         layer.append(sprite)
         return sprite
-

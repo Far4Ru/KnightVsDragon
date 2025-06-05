@@ -6,6 +6,25 @@
             "Layer": {"level": 0}
         }
     },
+    "dialog_text": {
+        "components": {
+            "Position": {"x": 100, "y": 400},
+            "Size": {"width": 100, "height": 20},
+            "Text": {"text": "",
+                "width": 1100,
+                "multiline": true,
+                "anchor_x": "left",
+                "anchor_y": "top",
+                "fulltext": "Это длинный текст, который будет появляться постепенно. Это длинный текст, который будет появля- ться постепенно. \nВы можете нажать Далее, чтобы ускорить вывод текста.", "font_size": 18},
+            "Layer": {"level": 2}
+        }
+    },
+    "dialog_text_animation": {
+        "components": {
+            "Target": {"entity": "dialog_text"},
+            "Animation": {"update": {"name":"text_animation", "args": []}}
+        }
+    },
     "exit_button": {
         "components": {
             "Position": {"x": 800, "y": 30},

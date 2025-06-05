@@ -6,6 +6,7 @@ from engine.engine import GameEngine
 from engine.utils.math import calculate_bezier
 from game.components import Angle, Scale
 from game.components.position import Position
+from game.components.text import Text
 
 
 class ScaleCurves:
@@ -114,6 +115,29 @@ def animation_button_push_update(self):
         self.active = False
 
 
+def animation_text_init(self):
+    self.elapsed = 0
+    self.active = True
+    self.duration = 1
+    if (entity := self.target) is not None:
+        if text := entity.get_component(Text):
+            self.duration = len(text.fulltext)
+
+
+def animation_text_update(self):
+    self.elapsed += self.dt
+    t = min(self.elapsed / self.duration, 1.0)
+    entity = self.target
+    if entity is not None:
+        if text := entity.get_component(Text):
+            if len(text.text) < len(text.fulltext):
+                text.text = text.fulltext[:len(text.text) + 1]
+    if t >= 1.0:
+        if text := entity.get_component(Text):
+            text.text = text.fulltext
+        self.elapsed = 0
+
+
 ANIMATIONS = {
     "bezier": {
         "init": animation_bezier_init,
@@ -122,6 +146,10 @@ ANIMATIONS = {
     "button_push": {
         "init": animation_button_push_init,
         "update": animation_button_push_update,
+    },
+    "text_animation":  {
+        "init": animation_text_init,
+        "update": animation_text_update,
     },
 }
 

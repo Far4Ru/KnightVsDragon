@@ -29,13 +29,16 @@
         "systems": [
             "SoundSystem",
             "ButtonSystem",
-            "RenderingSystem"
+            "RenderingSystem",
+            "AnimationSystem"
         ],
         "entities": [
             "background",
             "skip_button",
             "exit_button",
-            "continue_button"
+            "continue_button",
+            "dialog_text",
+            "dialog_text_animation"
         ],
         "entity_config": "level1_dialog_entity_config"
     },
