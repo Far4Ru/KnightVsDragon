@@ -4,7 +4,8 @@ from pyglet.math import Vec2
 
 from engine.engine import GameEngine
 from engine.utils.math import calculate_bezier
-from game.components import Angle, Scale
+from game.components import Angle, Scale, Turn
+from game.components.next_turn import NextTurn
 from game.components.position import Position
 from game.components.sprite import Sprite
 from game.components.text import Text
@@ -69,7 +70,13 @@ def animation_bezier_update(self):
     if t >= 1.0:
         self.elapsed = 0
         self.active = False
-        GameEngine().scene_manager.current_scene.event_bus.emit("next_turn", 1)
+        entity = self.target
+        if entity is not None:
+            if next_turn := entity.get_component(NextTurn):
+                GameEngine().scene_manager.current_scene.event_bus.emit(
+                    "next_turn",
+                    {"next": next_turn.next}
+                )
 
 
 # animation.elapsed += dt

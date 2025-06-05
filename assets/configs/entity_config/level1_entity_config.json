@@ -97,14 +97,15 @@
             "Position": {"x": 640, "y": 512},
             "Sprite": {"texture": "sun"},
             "Layer": {"level": -1},
-            "Angle": {"degree": 0}
+            "Angle": {"degree": 0},
+            "NextTurn": {"next": 4}
         }
     },
     "sun_animation": {
         "components": {
             "TurnIndicator": {"duration": 1},
             "Turn": {"order": 0},
-            "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 60]}},
+            "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 6]}},
             "Target": {"entity": "sun"}
         }
     },
@@ -113,14 +114,15 @@
             "Position": {"x": 640, "y": 512},
             "Sprite": {"texture": "moon"},
             "Layer": {"level": -1},
-            "Angle": {"degree": 0}
+            "Angle": {"degree": 0},
+            "NextTurn": {"next": 0}
         }
     },
     "moon_animation": {
         "components": {
             "TurnIndicator": {"duration": 1},
-            "Turn": {"order": 1},
-            "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 60]}},
+            "Turn": {"order": 4},
+            "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 6]}},
             "Target": {"entity": "moon"}
         }
     },

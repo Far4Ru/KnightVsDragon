@@ -4,6 +4,16 @@ from game.components.animation import Animation
 from game.components.turn import Turn
 
 
+def next_turn_wrapper(self):
+    def next_turn(event):
+        self.current_turn = event["next"] or (self.current_turn + 1)
+        if self.current_turn > self.last_turn:
+            self.current_turn = 0
+        self.event_bus.emit("turn_update", {"current": self.current_turn})
+
+    return next_turn
+
+
 @system
 class TurnSystem(System):
     current_turn: int = 0
@@ -12,13 +22,6 @@ class TurnSystem(System):
     def start(self, entities):
         self.current_turn = 0
 
-        def next_turn_wrapper(context):
-            def next_turn(event):
-                context.current_turn += 1
-                if context.current_turn > context.last_turn:
-                    context.current_turn = 0
-                context.event_bus.emit("turn_update", {"current": context.current_turn})
-            return next_turn
         self.event_bus.subscribe("next_turn", self, next_turn_wrapper(self))
 
         for entity in entities:
