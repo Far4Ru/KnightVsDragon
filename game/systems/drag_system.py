@@ -24,14 +24,14 @@ class DragSystem(System):
                 if Draggable in entity.components:
                     def make_on_click(context, e):
                         def on_click(event):
-                            if position := e.get_component(Position):
+                            if (position := e.get_component(Position)) and (sprite_component := e.get_component(Sprite)):
                                 if collides_with_point(
                                         arcade.XYWH(position.x, position.y, 200, 200),
                                         (event.x, event.y)
                                 ):
-                                    context.dragged_sprite_name = sprite.texture
+                                    context.dragged_sprite_name = sprite_component.texture
                                     context.dragged_sprite = arcade.Sprite(
-                                        GameEngine().texture_manager.get(sprite.texture),
+                                        GameEngine().texture_manager.get(sprite_component.texture),
                                         center_x=event.x,
                                         center_y=event.y,
                                         scale=1
@@ -40,8 +40,7 @@ class DragSystem(System):
                                     context.drag_offset_y = event.y - position.y
                         return on_click
 
-                    on_click_callback = make_on_click(self, entity)
-                    self.event_bus.subscribe("on_drag_start", entity, on_click_callback)
+                    self.event_bus.subscribe("on_drag_start", entity, make_on_click(self, entity))
                 if Droppable in entity.components:
                     def make_drop(context, e):
                         def drop(event):

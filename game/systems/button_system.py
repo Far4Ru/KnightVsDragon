@@ -10,53 +10,51 @@ from game.components.text import Text
 from game.components.on_click import OnClick
 
 
+def make_on_hover(on_hover_component, entity):
+    def on_hover(event):
+        if text := entity.get_component(Text):
+            on_hover_component.target = text
+            angle_degree = 0
+            if angle := entity.get_component(Angle):
+                angle_degree = angle.degree
+            if (position := entity.get_component(Position)) and (size := entity.get_component(Size)):
+                if collides_with_point(
+                        arcade.XYWH(position.x, position.y, size.width, size.height),
+                        (event.x, event.y),
+                        angle_degree
+                ):
+                    on_hover_component.is_hovered = True
+                else:
+                    on_hover_component.is_hovered = False
+                on_hover_component.action()
+
+    return on_hover
+
+
+def make_on_click(on_click_component, entity):
+    def on_click(event):
+        angle_degree = 0
+        if angle := entity.get_component(Angle):
+            angle_degree = angle.degree
+        if (position := entity.get_component(Position)) and (size := entity.get_component(Size)):
+            if collides_with_point(
+                    arcade.XYWH(position.x, position.y, size.width, size.height),
+                    (event.x, event.y),
+                    angle_degree
+            ):
+                on_click_component.action()
+
+    return on_click
+
+
 @system
 class ButtonSystem(System):
     def start(self, entities):
         for entity in entities:
             if on_click_component := entity.get_component(OnClick):
-                angle_degree = 0
-                if angle := entity.get_component(Angle):
-                    angle_degree = angle.degree
-                if (position := entity.get_component(Position)) and (size := entity.get_component(Size)):
-                    def make_on_click(angle_value, pos, size_value, component):
-                        def on_click(event):
-                            if collides_with_point(
-                                    arcade.XYWH(pos.x, pos.y, size_value.width, size_value.height),
-                                    (event.x, event.y),
-                                    angle_value
-                            ):
-                                component.action()
-
-                        return on_click
-
-                    on_click_callback = make_on_click(angle_degree, position, size, on_click_component)
-                    self.event_bus.subscribe("on_mouse_click", entity, on_click_callback)
-            elif on_hover_component := entity.get_component(OnHover):
-                if text := entity.get_component(Text):
-                    on_hover_component.target = text
-                    angle_degree = 0
-                    if angle := entity.get_component(Angle):
-                        angle_degree = angle.degree
-                    if (position := entity.get_component(Position)) and (size := entity.get_component(Size)):
-                        def make_on_hover(angle_value, pos, size_value, component):
-                            def on_hover(event):
-                                if collides_with_point(
-                                        arcade.XYWH(pos.x, pos.y, size_value.width, size_value.height),
-                                        (event.x, event.y),
-                                        angle_value
-                                ):
-                                    component.is_hovered = True
-                                else:
-                                    component.is_hovered = False
-                                component.action()
-
-                            return on_hover
-
-                        self.event_bus.subscribe(
-                            "on_mouse_hover", entity,
-                            make_on_hover(angle_degree, position, size, on_click_component)
-                        )
+                self.event_bus.subscribe("on_mouse_click", entity, make_on_click(on_click_component, entity))
+            if on_hover_component := entity.get_component(OnHover):
+                self.event_bus.subscribe("on_mouse_hover", entity, make_on_hover(on_hover_component, entity))
 
     def on_mouse_press(self, entities, x, y, button):
         if button != arcade.MOUSE_BUTTON_LEFT:
