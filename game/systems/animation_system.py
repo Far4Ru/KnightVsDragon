@@ -3,6 +3,7 @@ from engine.core.system import system, System
 from game.components import Target, Turn
 from game.components.animation import Animation
 
+
 @system
 class AnimationSystem(System):
     animations = []

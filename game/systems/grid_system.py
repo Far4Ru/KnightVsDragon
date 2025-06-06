@@ -1,16 +1,23 @@
 import copy
 
-from engine.core.entity import Entity
 from engine.core.system import system, System
 from engine.utils.math import calculate_perspective_scale
 from game.components import Size, Grid, Scale, Target
-from game.components.animation import Animation
 from game.components.condition import Condition
-from game.components.droppable import Droppable
-from game.components.layer import Layer
 from game.components.position import Position
 from game.components.sprite import Sprite
 from game.components.tile import Tile
+
+
+def wrapper_update_tile(self, entity, x, y):
+    def update_tile(event):
+        if sprite := entity.get_component(Sprite):
+            if x == event["x"] and y == event["y"]:
+                if texture := event["texture"]:
+                    sprite.texture = texture
+                elif base_texture := sprite.base_texture:
+                    sprite.texture = base_texture
+    return update_tile
 
 
 @system
@@ -41,6 +48,7 @@ class GridSystem(System):
                             self.update_tile(tile_entity, x, y, position.x + pos_x, position.y + pos_y, current_scale,
                                              scaled_width, scaled_height)
                             entities.append(tile_entity)
+                            self.event_bus.subscribe("update_tile", tile_entity, wrapper_update_tile(self, tile_entity, x, y))
 
                         accumulated_y += scaled_height
 

@@ -1,5 +1,3 @@
-import copy
-
 import arcade
 from pyglet.math import Vec2
 
@@ -7,13 +5,11 @@ from engine.core.system import system, System
 from engine.engine import GameEngine
 from engine.utils.math import collides_with_point
 from game.components import Size
-from game.components.animation import Animation
 from game.components.draggable import Draggable
 from game.components.droppable import Droppable
 from game.components.position import Position
 from game.components.sprite import Sprite
 from game.components.tile import Tile
-from game.utils.animation import ANIMATIONS
 
 
 def make_on_drag(self, draggable, entity):
@@ -55,9 +51,7 @@ def make_on_drop(self, droppable, entity, entities):
             ):
                 if tile := entity.get_component(Tile):
 
-                    sprite.texture = self.target.get_component(Sprite).texture
-                    print(self.target.get_component(Sprite))
-                    self.event_bus.emit("check_combo", {"x": tile.x, "y": tile.y, "type": sprite.texture})
+                    self.event_bus.emit("check_combo", {"x": tile.x, "y": tile.y, "type": self.target.get_component(Sprite).texture})
                 self.dragged_sprite = None
                 self.dragged_sprite_name = None
 

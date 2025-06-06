@@ -17,7 +17,6 @@ def next_turn_wrapper(self):
 def turn_wrapper(self, animation, turn):
     def turn_function(event):
         if turn.next is not None:
-            print(turn.next, self.current_turn)
             if turn.next == (self.current_turn + 1):
                 animation.skip()
             if turn.next == 0:

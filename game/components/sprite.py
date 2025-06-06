@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Optional
 
 from engine.core.component import component
 
@@ -9,4 +10,5 @@ class Sprite:
     texture: str
     scale: float = 1.0
     visible: bool = True
+    base_texture: Optional[str] = None
 

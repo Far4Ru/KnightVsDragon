@@ -92,14 +92,6 @@
             "Angle": {"degree": 0}
         }
     },
-    "babayaga": {
-        "components": {
-            "Position": {"x": 1230, "y": 400},
-            "Sprite": {"texture": "knight"},
-            "Layer": {"level": 1},
-            "Angle": {"degree": 0}
-        }
-    },
     "citizens": {
         "components": {
             "Position": {"x": 1230, "y": 200},
@@ -199,7 +191,7 @@
     },
     "grid_tile": {
         "components": {
-            "Sprite": {"texture": "cell"},
+            "Sprite": {"texture": "cell", "base_texture": "cell"},
             "Position": {"x": 125, "y": 200},
             "Layer": {"level": 1},
             "Scale": {"scale": 1},

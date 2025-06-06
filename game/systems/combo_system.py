@@ -24,7 +24,14 @@ class ComboSystem(System):
             if [x, y] in self.combo_grid[grid_symbol_type]:
                 return
         self.combo_grid[symbol_type].append([x, y])
-        self.check(x, y, symbol_type)
+        neighbors = self.check(x, y, symbol_type)
+        for direction_neighbors in neighbors:
+            for neighbor in direction_neighbors:
+                self.event_bus.emit("update_tile", {"x": neighbor[0], "y": neighbor[1], "texture": None})
+                print(neighbor)
+                self.combo_grid[symbol_type].remove(neighbor)
+
+        self.event_bus.emit("update_tile", {"x": x, "y": y, "texture": symbol_type})
         self.event_bus.emit("next_turn", {"next": None})
 
     def check(self, x, y, symbol_type):
