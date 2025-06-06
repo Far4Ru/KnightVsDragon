@@ -181,7 +181,6 @@ def animation_change_state_update(self):
 
 
 def animation_health_change_init(self):
-    print('animation_health_change_init')
     self.elapsed = 0
     self.active = False
     self.duration = 1

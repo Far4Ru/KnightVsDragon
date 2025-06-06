@@ -28,7 +28,6 @@ class ComboSystem(System):
         for direction_neighbors in neighbors:
             for neighbor in direction_neighbors:
                 self.event_bus.emit("update_tile", {"x": neighbor[0], "y": neighbor[1], "texture": None})
-                print(neighbor)
                 self.combo_grid[symbol_type].remove(neighbor)
 
         # emit damage
