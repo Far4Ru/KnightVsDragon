@@ -14,17 +14,23 @@ def next_turn_wrapper(self):
     return next_turn
 
 
-def turn_wrapper(self, animation, turn):
+def turn_wrapper(self, entity):
     def turn_function(event):
-        if turn.next is not None:
-            if turn.next == (self.current_turn + 1):
-                animation.skip()
-            if turn.next == 0:
-                turn.current = turn.order <= self.current_turn
+        if turn := entity.get_component(Turn):
+            if turn.next is not None:
+                if turn.next == (self.current_turn + 1):
+                    if animation := entity.get_component(Animation):
+                        animation.skip()
+                if turn.next == 0:
+                    turn.current = turn.order <= self.current_turn
+                else:
+                    turn.current = turn.order <= self.current_turn < turn.next
             else:
-                turn.current = turn.order <= self.current_turn < turn.next
-        else:
-            turn.current = self.current_turn == turn.order
+                turn.current = self.current_turn == turn.order
+            if animation := entity.get_component(Animation):
+                animation.active = turn.current
+            if draggable := entity.get_component(Draggable):
+                draggable.active = turn.current
     return turn_function
 
 
@@ -52,12 +58,5 @@ class TurnSystem(System):
                 turn.current = self.current_turn == turn.order
                 if animation := entity.get_component(Animation):
                     self.event_bus.subscribe("turn_animation_complete", entity, turn_animation_wrapper(self, turn, animation))
-                self.event_bus.subscribe("turn_update", entity, turn_wrapper(self, animation, turn))
-
-    def update(self, entities):
-        for entity in entities:
-            if turn := entity.get_component(Turn):
-                if animation := entity.get_component(Animation):
-                    animation.active = turn.current
-                if draggable := entity.get_component(Draggable):
-                    draggable.active = turn.current
+                self.event_bus.subscribe("turn_update", entity, turn_wrapper(self, entity))
+                turn_wrapper(self, entity)

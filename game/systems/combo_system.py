@@ -31,6 +31,9 @@ class ComboSystem(System):
                 print(neighbor)
                 self.combo_grid[symbol_type].remove(neighbor)
 
+        # emit damage
+        # emit level up, combo symbol_type update
+        self.event_bus.emit("update_damage", {"target_entity": "dragon", "damage": 10})
         self.event_bus.emit("update_tile", {"x": x, "y": y, "texture": symbol_type})
         self.event_bus.emit("next_turn", {"next": None})
 

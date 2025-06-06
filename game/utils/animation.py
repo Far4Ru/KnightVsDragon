@@ -5,6 +5,7 @@ from pyglet.math import Vec2
 from engine.engine import GameEngine
 from engine.utils.math import calculate_bezier
 from game.components import Angle, Scale
+from game.components.damage import Damage
 from game.components.health import Health
 from game.components.position import Position
 from game.components.sprite import Sprite
@@ -180,8 +181,9 @@ def animation_change_state_update(self):
 
 
 def animation_health_change_init(self):
+    print('animation_health_change_init')
     self.elapsed = 0
-    self.active = True
+    self.active = False
     self.duration = 0.1
 
 
@@ -191,16 +193,18 @@ def animation_health_change_update(self):
     entity = self.target
     if entity is not None:
         if health := entity.get_component(Health):
-            health.current_hp = health.last_hp - (health.last_hp - health.next_hp) * t
+            if damage := entity.get_component(Damage):
+                health.current_hp = math.round(health.last_hp - damage.value * t)
     if t >= 1.0:
         if health := entity.get_component(Health):
-            health.current_hp = health.last_hp - (health.last_hp - health.next_hp)
-        self.active = False
-        self.elapsed = 0
+            if damage := entity.get_component(Damage):
+                health.current_hp = health.last_hp - damage.value
+                health.last_hp = health.current_hp
         GameEngine().scene_manager.current_scene.event_bus.emit(
             self.emit,
             {"animation": self}
         )
+        self.active = False
 
 
 def animation_delay_init(self, duration):

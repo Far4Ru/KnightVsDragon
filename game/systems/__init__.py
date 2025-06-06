@@ -7,3 +7,4 @@ from .animation_system import AnimationSystem
 from .turn_indicator_system import TurnIndicatorSystem
 from .turn_system import TurnSystem
 from .combo_system import ComboSystem
+from .damage_system import DamageSystem

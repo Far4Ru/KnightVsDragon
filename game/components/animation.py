@@ -14,4 +14,5 @@ class Animation:
     dt = 0
 
     def skip(self):
-        self.elapsed = self.duration
+        self.active = False
+        self.elapsed = 0

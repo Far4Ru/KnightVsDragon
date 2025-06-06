@@ -13,6 +13,7 @@
             "Layer": {"level": 2},
             "Size": {"width": 200, "height":  20},
             "Health": {"max_hp": 100, "current_hp": 100, "background": "#000000", "fill": "#FF0000", "border": "#FFFFFF"},
+            "Damage": {"value": 10},
             "Text": {"font_size": 12, "color": "#FFFFFF"},
             "Target": {"entity": "knight"}
         }
@@ -38,6 +39,7 @@
             "Layer": {"level": 2},
             "Size": {"width": 200, "height":  20},
             "Health": {"max_hp": 100, "current_hp": 100, "background": "#000000", "fill": "#FF0000", "border": "#FFFFFF"},
+            "Damage": {},
             "Text": {"font_size": 12, "color": "#FFFFFF"},
             "Target": {"entity": "dragon"}
         }
@@ -67,7 +69,7 @@
     "moon_delay_animation": {
         "components": {
             "Animation": {"update": {"name":"delay", "args": [4]}},
-            "Turn": {"order": 7, "next": 0},
+            "Turn": {"order": 6, "next": 0},
             "Target": {"entity": "moon_delay"}
         }
     },
@@ -147,7 +149,7 @@
     "moon_animation": {
         "components": {
             "TurnIndicator": {"duration": 1},
-            "Turn": {"order": 4, "next": 7},
+            "Turn": {"order": 4, "next": 6},
             "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 6]}},
             "Target": {"entity": "moon"}
         }

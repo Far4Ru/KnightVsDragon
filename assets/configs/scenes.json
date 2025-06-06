@@ -56,7 +56,8 @@
             "AnimationSystem",
             "TurnIndicatorSystem",
             "TurnSystem",
-            "ComboSystem"
+            "ComboSystem",
+            "DamageSystem"
         ],
         "entities": [
             "knight",
