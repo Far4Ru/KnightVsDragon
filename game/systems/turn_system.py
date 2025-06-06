@@ -14,12 +14,16 @@ def next_turn_wrapper(self):
     return next_turn
 
 
-def turn_wrapper(self, turn):
+def turn_wrapper(self, animation, turn):
     def turn_function(event):
-        if turn.next:
-            turn.current = turn.order <= self.current_turn < turn.next
-        elif turn.next == 0:
-            turn.current = turn.order <= self.current_turn
+        if turn.next is not None:
+            print(turn.next, self.current_turn)
+            if turn.next == (self.current_turn + 1):
+                animation.skip()
+            if turn.next == 0:
+                turn.current = turn.order <= self.current_turn
+            else:
+                turn.current = turn.order <= self.current_turn < turn.next
         else:
             turn.current = self.current_turn == turn.order
     return turn_function
@@ -49,7 +53,7 @@ class TurnSystem(System):
                 turn.current = self.current_turn == turn.order
                 if animation := entity.get_component(Animation):
                     self.event_bus.subscribe("turn_animation_complete", entity, turn_animation_wrapper(self, turn, animation))
-                self.event_bus.subscribe("turn_update", entity, turn_wrapper(self, turn))
+                self.event_bus.subscribe("turn_update", entity, turn_wrapper(self, animation, turn))
 
     def update(self, entities):
         for entity in entities:

@@ -49,6 +49,28 @@
             "Turn": {"order": 2}
         }
     },
+    "sun_delay": {
+        "components": {
+        }
+    },
+    "sun_delay_animation": {
+        "components": {
+            "Animation": {"update": {"name":"delay", "args": [4]}},
+            "Turn": {"order": 3},
+            "Target": {"entity": "sun_delay"}
+        }
+    },
+    "moon_delay": {
+        "components": {
+        }
+    },
+    "moon_delay_animation": {
+        "components": {
+            "Animation": {"update": {"name":"delay", "args": [4]}},
+            "Turn": {"order": 7, "next": 0},
+            "Target": {"entity": "moon_delay"}
+        }
+    },
     "game_music": {
         "components": {
             "Sound": {"name": "music_level1", "loop": true}
@@ -117,7 +139,7 @@
     "sun_animation": {
         "components": {
             "TurnIndicator": {"duration": 1},
-            "Turn": {"order": 0, "next": 4},
+            "Turn": {"order": 0, "next": 3},
             "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 60]}},
             "Target": {"entity": "sun"}
         }
@@ -133,8 +155,8 @@
     "moon_animation": {
         "components": {
             "TurnIndicator": {"duration": 1},
-            "Turn": {"order": 4, "next": 0},
-            "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 60]}},
+            "Turn": {"order": 4, "next": 7},
+            "Animation": {"update": {"name": "bezier", "args": [[-400, 600], [1480, 500], [0, 300], 0.5, 6]}},
             "Target": {"entity": "moon"}
         }
     },

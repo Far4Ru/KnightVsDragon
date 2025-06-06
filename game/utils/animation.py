@@ -201,6 +201,25 @@ def animation_health_change_update(self):
             {"animation": self}
         )
 
+
+def animation_delay_init(self, duration):
+    self.elapsed = 0
+    self.active = True
+    self.duration = duration
+
+
+def animation_delay_update(self):
+    self.elapsed += self.dt
+    t = min(self.elapsed / self.duration, 1.0)
+    if t >= 1.0:
+        self.elapsed = 0
+        self.active = False
+        GameEngine().scene_manager.current_scene.event_bus.emit(
+            self.emit,
+            {"animation": self}
+        )
+
+
 ANIMATIONS = {
     "bezier": {
         "init": animation_bezier_init,
@@ -214,17 +233,21 @@ ANIMATIONS = {
         "init": animation_button_push_init,
         "update": animation_button_push_update,
     },
-    "text_animation":  {
+    "text_animation": {
         "init": animation_text_init,
         "update": animation_text_update,
     },
-    "change_state":  {
+    "change_state": {
         "init": animation_change_state_init,
         "update": animation_change_state_update,
     },
     "health_change": {
         "init": animation_health_change_init,
         "update": animation_health_change_update,
+    },
+    "delay": {
+        "init": animation_delay_init,
+        "update": animation_delay_update,
     }
 }
 
