@@ -69,7 +69,7 @@
     "moon_delay_animation": {
         "components": {
             "Animation": {"update": {"name":"delay", "args": [4]}},
-            "Turn": {"order": 6, "next": 0},
+            "Turn": {"order": 6},
             "Target": {"entity": "moon_delay"}
         }
     },

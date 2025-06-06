@@ -184,7 +184,7 @@ def animation_health_change_init(self):
     print('animation_health_change_init')
     self.elapsed = 0
     self.active = False
-    self.duration = 0.1
+    self.duration = 1
 
 
 def animation_health_change_update(self):
@@ -194,7 +194,7 @@ def animation_health_change_update(self):
     if entity is not None:
         if health := entity.get_component(Health):
             if damage := entity.get_component(Damage):
-                health.current_hp = math.round(health.last_hp - damage.value * t)
+                health.current_hp = round(health.last_hp - damage.value * t)
     if t >= 1.0:
         if health := entity.get_component(Health):
             if damage := entity.get_component(Damage):

@@ -58,5 +58,7 @@ class TurnSystem(System):
                 turn.current = self.current_turn == turn.order
                 if animation := entity.get_component(Animation):
                     self.event_bus.subscribe("turn_animation_complete", entity, turn_animation_wrapper(self, turn, animation))
+                    animation.active = turn.current
+                if draggable := entity.get_component(Draggable):
+                    draggable.active = turn.current
                 self.event_bus.subscribe("turn_update", entity, turn_wrapper(self, entity))
-                turn_wrapper(self, entity)
