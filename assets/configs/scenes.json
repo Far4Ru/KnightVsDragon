@@ -57,7 +57,8 @@
             "TurnIndicatorSystem",
             "TurnSystem",
             "ComboSystem",
-            "DamageSystem"
+            "DamageSystem",
+            "UpgradeSystem"
         ],
         "entities": [
             "knight",

@@ -208,6 +208,7 @@
         "components": {
             "Position": {"x": 740, "y": 100},
             "Sprite": {"texture": "sword"},
+            "Upgradable": {"texture_names": ["sword", "sword_2", "sword_3", "sword_4", "sword_5"]},
             "Layer": {"level": 1},
             "Size": {"width": 40, "height":  200}
         }
