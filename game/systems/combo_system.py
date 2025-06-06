@@ -1,3 +1,5 @@
+import random
+
 from engine.core.system import system
 from engine.core.system import System
 
@@ -9,6 +11,27 @@ def wrapper_check_combo(self):
     return check_combo
 
 
+def wrapper_add_random(self):
+    def add_random(event):
+        missing_pairs = []
+        for x in range(8):
+            for y in range(8):
+                is_present = False
+                for grid_symbol_type in self.combo_grid.keys():
+                    if [x, y] in self.combo_grid[grid_symbol_type]:
+                        is_present = True
+                        break
+                if not is_present:
+                    missing_pairs.append([x, y])
+        fire_position = random.choice(missing_pairs)
+
+        if not self.combo_grid.get(event["type"], None):
+            self.combo_grid[event["type"]] = []
+        self.combo_grid[event["type"]].append(fire_position)
+        self.event_bus.emit("update_tile", {"x": fire_position[0], "y": fire_position[1], "texture": event["type"]})
+    return add_random
+
+
 @system
 class ComboSystem(System):
     combo_grid = {}
@@ -16,6 +39,7 @@ class ComboSystem(System):
     def start(self, entities):
         self.combo_grid = {}
         self.event_bus.subscribe("check_combo", self, wrapper_check_combo(self))
+        self.event_bus.subscribe("add_random", self, wrapper_add_random(self))
 
     def add(self, x, y, symbol_type):
         if not self.combo_grid.get(symbol_type, None):

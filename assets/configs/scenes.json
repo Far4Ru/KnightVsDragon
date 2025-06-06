@@ -88,7 +88,9 @@
             "flying_sword",
             "flying_sword_animation",
             "flying_fire",
-            "flying_fire_animation"
+            "flying_fire_animation",
+            "fire_place_animation",
+            "fire"
         ],
         "entity_config": "level1_entity_config"
     },

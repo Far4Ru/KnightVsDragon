@@ -234,5 +234,12 @@
             "Target": {"entity": "flying_fire"},
             "Turn": {"order": 4}
         }
+    },
+    "fire_place_animation": {
+        "components": {
+            "Animation": {"update": {"name": "fire_place_animation", "args": [1]}},
+            "Target": {"entity": "fire"},
+            "Turn": {"order": 4}
+        }
     }
 }

@@ -224,6 +224,24 @@ def animation_delay_update(self):
         )
 
 
+def animation_fire_place_init(self, *args):
+    self.elapsed = 0
+    self.active = True
+    self.duration = 0.1
+
+
+def animation_fire_place_update(self, *args):
+    self.elapsed += self.dt
+    t = min(self.elapsed / self.duration, 1.0)
+
+    if t >= 1.0:
+        self.active = False
+        GameEngine().scene_manager.current_scene.event_bus.emit(
+            "add_random",
+            {"type": "fire"}
+        )
+
+
 ANIMATIONS = {
     "bezier": {
         "init": animation_bezier_init,
@@ -252,6 +270,10 @@ ANIMATIONS = {
     "delay": {
         "init": animation_delay_init,
         "update": animation_delay_update,
+    },
+    "fire_place_animation": {
+        "init": animation_fire_place_init,
+        "update": animation_fire_place_update,
     }
 }
 
