@@ -13,3 +13,5 @@ class Health:
         self.background = hex_to_rgb(background)
         self.border = hex_to_rgb(border)
         self.fill = hex_to_rgb(fill)
+        self.last_hp = current_hp
+        self.next_hp = current_hp - 10

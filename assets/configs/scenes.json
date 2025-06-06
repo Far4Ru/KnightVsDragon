@@ -55,7 +55,8 @@
             "DragSystem",
             "AnimationSystem",
             "TurnIndicatorSystem",
-            "TurnSystem"
+            "TurnSystem",
+            "ComboSystem"
         ],
         "entities": [
             "knight",

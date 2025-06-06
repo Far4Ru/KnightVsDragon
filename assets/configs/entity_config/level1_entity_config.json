@@ -164,6 +164,8 @@
         "components": {
             "Position": {"x": 640, "y": 512},
             "Sprite": {"texture": "background_level_1"},
+            "Droppable": {},
+            "Size": {"width": 1280, "height": 720},
             "Layer": {"level": 0}
         }
     },

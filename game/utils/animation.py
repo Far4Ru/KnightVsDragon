@@ -190,12 +190,13 @@ def animation_health_change_update(self):
     t = min(self.elapsed / self.duration, 1.0)
     entity = self.target
     if entity is not None:
-        if (entity := self.target) is not None:
-            if health := entity.get_component(Health):
-                health.current_hp -= 1
+        if health := entity.get_component(Health):
+            health.current_hp = health.last_hp - (health.last_hp - health.next_hp) * t
     if t >= 1.0:
-        self.elapsed = 0
+        if health := entity.get_component(Health):
+            health.current_hp = health.last_hp - (health.last_hp - health.next_hp)
         self.active = False
+        self.elapsed = 0
         GameEngine().scene_manager.current_scene.event_bus.emit(
             self.emit,
             {"animation": self}
