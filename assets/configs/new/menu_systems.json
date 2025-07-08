@@ -1,0 +1,12 @@
+[
+    {
+        "name": "sound",
+        "events": {
+            "listen": ["sound"],
+            "trigger": ["sound"]
+        }
+    },
+    "button",
+    "render",
+    "animation"
+]
